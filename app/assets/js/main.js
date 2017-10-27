@@ -18,7 +18,7 @@ app.map = (function(w, d, L, $) {
       });
 
     map = new L.Map('map', {
-      center: [40.694045, -73.946571],
+      center: [40.7197557,-73.9196263],
       zoom: 12,
       zoomControl: false,
     });
@@ -120,10 +120,10 @@ app.map = (function(w, d, L, $) {
         });
         $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
 
-        mapLayers[3].show(); // sampscore layer
-        mapLayers[0].hide(); // rentregscore
-        mapLayers[1].hide(); // dobscore
-        mapLayers[2].hide(); // dofscore
+        mapLayers[0].hide(); // sampscore layer
+        mapLayers[1].show(); // rentregscore
+        mapLayers[2].hide(); // dobscore
+        mapLayers[3].hide(); // dofscore
 
         mapLayers[4].hide(); // community districts
         mapLayers[4].setInteraction(false);
@@ -289,13 +289,13 @@ app.map = (function(w, d, L, $) {
           first = '',
           geoName = '';
       if (name === 'coundist') {
-        first = '<option val="0" style="width:80%">Select a Council District</option>';
+        first = '<option val="0">Select a Council District</option>';
         geoName = 'Council District ';
       } else if (name === 'borocd') {
-        first = '<option val="0" style="width:80%">Select a Community Board</option>';
+        first = '<option val="0">Select a Community Board</option>';
         geoName = 'Community Board ';
       } else {
-        first = '<option val="0" class="navbtnwdth">Select a Zip Code</option>';
+        first = '<option val="0">Select a Zip Code</option>';
         geoName = '';
       }
 
