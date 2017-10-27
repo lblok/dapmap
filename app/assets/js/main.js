@@ -19,7 +19,7 @@ app.map = (function(w, d, L, $) {
 
     map = new L.Map('map', {
       center: [40.694045, -73.946571],
-      zoom: 12,
+      zoom: 11,
       zoomControl: false,
     });
 
@@ -120,10 +120,10 @@ app.map = (function(w, d, L, $) {
         });
         $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
  
-        mapLayers[3].show(); // sampscore layer
-        mapLayers[0].hide(); // rentregscore
-        mapLayers[1].hide(); // dobscore
-        mapLayers[2].hide(); // dofscore
+        mapLayers[0].hide(); // sampscore layer
+        mapLayers[1].show(); // rentregscore
+        mapLayers[2].hide(); // dobscore
+        mapLayers[3].hide(); // dofscore
 
         mapLayers[4].hide(); // community districts
         mapLayers[4].setInteraction(false);
