@@ -119,7 +119,7 @@ app.map = (function(w, d, L, $) {
           fields: [{ address: 'address' }]
         });
         $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
-
+ 
         mapLayers[3].show(); // sampscore layer
         mapLayers[0].hide(); // rentregscore
         mapLayers[1].hide(); // dobscore
