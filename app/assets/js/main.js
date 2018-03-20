@@ -18,8 +18,8 @@ app.map = (function(w, d, L, $) {
       });
 
     map = new L.Map('map', {
-      center: [40.7197557,-73.9196263],
-      zoom: 12,
+      center: [40.694045, -73.946571],
+      zoom: 11,
       zoomControl: false,
     });
 
@@ -60,7 +60,7 @@ app.map = (function(w, d, L, $) {
       user_name: 'anhdnyc',
       type: 'namedmap',
       named_map: {
-        name: 'SAMP_Map_2016',
+        name: 'DAP_Map_v2',
         layers: [
           {
             layer_name: "sampscore",
@@ -119,7 +119,11 @@ app.map = (function(w, d, L, $) {
           fields: [{ address: 'address' }]
         });
         $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> a3a48e9bbdf147ed03384cba5a980f43f8342616
         mapLayers[0].hide(); // sampscore layer
         mapLayers[1].show(); // rentregscore
         mapLayers[2].hide(); // dobscore
