@@ -60,7 +60,7 @@ app.map = (function(w, d, L, $) {
       user_name: 'anhdnyc',
       type: 'namedmap',
       named_map: {
-        name: 'DAP_Map_v2',
+        name: 'SAMP_Map_2016',
         layers: [
           {
             layer_name: "sampscore",
