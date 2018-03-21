@@ -12,7 +12,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- ANHD FAVICON
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="shortcut icon" href="http://anhd.org/wp-content/themes/sahifa/favicon.ico" title="Favicon" />  
+  <link rel="shortcut icon" href="https://static.wixstatic.com/media/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png" type="image/png"/>
+   <!-- FONT 
+   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
   <!-- FONT 
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
@@ -28,7 +33,8 @@
 
   <!-- Custom CartoDB Infowindow Templates
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script type="infowindow/html" id="sampscore_infowindow">
+  <!-- Comment out Combined Score pop up -->
+  <!-- <script type="infowindow/html" id="sampscore_infowindow">
     <div class="cartodb-popup v2">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
        <div class="cartodb-popup-content-wrapper">
@@ -74,11 +80,10 @@
             </div>
           </div>
          </div>
-         
        </div>
        <div class="cartodb-popup-tip-container"></div>
     </div>
-  </script>
+  </script> -->
   <script type="infowindow/html" id="rentregscore_infowindow">
     <div class="cartodb-popup v2">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
@@ -96,16 +101,25 @@
            <h3>Year Built: <strong>{{content.data.yearbuilt}}</strong></h3>
          </div>
          {{/content.data.yearbuilt}}
-         {{#content.data.rentregscore}}
+         
+         {{#content.data.uc2007}}
          <div class="cartodb-popup-content">
-           <h3>Rent Regulation Score: <strong>{{content.data.rentregscore}}</strong></h3>
+           <h3>Rent Regulation Score: <strong>{{content.data.uc2007}}</strong></h3>
          </div>
-         {{/content.data.rentregscore}}
+         {{/content.data.uc2007}}
+
+         {{#content.data.uc2007}}
+         <div class="cartodb-popup-content">
+           <h3>Rent Reg. Units (2007): <strong>{{content.data.uc2007}}</strong></h3>
+         </div>
+         {{/content.data.uc2007}}
+
          {{#content.data.uc2014}}
          <div class="cartodb-popup-content">
            <h3>Rent Reg. Units (2014): <strong>{{content.data.uc2014}}</strong></h3>
          </div>
          {{/content.data.uc2014}}
+
          {{#content.data.rentstabdiff}}
          <div class="cartodb-popup-content">
            <h3>Rent Reg. Units Lost Since 2007: <strong>{{content.data.rentstabdiff}}</strong></h3>
@@ -117,12 +131,12 @@
          </div>
          {{/content.data.rentstabpctchange}}        
          <div class="cartodb-popup-content marginTop10">
-          <div class="container">
+          <!-- <div class="container">
             <div class="row">
               <div class="one-half column {{content.data.dobyn}}">DOB</div>
               <div class="one-half column {{content.data.props}}">Prop. Sale</div>
             </div>
-          </div>
+          </div> -->
          </div>         
        </div>
        <div class="cartodb-popup-tip-container"></div>
@@ -171,12 +185,12 @@
          </div>
          {{/content.data.dm}}        
          <div class="cartodb-popup-content marginTop10">
-          <div class="container">
+          <!-- <div class="container">
             <div class="row">
               <div class="one-half column {{content.data.rentregyn}}">Rent Stabilized</div>
               <div class="one-half column {{content.data.props}}">Prop. Sale</div>
             </div>
-          </div>
+          </div> -->
          </div>
        </div>
        <div class="cartodb-popup-tip-container"></div>
@@ -230,12 +244,12 @@
          </div>
          {{/content.data.pctchngunit_10_15}}         -->
          <div class="cartodb-popup-content marginTop10">
-          <div class="container">
+          <!-- <div class="container">
             <div class="row">
               <div class="one-half column {{content.data.dobyn}}">DOB</div>
               <div class="one-half column {{content.data.rentregyn}}">Rent Stabilized</div>
             </div>
-          </div>
+          </div> -->
          </div>         
        </div>
        <div class="cartodb-popup-tip-container"></div>
@@ -247,16 +261,50 @@
 </head>
 <body>
   <nav class="navbar">
+    <div class="container-nav">
+        <ul class="navbar-list">
+            <li class="navbar-item">
+                <a class="navbar-link light" href="http://www.dapmapnyc.org">HOME</a>
+            </li>
+            <li class="navbar-item dropdown">
+                <div class="dropbtn">
+                    <a class="navbar-link light" href="http://map.dapmapnyc.org/app">DAP MAP</a>
+                </div>
+                <div class="dropdown-content">
+                    <a class="light" href="http://dapmapnyc.org/map-tutorial">MAP TUTORIAL</a>
+                </div>
+            </li>
+            <li class="navbar-item dropdown">
+                <div class="dropbtn">
+                    <a class="navbar-link active light" href="http://reports.dapmapnyc.org">DISTRICT REPORTS </a>
+                </div>
+                <div class="dropdown-content">
+                    <a class="light" href="http://dapmapnyc.org/reports-tutorial">REPORTS TUTORIAL</a>
+                </div>
+            </li>
+            <li class="navbar-item">
+                <a class="navbar-link light" href="https://www.dapmapnyc.org/about">ABOUT</a>
+            </li>
+            <li class="navbar-item">
+                <a class="navbar-link light" href="https://www.dapmapnyc.org/contact-us">CONTACT</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- <nav class="navbar">
       <div class="container-nav">
         <ul class="navbar-list">
           <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/">HOME</a></li>
-          <li class="navbar-item"><a class="navbar-link active" href="#">the DAP.MAP</a></li>
+          <li class="navbar-item"><a class="navbar-link active" href="#">DAP MAP</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="http://reports.dapmapnyc.org/">DISTRICT REPORTS</a></li>
           <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/about">ABOUT</a></li>
           <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/tutorial">TUTORIAL</a></li>
           <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/contact-us">CONTACT US</a></li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
+
   <div class='container mainContainer'>
     <div id='logo' class='logo top left hideLogo'>
       <a href="http://anhd.org/" target="_blank"><img class='logoImg' src='assets/images/anhd_logo.jpg'/></a>
@@ -283,7 +331,7 @@
       <label for="zipcode-select">Go to a Zip Code</label>
       <select id="zipcode-select" class='go-to-zipcode nvbtnwidth'></select>
     </div>
-    <div class='ui map-legend bottom right'>
+    <div class='ui map-legend bottom right' id='legendplace'>
       <div class="legend-cloropleth">
           <ul>
               <li class="min">Low risk</li>

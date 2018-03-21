@@ -60,7 +60,7 @@ app.map = (function(w, d, L, $) {
       user_name: 'anhdnyc',
       type: 'namedmap',
       named_map: {
-        name: 'SAMP_Map_2016',
+        name: 'DAP_Map_v2',
         layers: [
           {
             layer_name: "sampscore",
@@ -102,8 +102,9 @@ app.map = (function(w, d, L, $) {
         }
 
         /* when using the layerSource object, create infowindows like so: */
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id", "sampscore", "address", "dofscore", "dobscore", "rentregscore", "dobyn", "rentregyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#sampscore_infowindow').html()});
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id", "rentregscore", "address", "uc2014", "rentstabdiff", "rentstabpctchange", "dobyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
+        //comment out combined score infowindows
+        // cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id", "sampscore", "address", "dofscore", "dobscore", "rentregscore", "dobyn", "rentregyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#sampscore_infowindow').html()});
+        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id", "rentregscore", "address", "uc2007", "uc2014", "rentstabdiff", "rentstabpctchange", "dobyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id", "dobscore", "address", "jobcount", "a1", "a2", "dm", "props", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dobscore_infowindow').html()});
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id", "dofscore", "address", "saledate", "saleprice", "priceresunit", "ppunit10_plutoresdunits", "pctchngunit_10_15", "dobyn", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dofscore_infowindow').html()});
 
@@ -119,8 +120,9 @@ app.map = (function(w, d, L, $) {
           fields: [{ address: 'address' }]
         });
         $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
-        mapLayers[0].hide(); // sampscore layer
-        mapLayers[1].show(); // rentregscore
+
+        mapLayers[0].hide(); // sampscore layer: hidden completely in v2
+        mapLayers[1].show(); // rentregscore: default first layer in v2
         mapLayers[2].hide(); // dobscore
         mapLayers[3].hide(); // dofscore
 
@@ -141,10 +143,18 @@ app.map = (function(w, d, L, $) {
         });
 
         mapLayers[3].on('featureClick', function(e, latlng, pos, data, layer) {
-          $('#pctchange').text((parseFloat($('#pctchange').text())*100).toFixed(0) + "%");
-          $('#saleprice').text("$" + numberWithCommas(parseInt($('#saleprice').text())));
-          $('#priceresunit').text("$" + numberWithCommas(parseInt($('#priceresunit').text())));
-          $('#ppunit10_plutoresdunits').text("$" + numberWithCommas(parseInt($('#ppunit10_plutoresdunits').text())));
+          if ($('#pctchange').text().indexOf('%') == -1) {
+            $('#pctchange').text((parseFloat($('#pctchange').text())*100).toFixed(0) + "%");
+          }
+          if ($('#saleprice').text().indexOf('$') == -1) {
+            $('#saleprice').text("$" + numberWithCommas(parseInt($('#saleprice').text())));
+          }
+          if ($('#priceresunit').text().indexOf('$') == -1) {
+            $('#priceresunit').text("$" + numberWithCommas(parseInt($('#priceresunit').text())));
+          }
+          if ($('#ppunit10_plutoresdunits').text().indexOf('$') == -1) {
+            $('#ppunit10_plutoresdunits').text("$" + numberWithCommas(parseInt($('#ppunit10_plutoresdunits').text())));
+          }
         });
 
       })
@@ -156,22 +166,24 @@ app.map = (function(w, d, L, $) {
   function wireLayerBtns() {
     // wires the UI map layer buttons to CartoDB
     layerToggle = {
-      // hide / show the default map layer (speculation score)
-      sampscore: function() {
-        if (mapLayers[0].isVisible()) {
-          mapLayers[0].hide();
-        } else {
-          hideAllLayers();
-          mapLayers[0].show();
-          // set max legend value to 300
-          $('#maxLegendNumber').text(300);
-        }
+      // hide / show the default map layer (rentreg score)
+      // sampscore: function() {
+      //   if (mapLayers[0].isVisible()) {
+      //     mapLayers[0].hide();
+      //     $('.cartodb-infowindow').css('visibility', 'hidden');
+      //   } else {
+      //     hideAllLayers();
+      //     mapLayers[0].show();
+      //     // set max legend value to 300
+      //     $('#maxLegendNumber').text(300);
+      //   }
 
-        return true;
-      },
+      //   return true;
+      // },
       rentregscore: function() {
         if (mapLayers[1].isVisible()) {
           mapLayers[1].hide();
+          $('.cartodb-infowindow').css('visibility', 'hidden');
         } else {
           hideAllLayers();
           mapLayers[1].show();
@@ -184,6 +196,7 @@ app.map = (function(w, d, L, $) {
       dobscore: function() {
         if (mapLayers[2].isVisible()) {
           mapLayers[2].hide();
+          $('.cartodb-infowindow').css('visibility', 'hidden');
         } else {
           hideAllLayers();
           mapLayers[2].show();
@@ -196,6 +209,7 @@ app.map = (function(w, d, L, $) {
       dofscore: function() {
         if (mapLayers[3].isVisible()) {
           mapLayers[3].hide();
+          $('.cartodb-infowindow').css('visibility', 'hidden');
         } else {
           hideAllLayers();
           mapLayers[3].show();
@@ -254,6 +268,7 @@ app.map = (function(w, d, L, $) {
       mapLayers[1].hide();
       mapLayers[2].hide();
       mapLayers[3].hide();
+      $('.cartodb-infowindow').css('visibility', 'hidden');
     }
 
     $('.radio1').click(function(e) {
