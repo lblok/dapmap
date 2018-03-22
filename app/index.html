@@ -101,18 +101,12 @@
            <h3>Year Built: <strong>{{content.data.yearbuilt}}</strong></h3>
          </div>
          {{/content.data.yearbuilt}}
-         
-         {{#content.data.uc2007}}
-         <div class="cartodb-popup-content">
-           <h3>Rent Regulation Score: <strong>{{content.data.uc2007}}</strong></h3>
-         </div>
-         {{/content.data.uc2007}}
 
-         {{#content.data.uc2007}}
+         {{#content.data.address}}
          <div class="cartodb-popup-content">
-           <h3>Rent Reg. Units (2007): <strong>{{content.data.uc2007}}</strong></h3>
+           <h3>Rent Reg. Units (2007): <strong>{{content.data.address}}</strong></h3>
          </div>
-         {{/content.data.uc2007}}
+         {{/content.data.address}}
 
          {{#content.data.uc2014}}
          <div class="cartodb-popup-content">
@@ -358,12 +352,12 @@
     <div id="openModal" class="modalDialog">
       <div>
         <a href="#close" title="Close" class="close">X</a>
-        <h5>Welcome to the DAP Map<br />The Displacement Alert Project Map</h5>
-        <p>DAP Map is a building-level interactive map designed to show where residential tenants may be facing 
+        <h5 style="padding-top:10px;">Welcome to the DAP Map<br />The Displacement Alert Project Map</h5>
+        <p class="modalText">DAP Map is a building-level interactive map designed to show where residential tenants may be facing 
            significant displacement pressures and where affordable apartments are threatened across NYC. 
            ANHD created DAP Map to provide community groups, tenant organizers, residents, elected officials, 
            policymakers, and the public direct access to vital information on our city’s rapidly changing residential environment.</p>
-        <p>The map includes three layers listed to the right. Each indicator is color-coded by risk level to the building. 
+        <p class="modalText">The map includes three layers listed to the right. Each indicator is color-coded by risk level to the building. 
            Quickly jump to a specific Council District, Community Board, or Zip Code using the drop down menu on the right or enter 
            a specific address using the search button on the bottom left.</p>
         <a class="button" href="#close">Let's get started!</a>

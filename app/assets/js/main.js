@@ -19,7 +19,7 @@ app.map = (function(w, d, L, $) {
 
     map = new L.Map('map', {
       center: [40.694045, -73.946571],
-      zoom: 11,
+      zoom: 12,
       zoomControl: false,
     });
 
@@ -332,8 +332,9 @@ app.map = (function(w, d, L, $) {
           buildSelect('.go-to-cc', createOptions(data.rows, 'coundist'));
           initCB();
         });
-    }
+      }
 
+    
     function initCB() {
       sql.execute('SELECT borocd FROM nycd ORDER BY borocd ASC')
         .done(function(data){
