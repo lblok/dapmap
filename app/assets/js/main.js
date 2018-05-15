@@ -87,6 +87,8 @@ app.map = (function(w, d, L, $) {
       }
     };
 
+    
+
     // you can switch how the cartodb layers are added below by passing either
     // layerSource or vizJSON as the second parameter to cartodb.createLayer()
     cartodb.createLayer(map, layerSource, {'https': true})
@@ -108,6 +110,7 @@ app.map = (function(w, d, L, $) {
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id", "dobscore", "address", "jobcount", "a1", "a2", "dm", "props", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dobscore_infowindow').html()});
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id", "dofscore", "address", "saledate", "saleprice", "priceresunit", "ppunit10_plutoresdunits", "pctchngunit_10_15", "dobyn", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dofscore_infowindow').html()});
 
+        
 
         // very sloppy example tooltip creation
         // todo: make a separate function for these and use a templating engine like handlebars
