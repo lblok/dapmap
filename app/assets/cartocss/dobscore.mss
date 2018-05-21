@@ -7,42 +7,42 @@
   line-opacity: 1;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 100] {
-  polygon-fill: #800026;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 88.9] {
-  polygon-fill: #bd0026;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 77.8] {
-  polygon-fill: #e31a1c;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 66.7] {
-  polygon-fill: #fc4e2a;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 55.5] {
-  polygon-fill: #fd8d3c;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 44.4] {
-  polygon-fill: #feb24c;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 33.3] {
-  polygon-fill: #fed976;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 22.2] {
-  polygon-fill: #ffeda0;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore <= 11.1] {
-  polygon-fill: #ffffcc;
+  polygon-fill: #000;
   polygon-opacity: 0.8;
 }
 #samp_plus_sold_regulated_a1_dm_merge_mapputo [ dobscore < 1] {
-  polygon-fill: #aaaaaa;
+  polygon-fill: #000;
   polygon-opacity: 0.4;
 }

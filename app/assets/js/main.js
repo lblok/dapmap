@@ -11,6 +11,8 @@ var map,
 
 app.map = (function(w, d, L, $) {
 
+console.log(app.cartocss)
+
   function initMap() {
     // initiates the Leaflet map
     basemapLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
