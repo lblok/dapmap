@@ -107,12 +107,11 @@
            <h3>Rent Reg. Units (2007): <strong>{{content.data.uc2007}}</strong></h3>
          </div>
          {{/content.data.uc2007}}
-
-         {{#content.data.uc2014}}
+         {{#content.data.uc2016}}
          <div class="cartodb-popup-content">
-           <h3>Rent Reg. Units (2014): <strong>{{content.data.uc2014}}</strong></h3>
+           <h3>Rent Reg. Units (2016): <strong>{{content.data.uc2016}}</strong></h3>
          </div>
-         {{/content.data.uc2014}}
+         {{/content.data.uc2016}}
 
          {{#content.data.rentstabdiff}}
          <div class="cartodb-popup-content">
@@ -148,21 +147,16 @@
            <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
          </div>
          {{/content.data.unitsres}}
-         {{#content.data.yearbuilt}}
+         {{#content.data.unitscomm}}
          <div class="cartodb-popup-content">
-           <h3>Year Built: <strong>{{content.data.yearbuilt}}</strong></h3>
+           <h3>Number of Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
          </div>
-         {{/content.data.yearbuilt}}
-         {{#content.data.dobscore}}
+         {{/content.data.unitscomm}}
+         {{#content.data.total}}
          <div class="cartodb-popup-content">
-           <h3>DOB Permits Score: <strong>{{content.data.dobscore}}</strong></h3>
+           <h3>Number of DOB Permits: <strong>{{content.data.total}}</strong></h3>
          </div>
-         {{/content.data.dobscore}}
-         {{#content.data.jobcount}}
-         <div class="cartodb-popup-content">
-           <h3>Number of DOB Permits (2013-2015): <strong>{{content.data.jobcount}}</strong></h3>
-         </div>
-         {{/content.data.jobcount}}
+         {{/content.data.total}}
          {{#content.data.a1}}
          <div class="cartodb-popup-content">
            <h3>Number of A1 Permits: <strong>{{content.data.a1}}</strong></h3>
@@ -177,7 +171,12 @@
          <div class="cartodb-popup-content">
            <h3>Number of Demolitions: <strong>{{content.data.dm}}</strong></h3>
          </div>
-         {{/content.data.dm}}        
+         {{/content.data.dm}}  
+         {{#content.data.bbl}}
+         <div class="cartodb-popup-content">
+           <h3>BBL: <strong>{{content.data.bbl}}</strong></h3>
+         </div>
+         {{/content.data.bbl}}        
          <div class="cartodb-popup-content marginTop10">
           <!-- <div class="container">
             <div class="row">
@@ -197,21 +196,21 @@
          <div class="cartodb-popup-header">
            <h2>{{content.data.address}}</h2>
          </div>
-         {{#content.data.unitsres}}
-         <div class="cartodb-popup-content">
-           <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
-         </div>
-         {{/content.data.unitsres}}
-         {{#content.data.yearbuilt}}
-         <div class="cartodb-popup-content">
-           <h3>Year Built: <strong>{{content.data.yearbuilt}}</strong></h3>
-         </div>
-         {{/content.data.yearbuilt}}
          {{#content.data.ownername}}
          <div class="cartodb-popup-content">
            <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
          </div>
          {{/content.data.ownername}}
+         {{#content.data.unitsres}}
+         <div class="cartodb-popup-content">
+           <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
+         </div>
+         {{/content.data.unitsres}}
+         {{#content.data.ppu}}
+         <div class="cartodb-popup-content">
+           <h3>Price per Unit: <strong>{{content.data.ppu}}</strong></h3>
+         </div>
+         {{/content.data.ppu}}
          {{#content.data.saledate}}
          <div class="cartodb-popup-content">
            <h3>Sale Date: <strong>{{content.data.saledate}}</strong></h3>
