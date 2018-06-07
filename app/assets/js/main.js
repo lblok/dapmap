@@ -11,7 +11,6 @@ var map,
 
 app.map = (function(w, d, L, $) {
 
-console.log(app.cartocss)
 
   function initMap() {
     // initiates the Leaflet map
@@ -110,7 +109,7 @@ console.log(app.cartocss)
         // cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id", "sampscore", "address", "dofscore", "dobscore", "rentregscore", "dobyn", "rentregyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#sampscore_infowindow').html()});
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id", "rentregscore", "address", "uc2007", "uc2014", "rentstabdiff", "rentstabpctchange", "dobyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id", "dobscore", "address", "jobcount", "a1", "a2", "dm", "props", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dobscore_infowindow').html()});
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id", "dofscore", "address", "saledate", "saleprice", "priceresunit", "ppunit10_plutoresdunits", "pctchngunit_10_15", "dobyn", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dofscore_infowindow').html()});
+        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id", "dofscore", "address", "saledate", "saleprice", "priceresunit", "ppunit10_plutoresdunits", "pctchngunit_10_15", "dobyn", "rentregyn", "unitsres", "yearbuilt", "ownername"], {infowindowTemplate: $('#dofscore_infowindow').html()});
 
         
 
@@ -471,5 +470,8 @@ console.log(app.cartocss)
   return {
     init: init
   };
+
+
+
 
 })(window, document, L, jQuery);
