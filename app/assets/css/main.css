@@ -133,8 +133,8 @@ div.cartodb-popup p {
   text-transform: none;
 }
 
-.cartodb-popup-header {
-  margin-bottom: 5px;
+div.cartodb-popup h2{
+  font-size: 18px;
 }
 
 /* CartoDb logo move to left */
@@ -544,5 +544,5 @@ div.cartodb-popup.v2 {
   text-decoration: none;
   color: rgb(2, 0, 97);
   font-size: 14px;
+  font-weight: 300;
 }
-
