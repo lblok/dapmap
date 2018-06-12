@@ -45,14 +45,14 @@ function convertString(file, data) {
   console.log(x); 
 }
 
-function writeJSON() {
-  var data = JSON.stringify(cartoStrings);  
-  var js = "var app = app || {} \n\napp.cartocss = (function(){ \n  return " + data + ";\n})();";
+// function writeJSON() {
+//   var data = JSON.stringify(cartoStrings);  
+//   var js = "var app = app || {} \n\napp.cartocss = (function(){ \n  return " + data + ";\n})();";
 
-  fs.writeFile(outdir + 'carto.js', js,  function(err){
-    if (err) throw err;
-    console.log('success!');
-  });  
-}
+//   fs.writeFile(outdir + 'carto.js', js,  function(err){
+//     if (err) throw err;
+//     console.log('success!');
+//   });  
+// }
 
 readdir();

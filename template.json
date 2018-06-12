@@ -65,7 +65,7 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#dapmap4_3{polygon-fill:#aaaaaa;polygon-opacity:0.4;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap4_3[stabloss<=20000]{polygon-fill:#88ce65;polygon-opacity:0.8;}#dapmap4_3[stabloss<50]{polygon-fill:#ddffcc;polygon-opacity:0.8;}#dapmap4_3[stabloss<50]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap4_3[stabloss<5]{polygon-fill:#fafce5;polygon-opacity:0.8;}#dapmap4_3[stabloss<-1]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap4_3[stabloss<-25]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap4_3[stabloss<-50]{polygon-fill:#e31a1c;polygon-opacity:0.8;}#dapmap4_3[stabloss<-75]{polygon-fill:#800026;polygon-opacity:0.8;}",
+          "cartocss": "#dapmap4_3{polygon-fill:#aaaaaa;polygon-opacity:0.4;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap4_3[stabloss<=20000]{polygon-fill:#88ce65;polygon-opacity:0.8;}#dapmap4_3[stabloss<50]{polygon-fill:#ddffcc;polygon-opacity:0.8;}#dapmap4_3[stabloss<5]{polygon-fill:#fafce5;polygon-opacity:0.8;}#dapmap4_3[stabloss<-1]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap4_3[stabloss<-25]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap4_3[stabloss<-50]{polygon-fill:#e31a1c;polygon-opacity:0.8;}#dapmap4_3[stabloss<-75]{polygon-fill:#800026;polygon-opacity:0.8;}",
           "sql": "select * from dapmap4_3 where <%= layer1 %> = 1",
           "interactivity": ["cartodb_id", "bbl", "address", "uc2007", "uc2016", "stabloss", "unitsres", "yearbuilt"]
         }
@@ -74,7 +74,7 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#dapmap4_3{polygon-fill:#aaa;polygon-opacity:0.4;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap4_3[dobscore<=10000]{polygon-fill:#800026;polygon-opacity:0.8;}#dapmap4_3[dobscore<=1000]{polygon-fill:#bd0026;polygon-opacity:0.8;}#dapmap4_3[dobscore<=300]{polygon-fill:#e31a1c;polygon-opacity:0.8;}#dapmap4_3[dobscore<=200]{polygon-fill:#fc4e2a;polygon-opacity:0.8;}#dapmap4_3[dobscore<=150]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap4_3[dobscore<=100]{polygon-fill:#feb24c;polygon-opacity:0.8;}#dapmap4_3[dobscore<=75]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap4_3[dobscore<=50]{polygon-fill:#ffeda0;polygon-opacity:0.8;}#dapmap4_3[dobscore<=33]{polygon-fill:#ffffcc;polygon-opacity:0.8;}#dapmap4_3[dobscore<=10]{polygon-fill:#fcfce5;polygon-opacity:0.4;}#dapmap4_3[dobscore=0]{polygon-fill:#aaa;polygon-opacity:0.4;}",
+          "cartocss": "#dapmap4_3{polygon-fill:#aaa;polygon-opacity:0.4;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap4_3[dobscore<=10000]{polygon-fill:#800026;polygon-opacity:0.8;}#dapmap4_3[dobscore<=1000]{polygon-fill:#bd0026;polygon-opacity:0.8;}#dapmap4_3[dobscore<=300]{polygon-fill:#e31a1c;polygon-opacity:0.8;}#dapmap4_3[dobscore<=200]{polygon-fill:#fc4e2a;polygon-opacity:0.8;}#dapmap4_3[dobscore<=150]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap4_3[dobscore<=100]{polygon-fill:#feb24c;polygon-opacity:0.8;}#dapmap4_3[dobscore<=75]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap4_3[dobscore<=50]{polygon-fill:#ffeda0;polygon-opacity:0.8;}#dapmap4_3[dobscore<=33]{polygon-fill:#ffffcc;polygon-opacity:0.8;}#dapmap4_3[dobscore<=10]{polygon-fill:#fcfce5;polygon-opacity:0.8;}#dapmap4_3[dobscore=0]{polygon-fill:#aaa;polygon-opacity:0.4;}",
           "sql": "select * from dapmap4_3 where <%= layer2 %> = 1",
           "interactivity": ["cartodb_id", "bbl", "address", "a1", "a2", "dm", "nb", "unitsres", "unitscomm", "total", "dobscore"]
         }
@@ -92,8 +92,8 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#nycd{polygon-fill:#2dc103;polygon-opacity:0;line-color:#a53ed5;line-width:2;line-opacity:1;}#nycd::labels{text-name:[borocd];text-face-name:'DejaVu Sans Bold';text-size:14;text-label-position-tolerance:0;text-fill:#a53ed5;text-halo-fill:#333333;text-halo-radius:1;text-dy:0;text-allow-overlap:true;text-placement:interior;text-placement-type:simple;}",
-          "sql": "select * from nycd_merge where <%= layer4 %> = 1",
+          "cartocss": "#nycd_new2{polygon-fill:#2dc103;polygon-opacity:0;line-color:#a53ed5;line-width:2;line-opacity:1;}#nycd_new2::labels{text-name:[borocd2];text-face-name:'DejaVu Sans Bold';text-size:14;text-label-position-tolerance:0;text-fill:#a53ed5;text-halo-fill:#333333;text-halo-radius:1;text-dy:0;text-allow-overlap:true;text-placement:interior;text-placement-type:simple;}",
+          "sql": "select * from nycd_new2 where <%= layer4 %> = 1",
           "interactivity": ["cartodb_id"]
         }
       },

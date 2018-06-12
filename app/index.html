@@ -20,7 +20,7 @@
 
   <!-- FONT 
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
   <script src="https://use.fontawesome.com/79e3583a1d.js"></script>
 
   <!-- CSS
@@ -33,57 +33,7 @@
 
   <!-- Custom CartoDB Infowindow Templates
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <!-- Comment out Combined Score pop up -->
-  <!-- <script type="infowindow/html" id="sampscore_infowindow">
-    <div class="cartodb-popup v2">
-      <a href="#close" class="cartodb-popup-close-button close">x</a>
-       <div class="cartodb-popup-content-wrapper">
-         <div class="cartodb-popup-header">
-           <h2>{{content.data.address}}</h2>
-         </div>
-         {{#content.data.unitsres}}
-         <div class="cartodb-popup-content">
-           <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
-         </div>
-         {{/content.data.unitsres}}
-         {{#content.data.yearbuilt}}
-         <div class="cartodb-popup-content">
-           <h3>Year Built: <strong>{{content.data.yearbuilt}}</strong></h3>
-         </div>
-         {{/content.data.yearbuilt}}
-         {{#content.data.sampscore}}
-         <div class="cartodb-popup-content">
-           <h3>DAP Score: <strong>{{content.data.sampscore}}</strong></h3>
-         </div>
-         {{/content.data.sampscore}}
-         {{#content.data.dofscore}}
-         <div class="cartodb-popup-content">
-           <h3>DOF Score: <strong>{{content.data.dofscore}}</strong></h3>
-         </div>
-         {{/content.data.dofscore}}
-         {{#content.data.dobscore}}
-         <div class="cartodb-popup-content">
-           <h3>DOB Score: <strong>{{content.data.dobscore}}</strong></h3>
-         </div>
-         {{/content.data.dobscore}}
-         {{#content.data.rentregscore}}
-         <div class="cartodb-popup-content">
-           <h3>Rent Regulation Score: <strong>{{content.data.rentregscore}}</strong></h3>
-         </div>
-         {{/content.data.rentregscore}}     
-         <div class="cartodb-popup-content marginTop10">
-          <div class="container">
-            <div class="row">
-              <div class="one-third column {{content.data.dobyn}}">DOB</div>
-              <div class="one-third column {{content.data.rentregyn}}">Rent Stabilized</div>
-              <div class="one-third column {{content.data.props}}">Prop. Sale</div>
-            </div>
-          </div>
-         </div>
-       </div>
-       <div class="cartodb-popup-tip-container"></div>
-    </div>
-  </script> -->
+
   <script type="infowindow/html" id="rentregscore_infowindow">
     <div class="cartodb-popup v2">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
@@ -93,7 +43,7 @@
          </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
-           <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
+           <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
          </div>
          {{/content.data.unitsres}}
          {{#content.data.yearbuilt}}
@@ -101,35 +51,27 @@
            <h3>Year Built: <strong>{{content.data.yearbuilt}}</strong></h3>
          </div>
          {{/content.data.yearbuilt}}
-
          {{#content.data.uc2007}}
          <div class="cartodb-popup-content">
-           <h3>Rent Reg. Units (2007): <strong>{{content.data.uc2007}}</strong></h3>
+           <h3>Stabilized Units in 2007: <strong>{{content.data.uc2007}}</strong></h3>
          </div>
          {{/content.data.uc2007}}
          {{#content.data.uc2016}}
          <div class="cartodb-popup-content">
-           <h3>Rent Reg. Units (2016): <strong>{{content.data.uc2016}}</strong></h3>
+           <h3>Stabilized Units in 2016: <strong>{{content.data.uc2016}}</strong></h3>
          </div>
          {{/content.data.uc2016}}
-
          {{#content.data.rentstabdiff}}
          <div class="cartodb-popup-content">
            <h3>Rent Reg. Units Lost Since 2007: <strong>{{content.data.rentstabdiff}}</strong></h3>
          </div>
          {{/content.data.rentstabdiff}}
-         {{#content.data.rentstabpctchange}}
+         {{#content.data.stabloss}}
          <div class="cartodb-popup-content">
-           <h3>Percent of Rent Reg. Units Lost Since 2007: <strong><span id="pctchange">{{content.data.rentstabpctchange}}</span></strong></h3>
+           <h3>% Change Since 2007: <strong><span id="pctchange">{{content.data.stabloss}}</span></strong></h3>
          </div>
-         {{/content.data.rentstabpctchange}}        
+         {{/content.data.stabloss}}        
          <div class="cartodb-popup-content marginTop10">
-          <!-- <div class="container">
-            <div class="row">
-              <div class="one-half column {{content.data.dobyn}}">DOB</div>
-              <div class="one-half column {{content.data.props}}">Prop. Sale</div>
-            </div>
-          </div> -->
          </div>         
        </div>
        <div class="cartodb-popup-tip-container"></div>
@@ -152,38 +94,32 @@
            <h3>Number of Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
          </div>
          {{/content.data.unitscomm}}
-         {{#content.data.total}}
-         <div class="cartodb-popup-content">
-           <h3>Number of DOB Permits: <strong>{{content.data.total}}</strong></h3>
-         </div>
-         {{/content.data.total}}
          {{#content.data.a1}}
          <div class="cartodb-popup-content">
            <h3>Number of A1 Permits: <strong>{{content.data.a1}}</strong></h3>
-         </div>
-         {{/content.data.a1}}
-         {{#content.data.a2}}
-         <div class="cartodb-popup-content">
-           <h3>Number of A2 Permits: <strong>{{content.data.a2}}</strong></h3>
-         </div>
-         {{/content.data.a2}}
-         {{#content.data.dm}}
-         <div class="cartodb-popup-content">
-           <h3>Number of Demolitions: <strong>{{content.data.dm}}</strong></h3>
-         </div>
-         {{/content.data.dm}}  
+          </div>
+          {{/content.data.a1}}
+          {{#content.data.a2}}
+          <div class="cartodb-popup-content">
+            <h3>Number of A2 Permits: <strong>{{content.data.a2}}</strong></h3>
+          </div>
+          {{/content.data.a2}}
+          {{#content.data.dm}}
+          <div class="cartodb-popup-content">
+            <h3>Number of Demolitions: <strong>{{content.data.dm}}</strong></h3>
+          </div>
+          {{/content.data.dm}}  
+          {{#content.data.total}}
+          <div class="cartodb-popup-content">
+            <h3>Total # Permits: <strong>{{content.data.total}}</strong></h3>
+          </div>
+          {{/content.data.total}}
          {{#content.data.bbl}}
-         <div class="cartodb-popup-content">
-           <h3>BBL: <strong>{{content.data.bbl}}</strong></h3>
+         <div class="cartodb-popup-content bbl">
+           BBL: {{content.data.bbl}}
          </div>
          {{/content.data.bbl}}        
          <div class="cartodb-popup-content marginTop10">
-          <!-- <div class="container">
-            <div class="row">
-              <div class="one-half column {{content.data.rentregyn}}">Rent Stabilized</div>
-              <div class="one-half column {{content.data.props}}">Prop. Sale</div>
-            </div>
-          </div> -->
          </div>
        </div>
        <div class="cartodb-popup-tip-container"></div>
@@ -237,12 +173,6 @@
          </div>
          {{/content.data.pctchngunit_10_15}}         -->
          <div class="cartodb-popup-content marginTop10">
-          <!-- <div class="container">
-            <div class="row">
-              <div class="one-half column {{content.data.dobyn}}">DOB</div>
-              <div class="one-half column {{content.data.rentregyn}}">Rent Stabilized</div>
-            </div>
-          </div> -->
          </div>         
        </div>
        <div class="cartodb-popup-tip-container"></div>
@@ -285,18 +215,6 @@
     </div>
   </nav>
 
-  <!-- <nav class="navbar">
-      <div class="container-nav">
-        <ul class="navbar-list">
-          <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/">HOME</a></li>
-          <li class="navbar-item"><a class="navbar-link active" href="#">DAP MAP</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="http://reports.dapmapnyc.org/">DISTRICT REPORTS</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/about">ABOUT</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/tutorial">TUTORIAL</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="http://www.dapmapnyc.org/contact-us">CONTACT US</a></li>
-        </ul>
-      </div>
-    </nav> -->
 
   <div class='container mainContainer'>
     <div id='logo' class='logo top left hideLogo'>
@@ -307,10 +225,72 @@
     </div>
     <div id='map-layers' class='ui map-layers top right hideMapLayers'>
       <h5>Map Layers</h5>
-      <!-- <button id='sampscore' data="0" class="radio1 selected navbtnwidth">Combined Risk Score</button> -->
-      <button id='rentregscore' data="1" class="radio1 selected navbtnwidth">Loss of Rent Reg. Risk</button>
-      <button id='dobscore' data="2" class="radio1 navbtnwidth">DOB Permits Risk</button>
-      <button id='dofscore' data="3" class="radio1 navbtnwidth">Speculation Risk</button>
+      <button id='rentregscore' data="1" class="radio1 selected navbtnwidth">Rent Stabilization Loss</button>
+      <div>
+          <div class="legend-cloropleth">
+            <ul>
+              <li class="min">Units Lost</li>
+              <li class="max">Units Gained</li>
+              <li class="graph">
+                <div class="colors">
+                  <div class="quartile" style="background-color:#800026"></div>
+                  <div class="quartile" style="background-color:#e31a1c"></div>
+                  <div class="quartile" style="background-color:#fd8d3c"></div>
+                  <div class="quartile" style="background-color:#fed976"></div>
+                  <div class="quartile" style="background-color:#fafce5"></div>
+                  <div class="quartile" style="background-color:#ddffcc"></div>
+                  <div class="quartile" style="background-color:#88ce65"></div>
+                </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+        <button id='dofscore' data="3" class="radio1 navbtnwidth">Property Sales</button>
+        <div>
+          <div class="legend-cloropleth">
+            <ul>
+              <li class="min">Low $ Price</li>
+              <li class="max">High $ Price</li>
+              <li class="graph">
+                <div class="colors">
+                  <div class="quartile" style="background-color:#fcfce5"></div>
+                  <div class="quartile" style="background-color:#ffffcc"></div>
+                  <div class="quartile" style="background-color:#ffeda0"></div>
+                  <div class="quartile" style="background-color:#fed976"></div>
+                  <div class="quartile" style="background-color:#feb24c"></div>
+                  <div class="quartile" style="background-color:#fd8d3c"></div>
+                  <div class="quartile" style="background-color:#fc4e2a"></div>
+                  <div class="quartile" style="background-color:#e31a1c"></div>
+                  <div class="quartile" style="background-color:#bd0026"></div>
+                  <div class="quartile" style="background-color:#800026"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+      <button id='dobscore' data="2" class="radio1 navbtnwidth">Construction Permits</button>
+      <div>
+        <div class="legend-cloropleth">
+          <ul>
+            <li class="min">Few Permits</li>
+            <li class="max">Many Permits</li>
+            <li class="graph">
+              <div class="colors">
+                <div class="quartile" style="background-color:#fcfce5"></div>
+                <div class="quartile" style="background-color:#ffffcc"></div>
+                <div class="quartile" style="background-color:#ffeda0"></div>
+                <div class="quartile" style="background-color:#fed976"></div>
+                <div class="quartile" style="background-color:#feb24c"></div>
+                <div class="quartile" style="background-color:#fd8d3c"></div>
+                <div class="quartile" style="background-color:#fc4e2a"></div>
+                <div class="quartile" style="background-color:#e31a1c"></div>
+                <div class="quartile" style="background-color:#bd0026"></div>
+                <div class="quartile" style="background-color:#800026"></div>
+              </div>
+              </li>
+            </ul>
+          </div>
+      </div>
       <hr />
       <button id='cd' data="5" class="radio2 navbtnwidth navgrey">Council Districts</button>
       <button id='cb' data="4" class="radio2 navbtnwidth navgrey">Community Boards</button>
@@ -318,32 +298,11 @@
       <hr />
       <!-- to do: add selects for filtering by CC or CB -->
       <label for="cc-dist-select">Go to a City Council District</label>
-      <select id="cc-dist-select" class='go-to-cc nvbtnwidth'></select>
+      <select id="cc-dist-select" class='go-to-cc navbtnwidth'></select>
       <label for="cb-dist-select">Go to a Community Board</label>
-      <select id="cb-dist-select" class='go-to-cb nvbtnwidth'></select>
+      <select id="cb-dist-select" class='go-to-cb navbtnwidth'></select>
       <label for="zipcode-select">Go to a Zip Code</label>
-      <select id="zipcode-select" class='go-to-zipcode nvbtnwidth'></select>
-    </div>
-    <div class='ui map-legend bottom right' id='legendplace'>
-      <div class="legend-cloropleth">
-          <ul>
-              <li class="min">Low risk</li>
-              <li class="max">High risk</li>
-              <li class="graph">
-                  <div class="colors">
-                      <div class="quartile" style="background-color:#ffffcc"></div>
-                      <div class="quartile" style="background-color:#ffeda0"></div>
-                      <div class="quartile" style="background-color:#fed976"></div>
-                      <div class="quartile" style="background-color:#feb24c"></div>
-                      <div class="quartile" style="background-color:#fd8d3c"></div>
-                      <div class="quartile" style="background-color:#fc4e2a"></div>
-                      <div class="quartile" style="background-color:#e31a1c"></div>
-                      <div class="quartile" style="background-color:#bd0026"></div>
-                      <div class="quartile" style="background-color:#800026"></div>
-                  </div>
-              </li>
-          </ul>
-      </div>
+      <select id="zipcode-select" class='go-to-zipcode navbtnwidth'></select>
     </div>
     <div id='map'></div>
     <!-- MODAL
@@ -371,7 +330,7 @@
   <script src="assets/vendor/js/cartodb.js"></script>
   <script src="assets/vendor/js/Control.Geocoder.js"></script>
   <script src="assets/vendor/js/jquery.cookie.js"></script>
-  <script src="assets/js/carto.js"></script>
+  <!-- <script src="assets/js/carto.js"></script> -->
   <script src="assets/js/main.js"></script>
   <script type="text/javascript">
     $(document).ready(app.map.init);
