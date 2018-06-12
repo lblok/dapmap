@@ -294,6 +294,13 @@ div.cartodb-tooltip-content p {
 
 }
 
+.leaflet-control-geocoder-expanded {
+  width: 300px;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial;
+  font-weight: 300;
+  font-size: 10px;
+}
+
 /* Modal css */
 .modalDialog {
   position: fixed;
@@ -521,7 +528,7 @@ color: #FDAF7E !important;
     padding-left: 15px;
   }
 
-.bbl {
+.smtext {
   font-size: 12px;
   font-weight: 300;
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial;
@@ -530,5 +537,12 @@ color: #FDAF7E !important;
 }
 
 div.cartodb-popup.v2 {
-  width: 250px;
+  width: 260px;
 }
+
+.links {
+  text-decoration: none;
+  color: rgb(2, 0, 97);
+  font-size: 14px;
+}
+

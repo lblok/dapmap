@@ -38,14 +38,22 @@
     <div class="cartodb-popup v2">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
        <div class="cartodb-popup-content-wrapper">
-         <div class="cartodb-popup-header">
+         <div class="cartodb-popup-header" style="line-height:50%">
            <h2>{{content.data.address}}</h2>
          </div>
+         <div class="cartodb-popup-header" style="text-align:left;line-height:50%">
+            <h3><strong>{{content.data.zipcode}}</strong></h3>
+          </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
            <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
          </div>
          {{/content.data.unitsres}}
+         {{#content.data.unitscomm}}
+         <div class="cartodb-popup-content">
+           <h3>Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
+         </div>
+         {{/content.data.unitscomm}}
          {{#content.data.yearbuilt}}
          <div class="cartodb-popup-content">
            <h3>Year Built: <strong>{{content.data.yearbuilt}}</strong></h3>
@@ -61,26 +69,92 @@
            <h3>Stabilized Units in 2016: <strong>{{content.data.uc2016}}</strong></h3>
          </div>
          {{/content.data.uc2016}}
-         {{#content.data.rentstabdiff}}
-         <div class="cartodb-popup-content">
-           <h3>Rent Reg. Units Lost Since 2007: <strong>{{content.data.rentstabdiff}}</strong></h3>
-         </div>
-         {{/content.data.rentstabdiff}}
          {{#content.data.stabloss}}
          <div class="cartodb-popup-content">
-           <h3>% Change Since 2007: <strong><span id="pctchange">{{content.data.stabloss}}</span></strong></h3>
+           <h3>Percent Change Since 2007: <strong><span id="pctchange">{{content.data.stabloss}}</span></strong></h3>
          </div>
-         {{/content.data.stabloss}}        
+         {{/content.data.stabloss}}   
+         {{#content.data.ownername}}
+         <div class="cartodb-popup-content">
+           <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
+         </div>
+         {{/content.data.ownername}}    
+         {{#content.data.bbl}}
+         <div class="cartodb-popup-content smtext">
+           BBL: {{content.data.bbl}}
+         </div>
+         {{/content.data.bbl}}     
+         <div class="cartodb-popup-content smtext">
+           Links:
+            <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
+            <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
+            <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
+            <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
+            <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
+          </div>
          <div class="cartodb-popup-content marginTop10">
          </div>         
-       </div>
-       <div class="cartodb-popup-tip-container"></div>
-    </div>
-  </script>
-  <script type="infowindow/html" id="dobscore_infowindow">
-    <div class="cartodb-popup v2">
-      <a href="#close" class="cartodb-popup-close-button close">x</a>
-       <div class="cartodb-popup-content-wrapper">
+        </div>
+        <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+    <script type="infowindow/html" id="dofscore_infowindow">
+      <div class="cartodb-popup v2">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+         <div class="cartodb-popup-content-wrapper">
+           <div class="cartodb-popup-header">
+             <h2>{{content.data.address}}</h2>
+           </div>
+
+           {{#content.data.unitsres}}
+           <div class="cartodb-popup-content">
+             <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
+           </div>
+           {{/content.data.unitsres}}
+
+           {{#content.data.saledate}}
+           <div class="cartodb-popup-content">
+             <h3>Sale Date: <strong>{{content.data.saledate}}</strong></h3>
+           </div>
+           {{/content.data.saledate}}
+           {{#content.data.saleprice}}
+           <div class="cartodb-popup-content">
+             <h3>Sale Price: <strong><span id="saleprice">{{content.data.saleprice}}</span></strong></h3>
+           </div>
+           {{/content.data.saleprice}}
+           {{#content.data.ppu}}
+           <div class="cartodb-popup-content">
+             <h3>Price per Unit: <strong>{{content.data.ppu}}</strong></h3>
+           </div>
+           {{/content.data.ppu}}
+           {{#content.data.ownername}}
+           <div class="cartodb-popup-content">
+             <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
+           </div>
+           {{/content.data.ownername}}   
+           {{#content.data.bbl}}
+           <div class="cartodb-popup-content smtext">
+             BBL: {{content.data.bbl}}
+           </div>
+           {{/content.data.bbl}}
+           <div class="cartodb-popup-content smtext">
+             Links:
+              <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
+              <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
+              <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
+              <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
+              <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
+            </div>
+           <div class="cartodb-popup-content marginTop10">
+           </div>         
+         </div>
+         <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+    <script type="infowindow/html" id="dobscore_infowindow">
+      <div class="cartodb-popup v2">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+        <div class="cartodb-popup-content-wrapper">
          <div class="cartodb-popup-header">
            <h2>{{content.data.address}}</h2>
          </div>
@@ -115,65 +189,20 @@
           </div>
           {{/content.data.total}}
          {{#content.data.bbl}}
-         <div class="cartodb-popup-content bbl">
+         <div class="cartodb-popup-content smtext">
            BBL: {{content.data.bbl}}
+          <div class="cartodb-popup-content smtext">
+            Links:
+            <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
+            <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
+            <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
+            <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
+            <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
+          </div>
          </div>
          {{/content.data.bbl}}        
          <div class="cartodb-popup-content marginTop10">
          </div>
-       </div>
-       <div class="cartodb-popup-tip-container"></div>
-    </div>
-  </script>
-  <script type="infowindow/html" id="dofscore_infowindow">
-    <div class="cartodb-popup v2">
-      <a href="#close" class="cartodb-popup-close-button close">x</a>
-       <div class="cartodb-popup-content-wrapper">
-         <div class="cartodb-popup-header">
-           <h2>{{content.data.address}}</h2>
-         </div>
-         {{#content.data.ownername}}
-         <div class="cartodb-popup-content">
-           <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
-         </div>
-         {{/content.data.ownername}}
-         {{#content.data.unitsres}}
-         <div class="cartodb-popup-content">
-           <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
-         </div>
-         {{/content.data.unitsres}}
-         {{#content.data.ppu}}
-         <div class="cartodb-popup-content">
-           <h3>Price per Unit: <strong>{{content.data.ppu}}</strong></h3>
-         </div>
-         {{/content.data.ppu}}
-         {{#content.data.saledate}}
-         <div class="cartodb-popup-content">
-           <h3>Sale Date: <strong>{{content.data.saledate}}</strong></h3>
-         </div>
-         {{/content.data.saledate}}
-         {{#content.data.saleprice}}
-         <div class="cartodb-popup-content">
-           <h3>Sale Price: <strong><span id="saleprice">{{content.data.saleprice}}</span></strong></h3>
-         </div>
-         {{/content.data.saleprice}}
-         {{#content.data.priceresunit}}
-         <div class="cartodb-popup-content">
-           <h3>Sale Price Per Residential Unit: <strong><span id="priceresunit">{{content.data.priceresunit}}</span></strong></h3>
-         </div>
-         {{/content.data.priceresunit}}
-         <!-- {{#content.data.ppunit10_plutoresdunits}}
-         <div class="cartodb-popup-content">
-           <h3>Community District Average Price Per Residential Unit: <strong><span id="ppunit10_plutoresdunits">{{content.data.ppunit10_plutoresdunits}}</span></strong></h3>
-         </div>
-         {{/content.data.ppunit10_plutoresdunits}}         -->
-         <!-- {{#content.data.pctchngunit_10_15}}
-         <div class="cartodb-popup-content">
-           <h3>Percent Difference Between Sale Price and Community District Average (2010): <strong><span id="pctchange">{{content.data.pctchngunit_10_15}}</span></strong></h3>
-         </div>
-         {{/content.data.pctchngunit_10_15}}         -->
-         <div class="cartodb-popup-content marginTop10">
-         </div>         
        </div>
        <div class="cartodb-popup-tip-container"></div>
     </div>
@@ -253,14 +282,14 @@
               <li class="max">High $ Price</li>
               <li class="graph">
                 <div class="colors">
-                  <div class="quartile" style="background-color:#fcfce5"></div>
                   <div class="quartile" style="background-color:#ffffcc"></div>
-                  <div class="quartile" style="background-color:#ffeda0"></div>
+                  <!-- <div class="quartile" style="background-color:#ffffcc"></div> -->
+                  <!-- <div class="quartile" style="background-color:#ffeda0"></div> -->
                   <div class="quartile" style="background-color:#fed976"></div>
                   <div class="quartile" style="background-color:#feb24c"></div>
                   <div class="quartile" style="background-color:#fd8d3c"></div>
                   <div class="quartile" style="background-color:#fc4e2a"></div>
-                  <div class="quartile" style="background-color:#e31a1c"></div>
+                  <!-- <div class="quartile" style="background-color:#e31a1c"></div> -->
                   <div class="quartile" style="background-color:#bd0026"></div>
                   <div class="quartile" style="background-color:#800026"></div>
                   </div>
@@ -276,14 +305,14 @@
             <li class="max">Many Permits</li>
             <li class="graph">
               <div class="colors">
-                <div class="quartile" style="background-color:#fcfce5"></div>
+                <!-- <div class="quartile" style="background-color:#fcfce5"></div> -->
                 <div class="quartile" style="background-color:#ffffcc"></div>
-                <div class="quartile" style="background-color:#ffeda0"></div>
+                <!-- <div class="quartile" style="background-color:#ffeda0"></div> -->
                 <div class="quartile" style="background-color:#fed976"></div>
                 <div class="quartile" style="background-color:#feb24c"></div>
                 <div class="quartile" style="background-color:#fd8d3c"></div>
                 <div class="quartile" style="background-color:#fc4e2a"></div>
-                <div class="quartile" style="background-color:#e31a1c"></div>
+                <!-- <div class="quartile" style="background-color:#e31a1c"></div> -->
                 <div class="quartile" style="background-color:#bd0026"></div>
                 <div class="quartile" style="background-color:#800026"></div>
               </div>
@@ -324,6 +353,9 @@
              Don't show this message again.
         </label>
       </div>
+    </div>
+    <div class="geocodetip">
+      <span class="geocodetext">tip text</span>
     </div>
 
   </div>

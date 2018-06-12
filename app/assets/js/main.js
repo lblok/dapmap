@@ -32,7 +32,7 @@ app.map = (function(w, d, L, $) {
     var geocoder = L.Control.geocoder({
       position: 'bottomleft', 
       collapsed: true, 
-      placeholder:'Address Search', 
+      placeholder:'Address Search (Tip: include borough)', 
       defaultMarkGeocode: true, 
       geocoder:new L.Control.Geocoder.Google()
     })
@@ -42,7 +42,7 @@ app.map = (function(w, d, L, $) {
     })
     .addTo(map);
 
-
+    
 
 
     // set the cartodb sql object up
