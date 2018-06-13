@@ -40,8 +40,8 @@
          <div class="cartodb-popup-header">
            <h2>{{content.data.address}}</h2>
          </div>
-         <div class="cartodb-popup-content">
-            <h3><strong>{{content.data.zipcode}}</strong></h3>
+         <div class="cartodb-popup-content upper">
+            <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
          </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
@@ -55,7 +55,7 @@
          {{/content.data.unitscomm}}
          {{#content.data.risks}}
          <div class="cartodb-popup-content">
-           <h3>Number of Risks: <strong>{{content.data.risks}}</strong></h3>
+           <h3>Number of Risk Factors: <strong>{{content.data.risks}}</strong></h3>
          </div>
          {{/content.data.risks}}
          {{#content.data.bbl}}
@@ -85,8 +85,8 @@
          <div class="cartodb-popup-header">
            <h2>{{content.data.address}}</h2>
          </div>
-         <div class="cartodb-popup-content">
-            <h3><strong>{{content.data.zipcode}}</strong></h3>
+         <div class="cartodb-popup-content upper">
+            <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
          </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
@@ -150,9 +150,9 @@
             <div class="cartodb-popup-header">
                 <h2>{{content.data.address}}</h2>
             </div>
-            <div class="cartodb-popup-content">
-                 <h3><strong>{{content.data.zipcode}}</strong></h3>
-            </div>
+            <div class="cartodb-popup-content upper">
+                <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
+             </div>
            {{#content.data.unitsres}}
            <div class="cartodb-popup-content">
              <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
@@ -210,9 +210,9 @@
           <div class="cartodb-popup-header">
               <h2>{{content.data.address}}</h2>
           </div>
-          <div class="cartodb-popup-content">
-                <h3><strong>{{content.data.zipcode}}</strong></h3>
-          </div>
+          <div class="cartodb-popup-content upper">
+              <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
+           </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
            <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>

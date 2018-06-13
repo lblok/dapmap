@@ -559,3 +559,7 @@ select {
 h5 {
   margin-bottom: .5rem;
 }
+
+div.upper h3{
+  text-transform: uppercase;
+}
