@@ -33,7 +33,51 @@
 
   <!-- Custom CartoDB Infowindow Templates
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+  <script type="infowindow/html" id="riskscore_infowindow">
+    <div class="cartodb-popup v2">
+      <a href="#close" class="cartodb-popup-close-button close">x</a>
+       <div class="cartodb-popup-content-wrapper">
+         <div class="cartodb-popup-header">
+           <h2>{{content.data.address}}</h2>
+         </div>
+         <div class="cartodb-popup-content">
+            <h3><strong>{{content.data.zipcode}}</strong></h3>
+         </div>
+         {{#content.data.unitsres}}
+         <div class="cartodb-popup-content">
+           <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
+         </div>
+         {{/content.data.unitsres}}
+         {{#content.data.unitscomm}}
+         <div class="cartodb-popup-content">
+           <h3>Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
+         </div>
+         {{/content.data.unitscomm}}
+         {{#content.data.risks}}
+         <div class="cartodb-popup-content">
+           <h3>Number of Risks: <strong>{{content.data.risks}}</strong></h3>
+         </div>
+         {{/content.data.risks}}
+         {{#content.data.bbl}}
+         <div class="cartodb-popup-content smtext">
+           BBL: {{content.data.bbl}}
+         </div>
+         {{/content.data.bbl}}     
+         <div class="cartodb-popup-content">
+           <h3> Links:
+            <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
+            <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
+            <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
+            <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
+            <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
+           </h3>
+          </div>
+         <div class="cartodb-popup-content marginTop10">
+         </div>         
+        </div>
+        <div class="cartodb-popup-tip-container"></div>
+      </div>
+  </script>
   <script type="infowindow/html" id="rentregscore_infowindow">
     <div class="cartodb-popup v2">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
@@ -111,10 +155,14 @@
             </div>
            {{#content.data.unitsres}}
            <div class="cartodb-popup-content">
-             <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
+             <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
            </div>
            {{/content.data.unitsres}}
-
+           {{#content.data.unitscomm}}
+           <div class="cartodb-popup-content">
+             <h3>Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
+           </div>
+           {{/content.data.unitscomm}}
            {{#content.data.saledate}}
            <div class="cartodb-popup-content">
              <h3>Sale Date: <strong>{{content.data.saledate}}</strong></h3>
@@ -167,34 +215,39 @@
           </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
-           <h3>Number of Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
+           <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
          </div>
          {{/content.data.unitsres}}
          {{#content.data.unitscomm}}
          <div class="cartodb-popup-content">
-           <h3>Number of Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
+           <h3>Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
          </div>
          {{/content.data.unitscomm}}
          {{#content.data.a1}}
          <div class="cartodb-popup-content">
-           <h3>Number of A1 Permits: <strong>{{content.data.a1}}</strong></h3>
+           <h3>Alt 1 Permits: <strong>{{content.data.a1}}</strong></h3>
           </div>
           {{/content.data.a1}}
           {{#content.data.a2}}
           <div class="cartodb-popup-content">
-            <h3>Number of A2 Permits: <strong>{{content.data.a2}}</strong></h3>
+            <h3>Alt 2 Permits: <strong>{{content.data.a2}}</strong></h3>
           </div>
           {{/content.data.a2}}
           {{#content.data.dm}}
           <div class="cartodb-popup-content">
-            <h3>Number of Demolitions: <strong>{{content.data.dm}}</strong></h3>
+            <h3>Demolition Permits: <strong>{{content.data.dm}}</strong></h3>
           </div>
           {{/content.data.dm}}  
           {{#content.data.total}}
           <div class="cartodb-popup-content">
-            <h3>Total # Permits: <strong>{{content.data.total}}</strong></h3>
+            <h3>Total Permits: <strong>{{content.data.total}}</strong></h3>
           </div>
           {{/content.data.total}}
+          {{#content.data.ownername}}
+          <div class="cartodb-popup-content">
+            <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
+          </div>
+          {{/content.data.ownername}}   
          {{#content.data.bbl}}
          <div class="cartodb-popup-content smtext">
            BBL: {{content.data.bbl}}
@@ -262,7 +315,23 @@
     </div>
     <div id='map-layers' class='ui map-layers top right hideMapLayers'>
       <h5>Map Layers</h5>
-      <button id='rentregscore' data="1" class="radio1 selected navbtnwidth">Rent Stabilization Loss</button>
+      <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">Risk Score</button>
+      <div>
+          <div class="legend-cloropleth">
+            <ul>
+              <li class="min">1 Risk Factor</li>
+              <li class="max">3 Risk Factors</li>
+              <li class="graph">
+                <div class="colors">
+                  <div class="quartile" style="background-color:#ffffcc"></div>
+                  <div class="quartile" style="background-color:#fd8d3c"></div>
+                  <div class="quartile" style="background-color:#e31a1c"></div>
+                </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+      <button id='rentregscore' data="1" class="radio1 navbtnwidth layerbtn">Rent Stabilization Loss</button>
       <div>
           <div class="legend-cloropleth">
             <ul>
@@ -282,7 +351,7 @@
               </ul>
             </div>
         </div>
-        <button id='dofscore' data="3" class="radio1 navbtnwidth">Property Sales</button>
+        <button id='dofscore' data="3" class="radio1 navbtnwidth layerbtn">Property Sales</button>
         <div>
           <div class="legend-cloropleth">
             <ul>
@@ -291,13 +360,10 @@
               <li class="graph">
                 <div class="colors">
                   <div class="quartile" style="background-color:#ffffcc"></div>
-                  <!-- <div class="quartile" style="background-color:#ffffcc"></div> -->
-                  <!-- <div class="quartile" style="background-color:#ffeda0"></div> -->
                   <div class="quartile" style="background-color:#fed976"></div>
                   <div class="quartile" style="background-color:#feb24c"></div>
                   <div class="quartile" style="background-color:#fd8d3c"></div>
                   <div class="quartile" style="background-color:#fc4e2a"></div>
-                  <!-- <div class="quartile" style="background-color:#e31a1c"></div> -->
                   <div class="quartile" style="background-color:#bd0026"></div>
                   <div class="quartile" style="background-color:#800026"></div>
                   </div>
@@ -305,7 +371,7 @@
               </ul>
             </div>
           </div>
-      <button id='dobscore' data="2" class="radio1 navbtnwidth">Construction Permits</button>
+      <button id='dobscore' data="2" class="radio1 navbtnwidth layerbtn">Construction Permits</button>
       <div>
         <div class="legend-cloropleth">
           <ul>
@@ -313,14 +379,11 @@
             <li class="max">Many Permits</li>
             <li class="graph">
               <div class="colors">
-                <!-- <div class="quartile" style="background-color:#fcfce5"></div> -->
                 <div class="quartile" style="background-color:#ffffcc"></div>
-                <!-- <div class="quartile" style="background-color:#ffeda0"></div> -->
                 <div class="quartile" style="background-color:#fed976"></div>
                 <div class="quartile" style="background-color:#feb24c"></div>
                 <div class="quartile" style="background-color:#fd8d3c"></div>
                 <div class="quartile" style="background-color:#fc4e2a"></div>
-                <!-- <div class="quartile" style="background-color:#e31a1c"></div> -->
                 <div class="quartile" style="background-color:#bd0026"></div>
                 <div class="quartile" style="background-color:#800026"></div>
               </div>
@@ -334,11 +397,11 @@
       <button id='zipcode' data="6" class="radio2 navbtnwidth navgrey">Zip Codes</button>
       <hr />
       <!-- to do: add selects for filtering by CC or CB -->
-      <label for="cc-dist-select">Go to a City Council District</label>
+      <label for="cc-dist-select"><span style="font-weight:400">Go to a City Council District</span></label>
       <select id="cc-dist-select" class='go-to-cc navbtnwidth'></select>
-      <label for="cb-dist-select">Go to a Community Board</label>
+      <label for="cb-dist-select"><span style="font-weight:400">Go to a Community Board</span></label>
       <select id="cb-dist-select" class='go-to-cb navbtnwidth'></select>
-      <label for="zipcode-select">Go to a Zip Code</label>
+      <label for="zipcode-select"><span style="font-weight:400">Go to a Zip Code</label></span></label>
       <select id="zipcode-select" class='go-to-zipcode navbtnwidth'></select>
     </div>
     <div id='map'></div>

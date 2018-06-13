@@ -64,7 +64,7 @@ app.map = (function(w, d, L, $) {
         name: 'DAP_Map_v2',
         layers: [
           {
-            layer_name: "sampscore",
+            layer_name: "riskscore",
           },
           {
             layer_name: "rentregscore"
@@ -105,11 +105,10 @@ app.map = (function(w, d, L, $) {
         }
 
         /* when using the layerSource object, create infowindows like so: */
-        //comment out combined score infowindows
-        // cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id", "sampscore", "address", "dofscore", "dobscore", "rentregscore", "dobyn", "rentregyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#sampscore_infowindow').html()});
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id", "rentregscore", "address", "uc2007", "uc2014", "rentstabdiff", "rentstabpctchange", "dobyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
+        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id", "sampscore", "address", "dofscore", "dobscore", "rentregscore", "dobyn", "rentregyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#riskscore_infowindow').html()});
+        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id", "rentregscore", "address", "uc2014", "rentstabdiff", "rentstabpctchange", "dobyn", "props", "unitsres", "yearbuilt"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id", "dobscore", "address", "jobcount", "a1", "a2", "dm", "props", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dobscore_infowindow').html()});
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id", "dofscore", "address", "saledate", "saleprice", "priceresunit", "ppunit10_plutoresdunits", "pctchngunit_10_15", "dobyn", "rentregyn", "unitsres", "yearbuilt", "ownername"], {infowindowTemplate: $('#dofscore_infowindow').html()});
+        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id", "dofscore", "address", "saledate", "saleprice", "priceresunit", "ppunit10_plutoresdunits", "pctchngunit_10_15", "dobyn", "rentregyn", "unitsres", "yearbuilt"], {infowindowTemplate: $('#dofscore_infowindow').html()});
 
         
 
@@ -125,8 +124,8 @@ app.map = (function(w, d, L, $) {
         });
         $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
 
-        mapLayers[0].hide(); // sampscore layer: hidden completely in v2
-        mapLayers[1].show(); // rentregscore: default first layer in v2
+        mapLayers[0].show(); // riskscore layer: showing in v2.1
+        mapLayers[1].hide(); // rentregscore
         mapLayers[2].hide(); // dobscore
         mapLayers[3].hide(); // dofscore
 
@@ -171,19 +170,19 @@ app.map = (function(w, d, L, $) {
     // wires the UI map layer buttons to CartoDB
     layerToggle = {
       // hide / show the default map layer (rentreg score)
-      // sampscore: function() {
-      //   if (mapLayers[0].isVisible()) {
-      //     mapLayers[0].hide();
-      //     $('.cartodb-infowindow').css('visibility', 'hidden');
-      //   } else {
-      //     hideAllLayers();
-      //     mapLayers[0].show();
-      //     // set max legend value to 300
-      //     $('#maxLegendNumber').text(300);
-      //   }
 
-      //   return true;
-      // },
+      riskscore: function() {
+        if (mapLayers[0].isVisible()) {
+          mapLayers[0].hide();
+        } else {
+          hideAllLayers();
+          mapLayers[0].show();
+          // set max legend value to 300
+          $('#maxLegendNumber').text(300);
+        }
+
+        return true;
+      },
       rentregscore: function() {
         if (mapLayers[1].isVisible()) {
           mapLayers[1].hide();
@@ -297,6 +296,7 @@ app.map = (function(w, d, L, $) {
       }
 
     });
+    
   }
 
   function createSelect() {

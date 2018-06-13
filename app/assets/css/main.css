@@ -228,7 +228,7 @@ div.cartodb-tooltip-content p {
   overflow: hidden;
   display: table;
   width: 100%;
-  height: 16px;
+  height: 8px;
 }
 
 .legend-cloropleth li.breaks .numbers {
@@ -251,7 +251,7 @@ div.cartodb-tooltip-content p {
   overflow: hidden;
   display: table;
   width: 100%;
-  height: 22px;
+  height: 8px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -277,7 +277,7 @@ div.cartodb-tooltip-content p {
 
 .legend-cloropleth li.graph div {
   width: 10px;
-  height: 22px;
+  height: 10px;
 }
 
 /* Geocoder button override */
@@ -512,6 +512,11 @@ color: #FDAF7E !important;
     font-size: 12px;
   }
 
+  .layerbtn {
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+
   .navgrey {
     background-color: #C8B2AD;
 
@@ -545,4 +550,12 @@ div.cartodb-popup.v2 {
   color: rgb(2, 0, 97);
   font-size: 14px;
   font-weight: 300;
+}
+
+select {
+  margin-bottom: 10px;
+}
+
+h5 {
+  margin-bottom: .5rem;
 }
