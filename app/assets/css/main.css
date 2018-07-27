@@ -7,6 +7,7 @@ html, body {
 
 h3 {
   font-weight: 200 !important;
+
 }
 
 .container {
@@ -27,6 +28,11 @@ h3 {
   position: absolute;
   background: #000;
 }
+
+/* .leaflet-tile {
+  -webkit-filter: brightness(3) contrast(400%);
+  filter: brightness(3) contrast(400%);
+} */
 
 .top {
   top: 10px;
@@ -112,6 +118,7 @@ h3 {
 /* Infowindow Style Overrides */
 div.cartodb-popup div.cartodb-popup-content {
     margin: 0 0 5px 0;
+    cursor: text;
 }
 
 div.cartodb-popup h1,
@@ -562,4 +569,41 @@ h5 {
 
 div.upper h3{
   text-transform: uppercase;
+  cursor: text;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 4px;
+}
+
+.leaflet-popup-content {
+  font-size: 12px;
+  font-weight: 300;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial;
+}
+
+.indvcontainer {
+  padding-top: 8px;
+}
+
+.indvlegend {
+  background-color: rgba(170, 170, 170, 0.2);
+  color: black;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #b3b3b3;
+  border-radius: 3px;
+  margin-left: 15px;
+}
+
+.indvlabel {
+  padding-left: 10px;
+  font-size: 12px;
+  margin-top: -16px;
+  margin-left: 28px;
+  text-align: left;
+}
+
+cartodb-popup-content-wrapper {
+  cursor: text;
 }
