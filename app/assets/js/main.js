@@ -222,6 +222,9 @@ app.map = (function(w, d, L, $) {
 
         return true;
       },
+
+      // Modify to allow multiple geographies to be visible at once
+
       cd: function() {
         // hide / show council districts
         if (mapLayers[4].isVisible() || mapLayers[6].isVisible()) {

@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png" type="image/png"/>
    <!-- FONT 
    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+   <!-- <link href='//fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'> -->
 
   <!-- FONT 
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -315,15 +315,17 @@
     </div>
     <div id='map-layers' class='ui map-layers top right hideMapLayers'>
       <h5>Map Layers</h5>
-      <span class="tooltip tooltip-effect-1">
-            <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">
-        Risk Factors
-      </button>
-    <span class="tooltip-content clearfix">
-      <span class="tooltip-text">
-        This layer shows the total number of risk factors. A property with one risk factor will be yellow, one with two will be orange, and three will be red. A property is considered to have "Stabilization Risk" only if it has lost more than 1% of its units.
-      </span>
-    </span>
+      
+      <span class="tooltip">
+        <div>
+          <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">
+          Risk Factors
+          </button>
+        <span class="tooltip-content">
+          <span class="tooltip-text">
+            This layer shows the total number of risk factors for a property. A property with one risk factor will appear yellow, one with two will appear orange, and three will appear red. A property is considered to have "Stabilization Risk" only if it has lost more than 1% of its units.
+          </span>
+        </span>
       </span>
       <div>
           <div class="legend-cloropleth">
@@ -340,26 +342,40 @@
               </ul>
             </div>
         </div>
-      <button id='rentregscore' data="1" class="radio1 navbtnwidth layerbtn"> Stabilization Risk</button>
-      <div>
-          <div class="legend-cloropleth">
-            <ul>
-              <li class="min">Units Lost</li>
-              <li class="max">Units Gained</li>
-              <li class="graph">
-                <div class="colors">
-                  <div class="quartile" style="background-color:#800026"></div>
-                  <div class="quartile" style="background-color:#e31a1c"></div>
-                  <div class="quartile" style="background-color:#fd8d3c"></div>
-                  <div class="quartile" style="background-color:#fed976"></div>
-                  <div class="quartile" style="background-color:#fafce5"></div>
-                  <div class="quartile" style="background-color:#ddffcc"></div>
-                  <div class="quartile" style="background-color:#88ce65"></div>
-                </div>
-                </li>
-              </ul>
-            </div>
         </div>
+      </span>
+
+      <span class="tooltip">
+        <div>
+          <button id='rentregscore' data="1" class="radio1 navbtnwidth layerbtn"> 
+            Stabilization Risk
+          </button>
+          <span class="tooltip-content">
+              <span class="tooltip-text">
+                This layer shows the change in the percentage of rent stabilized units in the property between 2007 and 2016. Properties appearing green gained stabilized units and properties appearing yellow, orange, or red lost units.
+              </span>
+            </span>
+          <div>
+              <div class="legend-cloropleth">
+                <ul>
+                  <li class="min">Units Gained</li>
+                  <li class="max">Units Lost</li>
+                  <li class="graph">
+                    <div class="colors">
+                      <div class="quartile" style="background-color:#88ce65"></div>
+                      <div class="quartile" style="background-color:#ddffcc"></div>
+                      <div class="quartile" style="background-color:#fafce5"></div>
+                      <div class="quartile" style="background-color:#fed976"></div>
+                      <div class="quartile" style="background-color:#fd8d3c"></div>
+                      <div class="quartile" style="background-color:#e31a1c"></div>
+                      <div class="quartile" style="background-color:#800026"></div>
+                    </div>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </span>
         <button id='dofscore' data="3" class="radio1 navbtnwidth layerbtn"> Sales Risk</button>
         <div>
           <div class="legend-cloropleth">
