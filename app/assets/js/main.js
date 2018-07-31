@@ -169,7 +169,7 @@ app.map = (function(w, d, L, $) {
   function wireLayerBtns() {
     // wires the UI map layer buttons to CartoDB
     layerToggle = {
-      // hide / show the default map layer (rentreg score)
+      // hide / show the default map layer (riskscore)
 
       riskscore: function() {
         if (mapLayers[0].isVisible()) {
@@ -227,11 +227,11 @@ app.map = (function(w, d, L, $) {
 
       cd: function() {
         // hide / show council districts
-        if (mapLayers[4].isVisible() || mapLayers[6].isVisible()) {
-          mapLayers[4].hide();
-          mapLayers[6].hide();
-          $('.go-to-cb :nth-child(1)').prop('selected', true);          
-        }
+        // if (mapLayers[4].isVisible() || mapLayers[6].isVisible()) {
+        //   mapLayers[4].hide();
+        //   mapLayers[6].hide();
+        //   $('.go-to-cb :nth-child(1)').prop('selected', true);          
+        // }
         if (mapLayers[5].isVisible()) {
           mapLayers[5].hide();
         } else {
@@ -241,11 +241,11 @@ app.map = (function(w, d, L, $) {
       },
       cb: function() {
         // hide / show community boards
-        if (mapLayers[5].isVisible() || mapLayers[6].isVisible()) {
-          mapLayers[5].hide();
-          mapLayers[6].hide();
-          $('.go-to-cc :nth-child(1)').prop('selected', true);
-        }
+        // if (mapLayers[5].isVisible() || mapLayers[6].isVisible()) {
+        //   mapLayers[5].hide();
+        //   mapLayers[6].hide();
+        //   $('.go-to-cc :nth-child(1)').prop('selected', true);
+        // }
         if (mapLayers[4].isVisible()) {
           mapLayers[4].hide();
         } else {
@@ -255,11 +255,11 @@ app.map = (function(w, d, L, $) {
       },
       zipcode: function() {
         // hide / show community boards
-        if (mapLayers[4].isVisible() || mapLayers[5].isVisible()) {
-          mapLayers[4].hide();
-          mapLayers[5].hide();
-          $('.go-to-zipcode :nth-child(1)').prop('selected', true);
-        }
+        // if (mapLayers[4].isVisible() || mapLayers[5].isVisible()) {
+        //   mapLayers[4].hide();
+        //   mapLayers[5].hide();
+        //   $('.go-to-zipcode :nth-child(1)').prop('selected', true);
+        // }
         if (mapLayers[6].isVisible()) {
           mapLayers[6].hide();
         } else {
@@ -275,6 +275,7 @@ app.map = (function(w, d, L, $) {
       mapLayers[2].hide();
       mapLayers[3].hide();
       $('.cartodb-infowindow').css('visibility', 'hidden');
+      // console.log(mapLayers[0])
     }
 
     $('.radio1').click(function(e) {
@@ -287,18 +288,19 @@ app.map = (function(w, d, L, $) {
         $(this).removeClass('selected');
       }
     });
+    // Changed 'selected' to false 'noselect' class
     $('.radio2').click(function(e) {
       e.preventDefault();
       console.log($(this).attr('id'));
       layerToggle[$(this).attr('id')]();
-      if (!$(this).hasClass("selected")) {
-        $('.radio2').removeClass('selected');
-        $(this).addClass('selected');
+      if (!$(this).hasClass("noselect")) {
+        $('.radio2').removeClass('noselect');
+        $(this).addClass('noselect');
       } else {
-        $(this).removeClass('selected');
+        $(this).removeClass('noselect');
+        }
       }
-
-    });
+    );
     
   }
 
@@ -312,9 +314,6 @@ app.map = (function(w, d, L, $) {
       if (name === 'coundist') {
         first = '<option val="0">Select a Council District</option>';
         geoName = 'Council District ';
-      } else if (name === 'borocd') {
-        first = '<option val="0">Select a Community Board</option>';
-        geoName = 'Community Board ';
       } else {
         first = '<option val="0">Select a Zip Code</option>';
         geoName = '';
@@ -323,6 +322,20 @@ app.map = (function(w, d, L, $) {
       toReturn += first;
       toReturn += arr.map(function(el){
         return '<option value="' + el[name] + '">' +
+          geoName + el[name] + '</option>';
+      }).join('');
+
+      return toReturn;
+    }
+
+    function createCBspecial(arr, name, number) {
+      var toReturn = '',
+          first = '<option val="0">Select a Community Board</option>',
+          geoName = '';
+
+      toReturn += first;
+      toReturn += arr.map(function(el){
+        return '<option value="' + el[number] + '">' +
           geoName + el[name] + '</option>';
       }).join('');
 
@@ -343,9 +356,9 @@ app.map = (function(w, d, L, $) {
 
     
     function initCB() {
-      sql.execute('SELECT borocd FROM nycd ORDER BY borocd ASC')
+      sql.execute('SELECT borocd2,borocd FROM nycd_new2 ORDER BY borocd ASC')
         .done(function(data){
-          buildSelect('.go-to-cb', createOptions(data.rows, 'borocd'));
+          buildSelect('.go-to-cb', createCBspecial(data.rows, 'borocd2', 'borocd'));
           initZipCode();
         });
     }
@@ -359,34 +372,34 @@ app.map = (function(w, d, L, $) {
     }
 
     function selectEvents() {
-      $('.go-to-cc').on('change', function(e){
-        // set the other selects to first option
-        $('.go-to-cb :nth-child(1)').prop('selected', true);
-        $('.go-to-zipcode :nth-child(1)').prop('selected', true);
-        console.log($(this).val());
-        getCC($(this).val());
-        $('.radio2').removeClass('selected');
-        $('#cd').addClass('selected');
-      });
+      // $('.go-to-cc').on('change', function(e){
+      //   // set the other selects to first option
+      //   $('.go-to-cb :nth-child(1)').prop('selected', true);
+      //   $('.go-to-zipcode :nth-child(1)').prop('selected', true);
+      //   console.log($(this).val());
+      //   getCC($(this).val());
+      //   $('.radio2').removeClass('selected');
+      //   $('#cd').addClass('selected');
+      // });
 
-      $('.go-to-cb').on('change', function(e){
-        // set the other select to first option
-        $('.go-to-cc :nth-child(1)').prop('selected', true);
-        $('.go-to-zipcode :nth-child(1)').prop('selected', true);
-        console.log($(this).val());
-        getCB($(this).val());
-        $('.radio2').removeClass('selected');
-        $('#cb').addClass('selected');
-      });
+      // $('.go-to-cb').on('change', function(e){
+      //   // set the other select to first option
+      //   $('.go-to-cc :nth-child(1)').prop('selected', true);
+      //   $('.go-to-zipcode :nth-child(1)').prop('selected', true);
+      //   console.log($(this).val());
+      //   getCB($(this).val());
+      //   $('.radio2').removeClass('selected');
+      //   $('#cb').addClass('selected');
+      // });
 
-      $('.go-to-zipcode').on('change', function(e){
-        // set the other select to first option
-        $('.go-to-cb :nth-child(1)').prop('selected', true);
-        $('.go-to-cc :nth-child(1)').prop('selected', true);
-        getZipCode($(this).val());
-        $('.radio2').removeClass('selected');
-        $('#zipcode').addClass('selected');
-      });
+      // $('.go-to-zipcode').on('change', function(e){
+      //   // set the other select to first option
+      //   $('.go-to-cb :nth-child(1)').prop('selected', true);
+      //   $('.go-to-cc :nth-child(1)').prop('selected', true);
+      //   getZipCode($(this).val());
+      //   $('.radio2').removeClass('selected');
+      //   $('#zipcode').addClass('selected');
+      // });
     }
 
     initCC();
@@ -410,7 +423,7 @@ app.map = (function(w, d, L, $) {
     // to set the map position to a community board
     // zero means the first option in the select
     if (num !==0) {
-      sql.getBounds('SELECT * FROM nycd WHERE borocd = {{id}}', { id: num })
+      sql.getBounds('SELECT * FROM nycd_new2 WHERE borocd = {{id}}', { id: num })
         .done(function(data){
           mapLayers[4].show();
           mapLayers[5].hide();
