@@ -281,7 +281,7 @@
             </li>
             <li class="navbar-item dropdown">
                 <div class="dropbtn">
-                    <a class="navbar-link light" href="http://map.dapmapnyc.org/app">DAP MAP</a>
+                    <a class="navbar-link light active" href="http://map.dapmapnyc.org/app">DAP MAP</a>
                 </div>
                 <div class="dropdown-content">
                     <a class="light" href="http://dapmapnyc.org/map-tutorial">MAP TUTORIAL</a>
@@ -289,7 +289,7 @@
             </li>
             <li class="navbar-item dropdown">
                 <div class="dropbtn">
-                    <a class="navbar-link active light" href="http://reports.dapmapnyc.org">DISTRICT REPORTS </a>
+                    <a class="navbar-link light" href="http://reports.dapmapnyc.org">DISTRICT REPORTS </a>
                 </div>
                 <div class="dropdown-content">
                     <a class="light" href="http://dapmapnyc.org/reports-tutorial">REPORTS TUTORIAL</a>
@@ -315,7 +315,16 @@
     </div>
     <div id='map-layers' class='ui map-layers top right hideMapLayers'>
       <h5>Map Layers</h5>
-      <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">Risk Factors</button>
+      <span class="tooltip tooltip-effect-1">
+            <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">
+        Risk Factors
+      </button>
+    <span class="tooltip-content clearfix">
+      <span class="tooltip-text">
+        This layer shows the total number of risk factors. A property with one risk factor will be yellow, one with two will be orange, and three will be red. A property is considered to have "Stabilization Risk" only if it has lost more than 1% of its units.
+      </span>
+    </span>
+      </span>
       <div>
           <div class="legend-cloropleth">
             <ul>
