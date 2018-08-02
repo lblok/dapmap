@@ -79,7 +79,7 @@ hr {
   padding: 7px 7px 0px 7px;
   position: absolute;
   z-index: 1;
-  background-color: rgb(255,255,255);
+  background-color: black;
   text-align: center;
   border-radius: 4px;  
 }
@@ -518,6 +518,12 @@ color: #FDAF7E !important;
     width: 90%;
     padding: 0 10px;
     font-size: 12px;
+    border-width: 1px;
+    border-color: #888
+  }
+
+  .navbtnwidth:hover {
+    border-color: #222;
   }
 
   .layerbtn {
@@ -696,14 +702,6 @@ cartodb-popup-content-wrapper {
 
 /* Tooltip content*/
 
-/* .tooltip-content img {
-	position: relative;
-	height: 170px;
-	display: block;
-	float: left;
-	margin-right: 1em;
-} */
-
 .tooltip-text {
 	font-size: 1rem;
 	line-height: 1.35;
@@ -722,4 +720,8 @@ cartodb-popup-content-wrapper {
 
 .select-txt {
   font-size: 1.25rem;
+}
+
+.btnactive {
+  background-color: #969696;
 }

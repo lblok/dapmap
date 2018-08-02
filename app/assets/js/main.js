@@ -372,34 +372,46 @@ app.map = (function(w, d, L, $) {
     }
 
     function selectEvents() {
-      // $('.go-to-cc').on('change', function(e){
-      //   // set the other selects to first option
-      //   $('.go-to-cb :nth-child(1)').prop('selected', true);
-      //   $('.go-to-zipcode :nth-child(1)').prop('selected', true);
-      //   console.log($(this).val());
-      //   getCC($(this).val());
-      //   $('.radio2').removeClass('selected');
-      //   $('#cd').addClass('selected');
-      // });
+      $('.go-to-cc').on('change', function(e){
+        // set the other selects to first option
+        $('.go-to-cb :nth-child(1)').prop('selected', true);
+        $('.go-to-zipcode :nth-child(1)').prop('selected', true);
+        console.log($(this).val());
+        getCC($(this).val());
+        // $('.radio2').removeClass('selected');
+        // $('#cd').addClass('selected');
+      });
 
-      // $('.go-to-cb').on('change', function(e){
-      //   // set the other select to first option
-      //   $('.go-to-cc :nth-child(1)').prop('selected', true);
-      //   $('.go-to-zipcode :nth-child(1)').prop('selected', true);
-      //   console.log($(this).val());
-      //   getCB($(this).val());
-      //   $('.radio2').removeClass('selected');
-      //   $('#cb').addClass('selected');
-      // });
+      $('.go-to-cb').on('change', function(e){
+        // set the other select to first option
+        $('.go-to-cc :nth-child(1)').prop('selected', true);
+        $('.go-to-zipcode :nth-child(1)').prop('selected', true);
+        console.log($(this).val());
+        getCB($(this).val());
+        // $('.radio2').removeClass('selected');
+        // $('#cb').addClass('selected');
+      });
 
-      // $('.go-to-zipcode').on('change', function(e){
-      //   // set the other select to first option
-      //   $('.go-to-cb :nth-child(1)').prop('selected', true);
-      //   $('.go-to-cc :nth-child(1)').prop('selected', true);
-      //   getZipCode($(this).val());
-      //   $('.radio2').removeClass('selected');
-      //   $('#zipcode').addClass('selected');
-      // });
+      $('.go-to-zipcode').on('change', function(e){
+        // set the other select to first option
+        $('.go-to-cb :nth-child(1)').prop('selected', true);
+        $('.go-to-cc :nth-child(1)').prop('selected', true);
+        getZipCode($(this).val());
+        // $('.radio2').removeClass('selected');
+        // $('#zipcode').addClass('selected');
+      });
+        // Add btnactive class to "radio2" on click
+      
+        var acc = document.getElementsByClassName("radio2");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("btnactive");
+        });
+        }
+
     }
 
     initCC();
@@ -473,6 +485,9 @@ app.map = (function(w, d, L, $) {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
+
+
 
   function init(){
     initMap();
