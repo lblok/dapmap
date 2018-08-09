@@ -1,8 +1,8 @@
-# ANHD DAP MAP v2.0 (under development)
+# ANHD DAP Map v2.0 (under development)
 Developed by the [Association For Neighborhood and Housing Development, Inc.
 (ANHD)](http://www.anhd.org), the Displacement Alert Project (DAP) (http://www.dapmapnyc.org) is an important organizing, advocacy, and policy development tool that provides
 crucial information about recent building transactions where tenants might be facing
-excessive displacement pressure. The lblok/dapmap repository is the 2018 version of DAP Map being updated by Lucy Block. It builds off of https://github.com/ANHD-NYC/SAMP. 
+excessive displacement pressure. The lblok/dapmap repository is the 2018 version of DAP Map being updated by Lucy Block. It builds off of https://github.com/ANHD-NYC/SAMP, which was built by NiJeL (http://nijel.org).
 
 ## Dependencies
 - [CartoDB](http://cartodb.com) paid account
