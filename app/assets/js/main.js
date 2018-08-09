@@ -30,9 +30,9 @@ app.map = (function(w, d, L, $) {
 
     // add address geocoder
     var geocoder = L.Control.geocoder({
-      position: 'bottomleft', 
+      position: 'topleft', 
       collapsed: true, 
-      placeholder:'Address Search (Tip: include borough)', 
+      placeholder:'(Tip: include borough and don‘t abbreviate)', 
       defaultMarkGeocode: true, 
       geocoder:new L.Control.Geocoder.Google()
     })
@@ -41,8 +41,6 @@ app.map = (function(w, d, L, $) {
       map.fitBounds(bbox);
     })
     .addTo(map);
-
-    
 
 
     // set the cartodb sql object up
@@ -88,7 +86,6 @@ app.map = (function(w, d, L, $) {
       }
     };
 
-    
 
     // you can switch how the cartodb layers are added below by passing either
     // layerSource or vizJSON as the second parameter to cartodb.createLayer()
@@ -110,7 +107,6 @@ app.map = (function(w, d, L, $) {
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
         cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
 
-        
 
         // very sloppy example tooltip creation
         // todo: make a separate function for these and use a templating engine like handlebars
@@ -374,32 +370,33 @@ app.map = (function(w, d, L, $) {
     function selectEvents() {
       $('.go-to-cc').on('change', function(e){
         // set the other selects to first option
-        $('.go-to-cb :nth-child(1)').prop('selected', true);
-        $('.go-to-zipcode :nth-child(1)').prop('selected', true);
+        $('.go-to-cb :nth-child(1)').prop('btnactive', true);
+        $('.go-to-zipcode :nth-child(1)').prop('btnactive', true);
         console.log($(this).val());
         getCC($(this).val());
-        // $('.radio2').removeClass('selected');
-        // $('#cd').addClass('selected');
+        $('.radio2').removeClass('btnactive');
+        $('#cd').addClass('btnactive');
       });
 
       $('.go-to-cb').on('change', function(e){
         // set the other select to first option
-        $('.go-to-cc :nth-child(1)').prop('selected', true);
-        $('.go-to-zipcode :nth-child(1)').prop('selected', true);
+        $('.go-to-cc :nth-child(1)').prop('btnactive', true);
+        $('.go-to-zipcode :nth-child(1)').prop('btnactive', true);
         console.log($(this).val());
         getCB($(this).val());
-        // $('.radio2').removeClass('selected');
-        // $('#cb').addClass('selected');
+        $('.radio2').removeClass('btnactive');
+        $('#cb').addClass('btnactive');
       });
 
       $('.go-to-zipcode').on('change', function(e){
         // set the other select to first option
-        $('.go-to-cb :nth-child(1)').prop('selected', true);
-        $('.go-to-cc :nth-child(1)').prop('selected', true);
+        $('.go-to-cb :nth-child(1)').prop('btnactive', true);
+        $('.go-to-cc :nth-child(1)').prop('btnactive', true);
         getZipCode($(this).val());
-        // $('.radio2').removeClass('selected');
-        // $('#zipcode').addClass('selected');
+        $('.radio2').removeClass('btnactive');
+        $('#zipcode').addClass('btnactive');
       });
+      
         // Add btnactive class to "radio2" on click
       
         var acc = document.getElementsByClassName("radio2");
@@ -427,7 +424,8 @@ app.map = (function(w, d, L, $) {
           mapLayers[5].show();
           mapLayers[6].hide();
           map.fitBounds(data);
-        });
+        });   
+
     }
   }
 

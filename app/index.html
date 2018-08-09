@@ -41,7 +41,8 @@
            <h2>{{content.data.address}}</h2>
          </div>
          <div class="cartodb-popup-content upper">
-            <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
+            <h3>{{content.data.borough}}  {{content.data.zipcode}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class = "smtext">BBL: {{content.data.bbl}}</span></h3>
          </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
@@ -52,28 +53,50 @@
          <div class="cartodb-popup-content">
            <h3>Commercial Units: <strong>{{content.data.unitscomm}}</strong></h3>
          </div>
-         {{/content.data.unitscomm}}
+         {{/content.data.unitscomm}}         
          {{#content.data.risks}}
-         <div class="cartodb-popup-content">
-           <h3>Number of Risk Factors: <strong>{{content.data.risks}}</strong></h3>
-         </div>
-         {{/content.data.risks}}
-         {{#content.data.bbl}}
-         <div class="cartodb-popup-content smtext">
-           BBL: {{content.data.bbl}}
-         </div>
-         {{/content.data.bbl}}     
-         <div class="cartodb-popup-content">
-           <h3> Links:
-            <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
-            <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
-            <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
-            <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
-            <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
-           </h3>
+         <div class="cartodb-popup-content underline">
+           <h3>Risk Factors: <strong>{{content.data.risks}}</h3>
           </div>
-         <div class="cartodb-popup-content marginTop10">
-         </div>         
+          {{/content.data.risks}}
+          {{#content.data.stabrisk}}
+          <div class="cartodb-popup-content indents">
+            <h4>{{content.data.stabrisk}}</h4>
+          </div>
+          {{/content.data.stabrisk}}
+          {{#content.data.salerisk}}
+          <div class="cartodb-popup-content indents">
+            <h4>{{content.data.salerisk}}</h4>
+          </div>
+          {{/content.data.salerisk}}
+          {{#content.data.dobrisk}}
+          <div class="cartodb-popup-content indents">
+            <h4>{{content.data.dobrisk}}</h4>
+          </div>
+          {{/content.data.dobrisk}}   
+         <div class="cartodb-popup-content gray">
+           <h3> Links:</h3>
+            <h6>
+           <div class ="links">
+                <a href="{{content.data.hpdlink}}" target="_blank">Housing Pres. and Development (HPD)</a>
+              </div>
+              <div class ="links">
+                <a href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Department of Buildings (DOB)</a>&nbsp;
+              </div>
+              <div class ="links">
+                <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Property documents (ACRIS)</a>&nbsp;
+              </div>
+              <div class ="links">
+                <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Tax bills</a>&nbsp;
+              </div>
+              <div class ="links">
+                <a class="links" href="http://whoownswhat.justfix.nyc/bbl/{{content.data.borocode}}/{{content.data.block}}/{{content.data.lot}}" target="_blank">Ownership (Who Owns What)</a>            
+              </div>
+              <div class ="links">
+                <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">Land Use info (OASIS)</a>
+              </div>
+           </h6>
+          </div>
         </div>
         <div class="cartodb-popup-tip-container"></div>
       </div>
@@ -86,8 +109,8 @@
            <h2>{{content.data.address}}</h2>
          </div>
          <div class="cartodb-popup-content upper">
-            <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
-         </div>
+            <h3>{{content.data.borough}}  {{content.data.zipcode}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class = "smtext">BBL: {{content.data.bbl}}</span></h3>         </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
            <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
@@ -117,28 +140,30 @@
          <div class="cartodb-popup-content">
            <h3>Percent Change Since 2007: <strong><span id="pctchange">{{content.data.stabloss}}</span></strong></h3>
          </div>
-         {{/content.data.stabloss}}   
-         {{#content.data.ownername}}
-         <div class="cartodb-popup-content">
-           <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
-         </div>
-         {{/content.data.ownername}}    
-         {{#content.data.bbl}}
-         <div class="cartodb-popup-content smtext">
-           BBL: {{content.data.bbl}}
-         </div>
-         {{/content.data.bbl}}     
-         <div class="cartodb-popup-content">
-           <h3> Links:
-            <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
-            <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
-            <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
-            <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
-            <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
-           </h3>
-          </div>
-         <div class="cartodb-popup-content marginTop10">
-         </div>         
+         {{/content.data.stabloss}}      
+         <div class="cartodb-popup-content gray">
+            <h3> Links:</h3>
+             <h6>
+            <div class ="links">
+                 <a href="{{content.data.hpdlink}}" target="_blank">Housing Pres. and Development (HPD)</a>
+               </div>
+               <div class ="links">
+                 <a href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Department of Buildings (DOB)</a>&nbsp;
+               </div>
+               <div class ="links">
+                 <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Property documents (ACRIS)</a>&nbsp;
+               </div>
+               <div class ="links">
+                 <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Tax bills</a>&nbsp;
+               </div>
+               <div class ="links">
+                 <a class="links" href="http://whoownswhat.justfix.nyc/bbl/{{content.data.borocode}}/{{content.data.block}}/{{content.data.lot}}" target="_blank">Ownership (Who Owns What)</a>            
+               </div>
+               <div class ="links">
+                 <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">Land Use info (OASIS)</a>
+               </div>
+            </h6>
+           </div>        
         </div>
         <div class="cartodb-popup-tip-container"></div>
       </div>
@@ -151,8 +176,9 @@
                 <h2>{{content.data.address}}</h2>
             </div>
             <div class="cartodb-popup-content upper">
-                <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
-             </div>
+                <h3>{{content.data.borough}}  {{content.data.zipcode}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class = "smtext">BBL: {{content.data.bbl}}</span></h3>             
+            </div>
            {{#content.data.unitsres}}
            <div class="cartodb-popup-content">
              <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
@@ -177,29 +203,31 @@
            <div class="cartodb-popup-content">
              <h3>Price per Unit: <strong>{{content.data.ppu}}</strong></h3>
            </div>
-           {{/content.data.ppu}}
-           {{#content.data.ownername}}
-           <div class="cartodb-popup-content">
-             <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
-           </div>
-           {{/content.data.ownername}}   
-           {{#content.data.bbl}}
-           <div class="cartodb-popup-content smtext">
-             BBL: {{content.data.bbl}}
-           </div>
-           {{/content.data.bbl}}
-           <div class="cartodb-popup-content">
-             <h3> Links: 
-              <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
-              <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
-              <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
-              <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
-              <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
-             </h3>
-            </div>
-           <div class="cartodb-popup-content marginTop10">
-           </div>         
-         </div>
+           {{/content.data.ppu}}  
+           <div class="cartodb-popup-content gray">
+              <h3> Links:</h3>
+               <h6>
+              <div class ="links">
+                   <a href="{{content.data.hpdlink}}" target="_blank">Housing Pres. and Development (HPD)</a>
+                 </div>
+                 <div class ="links">
+                   <a href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Department of Buildings (DOB)</a>&nbsp;
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Property documents (ACRIS)</a>&nbsp;
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Tax bills</a>&nbsp;
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://whoownswhat.justfix.nyc/bbl/{{content.data.borocode}}/{{content.data.block}}/{{content.data.lot}}" target="_blank">Ownership (Who Owns What)</a>            
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">Land Use info (OASIS)</a>
+                 </div>
+              </h6>
+             </div>   
+          </div>
          <div class="cartodb-popup-tip-container"></div>
       </div>
     </script>
@@ -211,8 +239,9 @@
               <h2>{{content.data.address}}</h2>
           </div>
           <div class="cartodb-popup-content upper">
-              <h3><strong>{{content.data.borough}}  {{content.data.zipcode}}</strong></h3>
-           </div>
+              <h3>{{content.data.borough}}  {{content.data.zipcode}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class = "smtext">BBL: {{content.data.bbl}}</span></h3>           
+          </div>
          {{#content.data.unitsres}}
          <div class="cartodb-popup-content">
            <h3>Residential Units: <strong>{{content.data.unitsres}}</strong></h3>
@@ -248,22 +277,31 @@
             <h3>Owner: <strong>{{content.data.ownername}}</strong></h3>
           </div>
           {{/content.data.ownername}}   
-         {{#content.data.bbl}}
          <div class="cartodb-popup-content smtext">
-           BBL: {{content.data.bbl}}
-          <div class="cartodb-popup-content">
-            <h3> Links:
-            <a class="links" href="{{content.data.hpdlink}}" target="_blank">HPD</a>
-            <a class="links" href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">DOB</a>
-            <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">ACRIS</a>
-            <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Taxes</a>
-            <!-- <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">OASIS</a> -->
-            </h3>
-          </div>
-         </div>
-         {{/content.data.bbl}}        
-         <div class="cartodb-popup-content marginTop10">
-         </div>
+           <div class="cartodb-popup-content">
+              <h3> Links:</h3>
+               <h6>
+              <div class ="links">
+                   <a href="{{content.data.hpdlink}}" target="_blank">Housing Pres. and Development (HPD)</a>
+                 </div>
+                 <div class ="links">
+                   <a href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Department of Buildings (DOB)</a>&nbsp;
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{content.data.borocode}}&block={{content.data.block}}&lot={{content.data.lot}}" target="_blank">Property documents (ACRIS)</a>&nbsp;
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://webapps.nyc.gov:8084/CICS/fin1/find001i?FFUNC=C&FBORO={{content.data.borocode}}&FBLOCK={{content.data.block}}&FLOT={{content.data.lot}}" target="_blank">Tax bills</a>&nbsp;
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://whoownswhat.justfix.nyc/bbl/{{content.data.borocode}}/{{content.data.block}}/{{content.data.lot}}" target="_blank">Ownership (Who Owns What)</a>            
+                 </div>
+                 <div class ="links">
+                   <a class="links" href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{{content.data.bbl}}" target="_blank">Land Use info (OASIS)</a>
+                 </div>
+              </h6>
+             </div>
+             </div>      
        </div>
        <div class="cartodb-popup-tip-container"></div>
     </div>
@@ -316,17 +354,28 @@
     <div id='map-layers' class='ui map-layers top right hideMapLayers'>
       <h5>Map Layers</h5>
       
-      <span class="tooltip">
-        <div>
-          <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">
+      <div class="help-tip" id="risks">
+        <p>This layer shows the total number of risk factors for a property. A property with one risk factor will appear yellow, one with two will appear orange, and three will appear red. A property is considered to have "Stabilization Risk" only if it has lost more than 1% of its units.</p>
+       </div>
+      <div class="help-tip" id="stab">
+        <p>This layer shows the change in the percentage of rent stabilized units in the property between 2007 and 2016. Properties appearing green gained stabilized units and properties appearing yellow, orange, or red lost units.</p>
+      </div>
+      
+      <div class="help-tip" id="sales">
+          <p>This layer shows the most recent sale since 2007. Darker red indicates a higher sale price per unit.</p>
+      </div>
+
+      <div class="help-tip" id="dob">
+          <p>This layer shows Alteration 1 (Alt 1), Alteration 2 (Alt 2), New Building (NB), and Demolition (DM) permits since 2007. Darker red indicates more total permits per unit.</p>
+      </div>
+
+
+
+      <div>
+        <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">
           Risk Factors
-          </button>
-        <span class="tooltip-content">
-          <span class="tooltip-text">
-            This layer shows the total number of risk factors for a property. A property with one risk factor will appear yellow, one with two will appear orange, and three will appear red. A property is considered to have "Stabilization Risk" only if it has lost more than 1% of its units.
-          </span>
-        </span>
-      </span>
+        </button>
+        
       <div>
           <div class="legend-cloropleth">
             <ul>
@@ -343,18 +392,12 @@
             </div>
         </div>
         </div>
-      </span>
 
-      <span class="tooltip">
+
         <div>
           <button id='rentregscore' data="1" class="radio1 navbtnwidth layerbtn"> 
             Stabilization Risk
           </button>
-          <span class="tooltip-content">
-              <span class="tooltip-text">
-                This layer shows the change in the percentage of rent stabilized units in the property between 2007 and 2016. Properties appearing green gained stabilized units and properties appearing yellow, orange, or red lost units.
-              </span>
-            </span>
           <div>
               <div class="legend-cloropleth">
                 <ul>
@@ -375,7 +418,6 @@
                 </div>
             </div>
           </div>
-        </span>
         <button id='dofscore' data="3" class="radio1 navbtnwidth layerbtn"> Sales Risk</button>
         <div>
           <div class="legend-cloropleth">
@@ -417,31 +459,26 @@
           </div>
       </div>
       <hr />
-      <!-- Removed radio2 from classes here, changed to check1 -->
-      <button id='cd' data="5" class="radio2 btnselect navbtnwidth navgrey">Council Districts</button>
-      <button id='cb' data="4" class="radio2 btnselect navbtnwidth navgrey">Community Boards</button>
-      <button id='zipcode' data="6" class="radio2 btnselect navbtnwidth navgrey">Zip Codes</button>
+      <button id='cd' data="5" class="radio2 navbtnwidth navgrey">Council Districts</button>
+      <button id='cb' data="4" class="radio2 navbtnwidth navgrey">Community Boards</button>
+      <button id='zipcode' data="6" class="radio2 navbtnwidth navgrey">Zip Codes</button>
       <hr />
-      <!-- to do: add selects for filtering by CC or CB -->
-      <label for="cc-dist-select" class="select-txt"><span style="font-weight:400">Go to a City Council District</span></label>
+      <div class="legendtext">Zoom to a geography</div>
       <select id="cc-dist-select" class='go-to-cc navbtnwidth'></select>
-      <label for="cb-dist-select" class="select-txt"><span style="font-weight:400">Go to a Community Board</span></label>
       <select id="cb-dist-select" class='go-to-cb navbtnwidth'></select>
-      <label for="zipcode-select" class="select-txt"><span style="font-weight:400">Go to a Zip Code</label></span></label>
       <select id="zipcode-select" class='go-to-zipcode navbtnwidth'></select>
     </div>
     <div id='map'></div>
-    <!-- MODAL
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- MODAL–––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div id="openModal" class="modalDialog">
       <div>
         <a href="#close" title="Close" class="close">X</a>
-        <h5 style="padding-top:10px;">Welcome to the DAP Map<br />The Displacement Alert Project Map</h5>
+        <h5 style="padding-top:10px;">Welcome to the Displacement Alert Project Map</h5>
         <p class="modalText">DAP Map is a building-level interactive map designed to show where residential tenants may be facing 
            significant displacement pressures and where affordable apartments are threatened across NYC. 
            ANHD created DAP Map to provide community groups, tenant organizers, residents, elected officials, 
            policymakers, and the public direct access to vital information on our city’s rapidly changing residential environment.</p>
-        <p class="modalText">The map includes three layers listed to the right. Each indicator is color-coded by risk level to the building. 
+        <p class="modalText">The map includes four layers listed to the right. Each indicator is color-coded by risk level to the building. 
            Quickly jump to a specific Council District, Community Board, or Zip Code using the drop down menu on the right or enter 
            a specific address using the search button on the bottom left.</p>
         <a class="button" href="#close">Let's get started!</a>
@@ -451,9 +488,9 @@
         </label>
       </div>
     </div>
-    <div class="geocodetip">
+    <!-- <div class="geocodetip">
       <span class="geocodetext">tip text</span>
-    </div>
+    </div> -->
 
   </div>
   <script src="assets/vendor/js/cartodb.js"></script>
