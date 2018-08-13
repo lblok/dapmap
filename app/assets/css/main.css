@@ -15,6 +15,15 @@ hr {
   margin: .75rem 0 .75rem 0 !important;
 }
 
+p {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: 300;
+  font-size: 14px;
+}
+
 .container {
   width: 100%;
   height: calc(100% - 44px);
@@ -121,6 +130,10 @@ div.cartodb-popup div.cartodb-popup-content {
 .gray {
   background-color: #e9e9e9 !important;
   padding: .5rem !important;
+}
+
+.linkstext {
+  text-align: center !important;
 }
 
   div.cartodb-infowindow {
@@ -324,10 +337,11 @@ div.cartodb-tooltip-content p {
 
 /* Geocoder button override */
 .leaflet-control-geocoder-icon {
-  height: 38px;
+  height: 30px;
   width: 80px;
   padding: 0px;
-  margin-bottom: 0px;
+  margin: 10px 15px 10px 10px;
+  background-size: contain;
 }
 
 .leaflet-marker-icon {
@@ -369,10 +383,17 @@ div.cartodb-tooltip-content p {
   pointer-events: none;
 }
 
+.modalPosition {
+  top: -40px;
+  line-height: 1.4;
+}
+
 .modalText {
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
+  font-size: 14px;
+
 }
 
 .modalDialog:target {
@@ -381,7 +402,7 @@ div.cartodb-tooltip-content p {
 }
 
 .modalDialog > div {
-  width: 250px;
+  width: 400px;
   position: relative;
   margin: 10% auto;
   padding: 10px 20px;
@@ -412,6 +433,12 @@ div.cartodb-tooltip-content p {
   color: #FFFFFF;
   background: #7E7E80; 
   text-decoration: none;
+}
+
+#dapwelcome {
+  font-size: 16px;
+  margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 /** Navbar re-imported from District Reports **/
@@ -760,3 +787,13 @@ cartodb-popup-content-wrapper {
   border-bottom: 1px solid black;
 }
 
+#google_translate_element a:hover {
+  background-color: white;
+}
+
+.goog-te-gadget-simple {
+  margin: .5rem 0 0 1rem !important;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial !important;
+  font-weight: 400 !important;
+  padding: 0 !important;
+}

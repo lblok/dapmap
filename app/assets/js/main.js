@@ -9,6 +9,14 @@ var map,
     carto,
     sql;
 
+    // mapboxgl.accessToken = 'pk.eyJ1IjoibGJsb2siLCJhIjoiY2o3djQ2ODd4MnVjMjJwbjBxZWZtZDB2ZiJ9.4gctlFUX_n0BzOAwbuL2aw';
+    // const map = new mapboxgl.Map({
+    // container: 'map',
+    // style: 'mapbox://styles/lblok/cjk4889sb29b12splkdw0pzop',
+    // center: [-73.919606, 40.677795],
+    // zoom: 12.0
+    // });
+
 app.map = (function(w, d, L, $) {
 
 
@@ -18,31 +26,34 @@ app.map = (function(w, d, L, $) {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://carto.com/attributions">Carto</a>'
       });
 
-    map = new L.Map('map', {
-      center: [40.694045, -73.946571],
-      zoom: 12,
-      zoomControl: false,
-    });
+      
+      
+      map = new L.Map('map', {
+        center: [40.694045, -73.946571],
+        zoom: 12,
+        zoomControl: false,
+      });
+      
+      new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);
+      
+      map.addLayer(basemapLayer);
+      
+      // add address geocoder
+      var geocoder = L.Control.geocoder({
+        position: 'topleft', 
+        collapsed: true, 
+        placeholder:' (Tip: include borough and don‘t abbreviate)', 
+        defaultMarkGeocode: true, 
+        geocoder:new L.Control.Geocoder.Google()
+      })
+      .on('markgeocode', function(e) {
+        var bbox = e.geocode.bbox;
+        map.fitBounds(bbox);
+      })
+      .addTo(map);
+      
 
-    new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);
-
-    map.addLayer(basemapLayer);
-
-    // add address geocoder
-    var geocoder = L.Control.geocoder({
-      position: 'topleft', 
-      collapsed: true, 
-      placeholder:'(Tip: include borough and don‘t abbreviate)', 
-      defaultMarkGeocode: true, 
-      geocoder:new L.Control.Geocoder.Google()
-    })
-    .on('markgeocode', function(e) {
-      var bbox = e.geocode.bbox;
-      map.fitBounds(bbox);
-    })
-    .addTo(map);
-
-
+      
     // set the cartodb sql object up
     sql = cartodb.SQL({ user: 'anhdnyc' });
   }
