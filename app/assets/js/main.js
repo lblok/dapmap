@@ -7,7 +7,8 @@ var map,
     layerToggle,
     mapLayers,
     carto,
-    sql;
+    sql,
+    infowindows;
 
     // mapboxgl.accessToken = 'pk.eyJ1IjoibGJsb2siLCJhIjoiY2o3djQ2ODd4MnVjMjJwbjBxZWZtZDB2ZiJ9.4gctlFUX_n0BzOAwbuL2aw';
     // const map = new mapboxgl.Map({
@@ -113,10 +114,11 @@ app.map = (function(w, d, L, $) {
         }
 
         /* when using the layerSource object, create infowindows like so: */
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#riskscore_infowindow').html()});
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
-        cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
+        infowindows = [];
+        infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#riskscore_infowindow').html()});
+        infowindows[1] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
+        infowindows[2] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
+        infowindows[3] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
 
 
         // very sloppy example tooltip creation
@@ -281,8 +283,9 @@ app.map = (function(w, d, L, $) {
       mapLayers[1].hide();
       mapLayers[2].hide();
       mapLayers[3].hide();
-      $('.cartodb-infowindow').css('visibility', 'hidden');
-      // console.log(mapLayers[0])
+      for (let index = 0; index < infowindows.length; index++) {
+        infowindows[index].model.set("visibility", !1);
+      }
     }
 
     $('.radio1').click(function(e) {
