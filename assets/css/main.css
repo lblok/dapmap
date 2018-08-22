@@ -593,9 +593,8 @@ color: #FDAF7E !important;
 .selected {
   color: #333;
   border-color: #e31a1c;
-  /* outline: 1px; */
   background-color: rgb(221, 221, 221);
-  border-width: 1.5px;
+  border-width: 2px;
 }
 
 .layerbtn {
@@ -691,7 +690,7 @@ cartodb-popup-content-wrapper {
 .btnactive {
   background-color: #c7c7c7;
   border-color: #fd8d3c;
-  border-width: 1.5px;
+  border-width: 2px;
 }
 
 .legendtext {
