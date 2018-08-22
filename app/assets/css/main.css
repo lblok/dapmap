@@ -112,13 +112,6 @@ label {
 }
 
 
-.selected {
-  color: #333;
-  border-color: #888;
-  outline: 0;
-  background-color: #ccc;
-  /* border-width: 0px; */
-}
 
 
 /* Infowindow Style Overrides */
@@ -589,11 +582,20 @@ color: #FDAF7E !important;
   padding: 0 15px;
   font-size: 12px;
   border-width: 1px;
-  border-color: #888
+  /* border-color: #888 */
 }
 
 .navbtnwidth:hover {
   border-color: #222;
+}
+
+
+.selected {
+  color: #333;
+  border-color: #e31a1c;
+  /* outline: 1px; */
+  background-color: rgb(221, 221, 221);
+  border-width: 1.5px;
 }
 
 .layerbtn {
@@ -686,7 +688,9 @@ cartodb-popup-content-wrapper {
 }
 
 .btnactive {
-  background-color: #969696;
+  background-color: #c7c7c7;
+  border-color: #e31a1c;
+  border-width: 1.5px;
 }
 
 .legendtext {
