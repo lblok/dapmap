@@ -42,17 +42,35 @@ app.map = (function(w, d, L, $) {
       var geocoder = L.Control.geocoder({
         position: 'topleft', 
         collapsed: true, 
-        placeholder:' (Tip: include borough and don‘t abbreviate)', 
+        placeholder:' (Tip: include borough and dont abbreviate)', 
         defaultMarkGeocode: true, 
-        geocoder:new L.Control.Geocoder.Google()
-      })
-      .on('markgeocode', function(e) {
+        geocoder:new L.Control.Geocoder.Google(),
+        suggestMinLength: 3,
+        suggestTimeout: 250
+        })
+        .on('markgeocode', function(e) {
         var bbox = e.geocode.bbox;
         map.fitBounds(bbox);
       })
       .addTo(map);
       
+      // Geocoder that's not working from https://github.com/smeijer/leaflet-geosearch. Trying to get autofill to work. 
 
+      // import L from 'leaflet';
+      // import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+
+      // const provider = new OpenStreetMapProvider();
+
+      // const searchControl = new GeoSearchControl({
+      //   provider: provider,
+      // });
+
+      // const map = new L.Map('map');
+      // map.addControl(searchControl);
+      // new GeoSearchControl({
+      //   provider: myProvider,           // required
+      //   style: 'bar',                   // optional: bar|button  - default button
+      // }).addTo(map);
       
     // set the cartodb sql object up
     sql = cartodb.SQL({ user: 'anhdnyc' });
