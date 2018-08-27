@@ -430,6 +430,7 @@ div.cartodb-tooltip-content p {
 
 #dapwelcome {
   font-size: 16px;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: 400;
 }
@@ -771,15 +772,19 @@ cartodb-popup-content-wrapper {
 }
 
 #stab {
-  top: 120px;
+  top: 122px;
 }
 
 #sales {
-  top: 196px;
+  top: 198px;
 }
 
 #dob {
   top: 276px;
+}
+
+#evictions {
+  top: 352px;
 }
 
 #map-layers {
