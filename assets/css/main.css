@@ -586,7 +586,7 @@ color: #FDAF7E !important;
 }
 
 .navbtnwidth:hover {
-  border-color: #222;
+  border-color: rgb(122, 122, 122);
 }
 
 
@@ -602,9 +602,8 @@ color: #FDAF7E !important;
   margin-bottom: 6px;
 }
 
-.navgrey {
-  background-color: #C8B2AD;
-
+.geolayer {
+  background-color: rgb(234, 241, 235)
 }
 
 .legend-cloropleth {
@@ -689,7 +688,7 @@ cartodb-popup-content-wrapper {
 
 .btnactive {
   background-color: #c7c7c7;
-  border-color: #fd8d3c;
+  border-color: #e31a1c;
   border-width: 2px;
 }
 
@@ -768,19 +767,19 @@ cartodb-popup-content-wrapper {
 }
 
 #risks {
-  top: 54px;
+  top: 46px;
 }
 
 #stab {
-  top: 134px;
+  top: 120px;
 }
 
 #sales {
-  top: 214px;
+  top: 196px;
 }
 
 #dob {
-  top: 294px;
+  top: 276px;
 }
 
 #map-layers {
