@@ -394,7 +394,6 @@ div.cartodb-tooltip-content p {
   padding-left: 10px;
   padding-right: 10px;
   font-size: 14px;
-
 }
 
 .modalDialog:target {
@@ -403,10 +402,10 @@ div.cartodb-tooltip-content p {
 }
 
 .modalDialog > div {
-  width: 300px;
+  width: 260px;
   position: relative;
   margin: 10% auto;
-  padding: 10px 20px;
+  padding: 5px 15px 0px 15px;
   border-radius: 4px;
   background: #fff;
   top: -10px;
@@ -701,7 +700,6 @@ div.upper h3{
 
 	-webkit-animation: fadeIn 0.3s ease-in-out;
 	animation: fadeIn 0.3s ease-in-out;
-
 }
 
 .help-tip p{
@@ -717,7 +715,7 @@ div.upper h3{
 	color: #FFF;
 	font-size: 12px;
   line-height: 1.6;
-  z-index: 1000;
+  z-index: 1002;
 }
 
 .help-tip p:before{
@@ -783,7 +781,7 @@ div.upper h3{
 }
 
 
-/* changes when screen is wider than 550px */
+/* changes when screen is wider than 550px, some weirdness with modal */
 @media (min-width: 550px) {
   .navbar {
     display: block;
@@ -849,4 +847,26 @@ div.upper h3{
   .cartodb-infowindow {
     left: 30px;
   }
+
+  .modalText {
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 11px;
+  }
+
+  #dapwelcome {
+    font-size: 14px;
+  }
+
+  .help-tip p{
+    padding: 10px 10px 10px 10px;
+    width: 200px;
+    position: absolute;
+    right: -4px;
+    font-size: 11px;
+    line-height: 1.4;
+    z-index: 1002;
+  }
+  
 }
