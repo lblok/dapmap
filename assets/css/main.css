@@ -11,8 +11,13 @@ h3 {
   font-weight: 200;
 }
 
+h5 {
+  margin-bottom: .25rem;
+}
+
 hr {
   margin: .75rem 0 .75rem 0 !important;
+  border-top: 2px solid #8b8b8b;
 }
 
 p {
@@ -190,6 +195,9 @@ div.cartodb-logo {
   left: 35px !important;
 }
 
+cartodb-popup-content-wrapper {
+  cursor: text !important;
+}
 
 /* Infowindow hover style */
 /* div.cartodb-tooltip-content h1,
@@ -395,12 +403,13 @@ div.cartodb-tooltip-content p {
 }
 
 .modalDialog > div {
-  width: 400px;
+  width: 300px;
   position: relative;
   margin: 10% auto;
   padding: 10px 20px;
   border-radius: 4px;
   background: #fff;
+  top: -10px;
 }
 
 .close {
@@ -548,36 +557,6 @@ color: #FDAF7E !important;
 }
 
 
-
-@media (min-width: 550px) {
-  .navbar {
-    display: block;
-    width: 100%;
-    height: 37px;
-    background: #000;
-    z-index: 99;
-  }
-    /* border-bottom: 2px solid #eee; } */
-  .mainContainer {
-    max-height: 94vh; }
-  
-  .hideHamburger {
-    display: none;
-  }
-
-  .hideMapLayers {
-    display: block;
-  }
-
-  .hideLogo {
-    display: block;
-  }
-
-  .modalDialog > div {
-    width: 400px;
-  }
-}
-
 .navbtnwidth {
   width: 90%;
   padding: 0 15px;
@@ -636,9 +615,6 @@ select {
   margin-bottom: 10px;
 }
 
-h5 {
-  margin-bottom: .25rem;
-}
 
 div.upper h3{
   text-transform: uppercase;
@@ -678,9 +654,6 @@ div.upper h3{
   text-align: left;
 }
 
-cartodb-popup-content-wrapper {
-  cursor: text !important;
-}
 
 
 .select-txt {
@@ -736,14 +709,14 @@ cartodb-popup-content-wrapper {
 	text-align: left;
 	background-color: #1E2021;
 	padding: 10px 10px 10px 10px;
-	width: 240px;
+	width: 280px;
 	position: absolute;
 	border-radius: 3px;
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 	right: -4px;
 	color: #FFF;
-	font-size: 11px;
-  line-height: 1.4;
+	font-size: 12px;
+  line-height: 1.6;
   z-index: 1000;
 }
 
@@ -791,10 +764,13 @@ cartodb-popup-content-wrapper {
   padding-right: 2rem;
 }
 
+
+/* miscellaneous styles */
 .underline {
   border-bottom: 1px solid black;
 }
 
+/* google translate styles */
 #google_translate_element a:hover {
   background-color: white;
 }
@@ -804,4 +780,73 @@ cartodb-popup-content-wrapper {
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial !important;
   font-weight: 400 !important;
   padding: 0 !important;
+}
+
+
+/* changes when screen is wider than 550px */
+@media (min-width: 550px) {
+  .navbar {
+    display: block;
+    width: 100%;
+    height: 37px;
+    background: #000;
+    z-index: 99;
+  }
+  
+  .mainContainer {
+    max-height: 94vh; }
+  
+  .hideHamburger {
+    display: none;
+  }
+
+  .hideMapLayers {
+    display: block;
+  }
+
+  .hideLogo {
+    display: block;
+  }
+
+  .modalDialog > div {
+    width: 400px;
+  }
+}
+
+/* mobile changes */
+@media (max-width: 550px){
+  .leaflet-control-geocoder-icon {
+    margin: 5px;
+    
+  }
+
+  .leaflet-top {
+    top: 5px;
+  }
+
+  .dropdown-content {
+    z-index: 1001;
+  }
+
+  .ui{
+    overflow: auto;
+    overflow-y: scroll;
+    height: 520px;
+  }
+
+  .leaflet-control-zoom {
+    top: -20px;
+  }
+
+  #google_translate_element {
+    display: none;
+  }
+
+  body {
+    top: -10px !important;
+  }
+
+  .cartodb-infowindow {
+    left: 30px;
+  }
 }
