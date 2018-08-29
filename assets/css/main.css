@@ -768,6 +768,14 @@ div.upper h3{
   border-bottom: 1px solid black;
 }
 
+.nobord {
+  border: none !important;
+}
+
+.wtbord {
+  border: 1px solid rgb(228, 226, 226);
+}
+
 /* google translate styles */
 #google_translate_element a:hover {
   background-color: white;
@@ -829,7 +837,7 @@ div.upper h3{
   .ui{
     overflow: auto;
     overflow-y: scroll;
-    height: 520px;
+    height: 460px;
   }
 
   .leaflet-control-zoom {

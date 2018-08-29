@@ -60,8 +60,8 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#dapmap5_8{polygon-fill:#aaaaaa;polygon-opacity:0;line-color:#FFF;line-width:0;line-opacity:0;}#dapmap5_8[risks=4]{polygon-fill:#800026;polygon-opacity:0.8;}#dapmap5_8[risks=3]{polygon-fill:#e31a1c;polygon-opacity:0.8;}#dapmap5_8[risks=2]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap5_8[risks=1]{polygon-fill:#ffffcc;polygon-opacity:0.8;}#dapmap5_8[risks=0]{polygon-fill:#aaaaaa;polygon-opacity:0.2;}",
-          "sql": "select * from dapmap5_8 where <%= layer0 %> = 1",
+          "cartocss": "#dapmap5_9{polygon-fill:#aaaaaa;polygon-opacity:0;line-color:#FFF;line-width:0;line-opacity:0;}#dapmap5_9[risks=4]{polygon-fill:#c9dfee;polygon-opacity:1;line-color:#f9f7f7;line-width:3;line-opacity:1;}#dapmap5_9[risks=3]{polygon-fill:#c9dfee;polygon-opacity:.8;line-color:#f9f7f7;line-width:2;line-opacity:1;}#dapmap5_9[risks=2]{polygon-fill:#c9dfee;polygon-opacity:.6;line-color:#f9f7f7;line-width:1;line-opacity:1;}#dapmap5_9[risks=1]{polygon-fill:#c9dfee;polygon-opacity:.4;line-color:#f9f7f7;line-width:.5;line-opacity:1;}#dapmap5_9[risks=0]{polygon-fill:#aaaaaa;polygon-opacity:0.2;}#dapmap5_9[zoom<14]{line-width:0}",
+          "sql": "select * from dapmap5_9 where <%= layer0 %> = 1",
           "interactivity": ["cartodb_id", "bbl", "address", "numbldgs", "unitsres", "unitscomm", "stabrisk", "salerisk", "dobrisk", "evicrisk", "risks", "zipcode", "borocode", "borough", "block", "lot", "hpdlink"]
         }
       },
@@ -69,8 +69,8 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#dapmap5_8{polygon-fill:#aaaaaa;polygon-opacity:0;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap5_8[uc2007>0],#dapmap5_8[uc2016>0]{polygon-fill:#fafce5;polygon-opacity:0.8;}#dapmap5_8[stabloss<=20000]{polygon-fill:#88ce65;polygon-opacity:0.8;}#dapmap5_8[stabloss<50]{polygon-fill:#ddffcc;polygon-opacity:0.8;}#dapmap5_8[stabloss<5]{polygon-fill:#fafce5;polygon-opacity:0.8;}#dapmap5_8[stabloss<0]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap5_8[stabloss<-25]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap5_8[stabloss<-50]{polygon-fill:#e31a1c;polygon-opacity:0.8;}#dapmap5_8[stabloss<-75]{polygon-fill:#800026;polygon-opacity:0.8;}",
-          "sql": "select * from dapmap5_8 where <%= layer1 %> = 1",
+          "cartocss": "#dapmap5_9{polygon-fill:#aaaaaa;polygon-opacity:0;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap5_9[uc2007>0],#dapmap5_9[uc2016>0]{polygon-fill:#fafce5;polygon-opacity:0.8;}#dapmap5_9[stabloss<=20000]{polygon-fill:#88ce65;polygon-opacity:0.8;}#dapmap5_9[stabloss<50]{polygon-fill:#ddffcc;polygon-opacity:0.8;}#dapmap5_9[stabloss<5]{polygon-fill:#fafce5;polygon-opacity:0.8;}#dapmap5_9[stabloss<0]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap5_9[stabloss<-25]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap5_9[stabloss<-50]{polygon-fill:#e31a1c;polygon-opacity:0.8;}#dapmap5_9[stabloss<-75]{polygon-fill:#800026;polygon-opacity:0.8;}",
+          "sql": "select * from dapmap5_9 where <%= layer1 %> = 1",
           "interactivity": ["cartodb_id", "bbl", "address", "uc2007", "uc2016", "stabloss", "numbldgs", "unitsres", "unitscomm", "yearbuilt", "zipcode", "borocode", "borough", "block", "lot", "hpdlink"]
         }
       },
@@ -78,8 +78,8 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#dapmap5_8{polygon-fill:#aaa;polygon-opacity:0;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap5_8[dobscore<=10000]{polygon-fill:#800026;polygon-opacity:0.8;}#dapmap5_8[dobscore<=500]{polygon-fill:#bd0026;polygon-opacity:0.8;}#dapmap5_8[dobscore<=200]{polygon-fill:#fc4e2a;polygon-opacity:0.8;}#dapmap5_8[dobscore<=100]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap5_8[dobscore<=50]{polygon-fill:#feb24c;polygon-opacity:0.8;}#dapmap5_8[dobscore<=25]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap5_8[dobscore<=10]{polygon-fill:#ffffcc;polygon-opacity:0.8;}#dapmap5_8[dobscore=0]{polygon-fill:#aaa;polygon-opacity:0.2;}",
-          "sql": "select * from dapmap5_8 where <%= layer2 %> = 1",
+          "cartocss": "#dapmap5_9{polygon-fill:#aaa;polygon-opacity:0;line-color:#FFF;line-width:0;line-opacity:1;}#dapmap5_9[dobscore<=10000]{polygon-fill:#800026;polygon-opacity:0.8;}#dapmap5_9[dobscore<=500]{polygon-fill:#bd0026;polygon-opacity:0.8;}#dapmap5_9[dobscore<=200]{polygon-fill:#fc4e2a;polygon-opacity:0.8;}#dapmap5_9[dobscore<=100]{polygon-fill:#fd8d3c;polygon-opacity:0.8;}#dapmap5_9[dobscore<=50]{polygon-fill:#feb24c;polygon-opacity:0.8;}#dapmap5_9[dobscore<=25]{polygon-fill:#fed976;polygon-opacity:0.8;}#dapmap5_9[dobscore<=10]{polygon-fill:#ffffcc;polygon-opacity:0.8;}#dapmap5_9[dobscore=0]{polygon-fill:#aaa;polygon-opacity:0.2;}",
+          "sql": "select * from dapmap5_9 where <%= layer2 %> = 1",
           "interactivity": ["cartodb_id", "bbl", "address", "a1", "a2", "dm", "nb", "numbldgs", "unitsres", "unitscomm", "total", "dobscore", "zipcode", "borocode", "borough", "block", "lot", "hpdlink"]
         }
       },
@@ -87,8 +87,8 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#dapmap5_8 {polygon-fill:#aaa;polygon-opacity:0;line-color:#fff;line-width:0;line-opacity:1;}#dapmap5_8 [ppuval < 9999999999]{polygon-fill:#800026;polygon-opacity:.8}#dapmap5_8 [ppuval < 1000000]{polygon-fill:#bd0026;polygon-opacity:.8}#dapmap5_8 [ppuval < 750000]{polygon-fill:#fc4e2a;polygon-opacity:.8}#dapmap5_8 [ppuval < 500000]{polygon-fill:#fd8d3c;polygon-opacity:.8}#dapmap5_8 [ppuval < 350000]{polygon-fill:#feb24c;polygon-opacity:.8}#dapmap5_8 [ppuval < 200000]{polygon-fill:#fed976;polygon-opacity:.8}#dapmap5_8 [ppuval < 100000]{polygon-fill:#ffffcc;polygon-opacity:.8}#dapmap5_8 [ppuval = null][saleprice !=null][salerisk!=null]{polygon-fill:#fcfcf4;polygon-opacity:.8}",
-          "sql": "select * from dapmap5_8 where <%= layer3 %> = 1",
+          "cartocss": "#dapmap5_9 {polygon-fill:#aaa;polygon-opacity:0;line-color:#fff;line-width:0;line-opacity:1;}#dapmap5_9 [ppuval < 9999999999]{polygon-fill:#800026;polygon-opacity:.8}#dapmap5_9 [ppuval < 1000000]{polygon-fill:#bd0026;polygon-opacity:.8}#dapmap5_9 [ppuval < 750000]{polygon-fill:#fc4e2a;polygon-opacity:.8}#dapmap5_9 [ppuval < 500000]{polygon-fill:#fd8d3c;polygon-opacity:.8}#dapmap5_9 [ppuval < 350000]{polygon-fill:#feb24c;polygon-opacity:.8}#dapmap5_9 [ppuval < 200000]{polygon-fill:#fed976;polygon-opacity:.8}#dapmap5_9 [ppuval < 100000]{polygon-fill:#ffffcc;polygon-opacity:.8}#dapmap5_9 [ppuval = null][saleprice !=null][salerisk!=null]{polygon-fill:#fcfcf4;polygon-opacity:.8}",
+          "sql": "select * from dapmap5_9 where <%= layer3 %> = 1",
           "interactivity": ["cartodb_id", "bbl", "address", "saledate", "saleprice", "numbldgs", "unitsres", "unitscomm", "ppuval", "ppu", "zipcode", "borocode", "borough", "block", "lot", "hpdlink"]
         }
       },
@@ -96,8 +96,8 @@
         "type": "cartodb",
         "options": {
           "cartocss_version": "2.1.1",
-          "cartocss": "#dapmap5_8 {polygon-fill:#aaa;polygon-opacity:0;line-color:#fff;line-width:0;line-opacity:1;}#dapmap5_8 [evicscore>100]{polygon-fill:#800026;polygon-opacity:.8}#dapmap5_8 [evicscore<=100]{polygon-fill:#bd0026;polygon-opacity:.8}#dapmap5_8 [evicscore<=50]{polygon-fill:#fc4e2a;polygon-opacity:.8}#dapmap5_8 [evicscore<=25]{polygon-fill:#fd8d3c;polygon-opacity:.8}#dapmap5_8 [evicscore<=12]{polygon-fill:#feb24c;polygon-opacity:.8}#dapmap5_8 [evicscore<=3]{polygon-fill:#fed976;polygon-opacity:.8}#dapmap5_8 [evicscore<=1]{polygon-fill:#ffffcc;polygon-opacity:.8}",
-          "sql": "select * from dapmap5_8 where <%= layer4 %> = 1",
+          "cartocss": "#dapmap5_9 {polygon-fill:#aaa;polygon-opacity:0;line-color:#fff;line-width:0;line-opacity:1;}#dapmap5_9 [evicscore>100]{polygon-fill:#800026;polygon-opacity:.8}#dapmap5_9 [evicscore<=100]{polygon-fill:#bd0026;polygon-opacity:.8}#dapmap5_9 [evicscore<=50]{polygon-fill:#fc4e2a;polygon-opacity:.8}#dapmap5_9 [evicscore<=25]{polygon-fill:#fd8d3c;polygon-opacity:.8}#dapmap5_9 [evicscore<=12]{polygon-fill:#feb24c;polygon-opacity:.8}#dapmap5_9 [evicscore<=3]{polygon-fill:#fed976;polygon-opacity:.8}#dapmap5_9 [evicscore<=1]{polygon-fill:#ffffcc;polygon-opacity:.8}",
+          "sql": "select * from dapmap5_9 where <%= layer4 %> = 1",
           "interactivity": ["cartodb_id", "bbl", "address", "saledate", "saleprice", "numbldgs", "unitsres", "unitscomm", "evictions", "zipcode", "borocode", "borough", "block", "lot", "hpdlink"]
         }
       },

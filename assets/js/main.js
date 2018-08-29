@@ -23,9 +23,11 @@ app.map = (function(w, d, L, $) {
 
   function initMap() {
     // initiates the Leaflet map
-    basemapLayer = L.tileLayer('https://api.mapbox.com/styles/v1/lblok/cjk4889sb29b12splkdw0pzop/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGJsb2siLCJhIjoiY2o3djQ2ODd4MnVjMjJwbjBxZWZtZDB2ZiJ9.4gctlFUX_n0BzOAwbuL2aw', {
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://carto.com/attributions">Carto</a>'
+    basemapLayer = L.tileLayer('https://api.mapbox.com/styles/v1/lblok/cjk4889sb29b12splkdw0pzop/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGJsb2siLCJhIjoiY2o3djQ2ODd4MnVjMjJwbjBxZWZtZDB2ZiJ9.4gctlFUX_n0BzOAwbuL2aw', {
+      maxZoom: 22,  
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://carto.com/attributions">Carto</a>'
       });
+
 
       
       
@@ -46,8 +48,8 @@ app.map = (function(w, d, L, $) {
         placeholder:' (Tip: include borough and dont abbreviate)', 
         defaultMarkGeocode: true, 
         geocoder:new L.Control.Geocoder.Google(),
-        suggestMinLength: 3,
-        suggestTimeout: 250
+        // suggestMinLength: 3,
+        // suggestTimeout: 250
         })
         .on('markgeocode', function(e) {
         var bbox = e.geocode.bbox;

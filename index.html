@@ -21,7 +21,8 @@
   <!-- MAPBOX –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
-
+  <!-- <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' /> -->
 
   <!-- CSS –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" type="text/css" href="assets/vendor/css/normalize.css">
@@ -449,7 +450,7 @@
     </div>
     <div id='map-layers' class='ui map-layers top right hideMapLayers'>
       <div class="help-tip" id="risks">
-        <p>This layer shows the total number of risk factors for a property: Stabilization, Sales, or Construction Risk. A property with one risk factor will appear yellow, one with two will appear orange, and three will appear red. A property is considered to have "Stabilization Risk" only if it has lost units.</p>
+        <p>The number of layers containing risk data for this property. The more solid the color of the property, the more layers it  appears in. A property will only register "Stabilization Risk" if it has lost units.</p>
        </div>
       <div class="help-tip" id="stab">
         <p>This layer shows the change in the percentage of rent stabilized units between 2007 and 2016. Properties appearing green gained stabilized units and properties appearing yellow, orange, or red lost units. If the data showed no stabilized units in 2016, the property was assumed to have lost 100% of its stabilized units; however, sometimes values are simply missing. A value of 9999% means the data showed no stabilized units in 2007 and some in 2016. Stabilized unit numbers are approximate and based on property tax bills from the NYC Department of Finance: click a building's 'Tax bills' link for individual property tax bills.</p>
@@ -463,22 +464,22 @@
       <div class="help-tip" id="evictions">
           <p>This layer shows the number of evictions ordered by the court and recorded by marshals in 2017. Darker red indicates more evictions per unit.</p>
       </div>
-      <div class="legendtext" style="padding:0;">Risk layers</div>
+      <div class="legendtext" style="padding:0;">Map Layers</div>
       <div>
         <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">
-          Risk Factors
+          Risk Layers
         </button>
       <div>
           <div class="legend-cloropleth">
             <ul>
-              <li class="min">1 Risk Factor</li>
-              <li class="max">4 Risk Factors</li>
-              <li class="graph">
+              <li class="min">1 Risk Layer</li>
+              <li class="max">4 Risk Layers</li>
+              <li class="graph nobord">
                 <div class="colors">
-                  <div class="quartile" style="background-color:#ffffcc"></div>
-                  <div class="quartile" style="background-color:#fd8d3c"></div>
-                  <div class="quartile" style="background-color:#e31a1c"></div>
-                  <div class="quartile" style="background-color:#800026"></div>
+                  <div class="quartile wtbord" style="background-color:#4b4b4b"></div>
+                  <div class="quartile wtbord" style="background-color:#7c7c7c"></div>
+                  <div class="quartile wtbord" style="background-color:#afafaf"></div>
+                  <div class="quartile wtbord" style="background-color:#e2e2e2"></div>
                 </div>
                 </li>
               </ul>
