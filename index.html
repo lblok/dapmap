@@ -24,6 +24,10 @@
   <!-- <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
   <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' /> -->
 
+  <!--JQUERY-->
+  <script language="JavaScript" type="text/javascript" src="jquery.js"></script>
+  <script language="JavaScript" type="text/javascript" src="assets/js/searchhov.js"></script>
+
   <!-- CSS –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" type="text/css" href="assets/vendor/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="assets/vendor/css/cartodb.css" />
@@ -440,6 +444,11 @@
     </div>
   </nav>
 
+  <div id="searchcont">
+    <div id="searchhover">
+      <p>Tip: if you get no search results, try spelling out the street name and including the borough. E.g. instead of "50 Broad St" try "50 Broad Street Manhattan"</p>
+    </div>
+  </div>
 
   <div class='container mainContainer'>
     <div id='logo' class='logo top left hideLogo'>
@@ -588,15 +597,19 @@
         <a href="#close" title="Close" class="close">X</a>
         <div id="dapwelcome">Welcome to the Displacement Alert Project Map</div>
           <div>
-        <p class="modalText">DAP Map is a building-level interactive map designed to show where residential tenants may be facing 
-           significant displacement pressures and where affordable apartments are threatened across NYC. 
-           ANHD created DAP Map to provide community groups, tenant organizers, residents, elected officials, 
-           policymakers, and the public direct access to vital information on our city's rapidly changing residential environment.</p>
-        <p class="modalText">The map includes four layers listed to the right. Each indicator is color-coded by risk level to the building. 
-           Quickly jump to a specific Council District, Community Board, or Zip Code using the drop down menu on the right or enter 
-           a specific address using the search button on the top left.</p>
+        <p class="modalText">The DAP Map is a rich resource of more than a decade of key data on residential displacement in New York City. The Map shows loss of rent-stabilized units, property sales, and construction permits going back to 2007, and evictions from 2017. </p>
+        <p class="modalText">Each risk factor is its own layer, with properties color-coded by risk level. Click buttons on the right to change layers, and click a property to view details. Find an address using the search button on the top left, or zoom to a geography using the drop-down options on the right. </p>
           </div>
-        <a class="button" href="#close">Let's get started!</a>
+          <table class="modalbuttons">
+            <tr>
+              <th class="modalbuttons">
+                <a class="button" id="learn" href="http://dapmapnyc.org/reports-tutorial" target="_blank">Learn More</a>
+              </th>
+              <th class="modalbuttons">
+                <a class="button" id="start" href="#close">Let's get started!</a>
+              </th>
+            </tr>
+          </table>
         <label id="toggleintro">
           <input type="checkbox" id="toggleIntroCookie" value="NoShow">
              Don't show this message again.

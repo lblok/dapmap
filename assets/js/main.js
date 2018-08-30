@@ -45,7 +45,7 @@ app.map = (function(w, d, L, $) {
       var geocoder = L.Control.geocoder({
         position: 'topleft', 
         collapsed: true, 
-        placeholder:' (Tip: include borough and dont abbreviate)', 
+        placeholder:'', 
         defaultMarkGeocode: true, 
         geocoder:new L.Control.Geocoder.Google(),
         // suggestMinLength: 3,

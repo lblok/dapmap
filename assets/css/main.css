@@ -343,6 +343,18 @@ div.cartodb-tooltip-content p {
   padding: 0px;
   margin: 10px 15px 10px 10px;
   background-size: contain;
+  z-index: 999;
+}
+
+#blockdiv {
+  height:200px;
+  width:200px;
+  background-color:red;
+  z-index: 998;
+  position: absolute;
+  pointer-events:all;
+  margin-top: 140px;
+  margin-left: 10px;
 }
 
 .leaflet-marker-icon {
@@ -441,6 +453,37 @@ div.cartodb-tooltip-content p {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: 400;
+}
+
+th.modalbuttons {
+  margin-bottom: 0;
+  border: 0;
+  border-color: none;
+  padding: 0 20px 0 15px;
+}
+
+table.modalbuttons {
+  margin-bottom: 0;
+  border: 0;
+  border-color: none;
+}
+
+#learn {
+  background-color: rgb(234, 241, 235);
+}
+
+#learn:hover {
+  color: black;
+  border-color: rgb(122, 122, 122);
+}
+
+#start {
+  background-color: rgb(234, 241, 235);
+}
+
+#start:hover {
+  color: black;
+  border-color: rgb(122, 122, 122);
 }
 
 /** Navbar re-imported from District Reports **/
@@ -675,7 +718,7 @@ div.upper h3{
 
 /* HELPTIP */
 
-.help-tip{
+.help-tip {
 	position: absolute;
 	right: 8px;
 	text-align: center;
@@ -737,6 +780,81 @@ div.upper h3{
 	top:-40px;
 	left:0;
 }
+
+#searchcont {
+  height: 20px;
+  width: 20px;
+  background-color: #ccc;
+  float: left;
+  position: absolute;
+  z-index: 2000;
+  border-radius: 50%;
+  margin-top: 112px;
+  margin-left: 100px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+	cursor: default;  
+}
+
+#searchcont:before {
+	content:'?';
+	font-weight: bold;
+	color:black;
+}
+
+#searchcont:hover p {
+	display:block;
+	transform-origin: 100% 0%;
+
+	-webkit-animation: fadeIn 0.3s ease-in-out;
+	animation: fadeIn 0.3s ease-in-out;
+}
+
+/* #searchcont p {
+  display: none;
+  top: 100px;
+  position: absolute;
+  background-color: red;
+} */
+
+#searchcont p{
+	display: none;
+	text-align: left;
+	background-color: #1E2021;
+	padding: 10px 10px 10px 10px;
+	width: 280px;
+	position: absolute;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  right: -220px;
+  top: -104px;
+	color: #FFF;
+	font-size: 12px;
+  line-height: 1.6;
+  z-index: 1002;
+}
+
+#searchcont p:before{
+	position: absolute;
+	content: '';
+	width:0;
+	height: 0;
+	border:6px solid transparent;
+	border-top-color:#1E2021;
+	right:224px;
+	top:96px;
+}
+
+#searchcont p:after{
+	width:100%;
+	height:40px;
+	content:'';
+	position: absolute;
+	top:-40px;
+	left:0;
+}
+
 
 #risks {
   top: 46px;
