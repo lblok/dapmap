@@ -4,11 +4,11 @@
 //     });
 // });
 
-$(document).ready(function() {     
-    $('.leaflet-control-geocoder').hover(function(){     
-        $('#searchhover').addClass('show');    
-    },     
-    function(){    
-        $('#searchhover').removeClass('show');     
-    });
-});  
+// $(document).ready(function() {     
+//     $('.leaflet-control-geocoder').hover(function(){     
+//         $('#searchhover').addClass('show');    
+//     },     
+//     function(){    
+//         $('#searchhover').removeClass('show');     
+//     });
+// });  

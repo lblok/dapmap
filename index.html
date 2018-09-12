@@ -25,8 +25,8 @@
   <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' /> -->
 
   <!--JQUERY-->
-  <script language="JavaScript" type="text/javascript" src="jquery.js"></script>
-  <script language="JavaScript" type="text/javascript" src="assets/js/searchhov.js"></script>
+  <!-- <script language="JavaScript" type="text/javascript" src="jquery.js"></script>
+  <script language="JavaScript" type="text/javascript" src="assets/js/searchhov.js"></script> -->
 
   <!-- CSS –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" type="text/css" href="assets/vendor/css/normalize.css">
@@ -36,7 +36,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
   <!-- Custom CartoDB Infowindow Templates –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script type="infowindow/html" id="riskscore_infowindow">
+  <!-- <script type="infowindow/html" id="riskscore_infowindow">
     <div class="cartodb-popup v2">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
        <div class="cartodb-popup-content-wrapper">
@@ -115,7 +115,7 @@
         </div>
         <div class="cartodb-popup-tip-container"></div>
       </div>
-  </script>
+  </script> -->
   <script type="infowindow/html" id="rentregscore_infowindow">
     <div class="cartodb-popup v2">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
@@ -458,11 +458,11 @@
       <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
     </div>
     <div id='map-layers' class='ui map-layers top right hideMapLayers'>
-      <div class="help-tip" id="risks">
+      <!-- <div class="help-tip" id="risks">
         <p>The number of layers containing risk data for this property. The more solid the color of the property, the more layers it  appears in. A property will only register "Stabilization Risk" if it has lost units.</p>
-       </div>
+       </div> -->
       <div class="help-tip" id="stab">
-        <p>This layer shows the change in the percentage of rent stabilized units between 2007 and 2016. Properties appearing green gained stabilized units and properties appearing yellow, orange, or red lost units. If the data showed no stabilized units in 2016, the property was assumed to have lost 100% of its stabilized units; however, sometimes values are simply missing. A value of 9999% means the data showed no stabilized units in 2007 and some in 2016. Stabilized unit numbers are approximate and based on property tax bills from the NYC Department of Finance: click a building's 'Tax bills' link for individual property tax bills.</p>
+        <p>This layer shows the change in the percentage of rent stabilized units between 2007 and 2016. Properties appearing green gained stabilized units and properties appearing yellow, orange, or red lost units. If the data showed no stabilized units in 2016, the property was assumed to have lost 100% of its stabilized units; however, sometimes values are simply missing. A value of 9999% means the data showed no stabilized units in 2007 and some in 2016. Stabilized unit numbers are approximate and based on property tax bills from the NYC Department of Finance: click a property's 'Tax bills' link for individual property tax bills.</p>
       </div>
       <div class="help-tip" id="sales">
           <p>This layer shows the most recent sale since 2007. Darker red indicates a higher sale price per unit. Note: a sale price of $0 could indicate the property was sold along with others, the amount is recorded elsewhere, or it could indicate a transfer of ownership without an actual sale. Click the (ACRIS) link for details.</p>
@@ -471,10 +471,10 @@
           <p>This layer shows Alteration 1 (Alt 1), Alteration 2 (Alt 2), New Building (NB), and Demolition (DM) permits issued by the Department of Buildings (DOB) since 2007. Darker red indicates more total permits per unit. DOB permits reveal development that can cause displacement and renovations that can be used to destabilize apartments.</p>
       </div>
       <div class="help-tip" id="evictions">
-          <p>This layer shows the number of evictions ordered by the court and recorded by marshals in 2017. Darker red indicates more evictions per unit.</p>
+          <p>This layer shows the number of evictions executed by marshals in 2017. Darker red indicates more evictions per unit.</p>
       </div>
       <div class="legendtext" style="padding:0;">Map Layers</div>
-      <div>
+      <!-- <div>
         <button id='riskscore' data="0" class="radio1 selected navbtnwidth layerbtn">
           Risk Layers
         </button>
@@ -494,10 +494,10 @@
               </ul>
             </div>
         </div>
-        </div>
+        </div> -->
         <div>
-          <button id='rentregscore' data="1" class="radio1 navbtnwidth layerbtn"> 
-            Stabilization Risk
+          <button id='rentregscore' data="0" class="radio1 selected navbtnwidth layerbtn"> 
+            Deregulation Risk
           </button>
           <div>
               <div class="legend-cloropleth">
@@ -519,7 +519,7 @@
                 </div>
             </div>
           </div>
-        <button id='dofscore' data="3" class="radio1 navbtnwidth layerbtn"> Sales Risk</button>
+        <button id='dofscore' data="2" class="radio1 navbtnwidth layerbtn">New Sale Risk</button>
         <div>
           <div class="legend-cloropleth">
             <ul>
@@ -539,7 +539,7 @@
               </ul>
             </div>
           </div>
-      <button id='dobscore' data="2" class="radio1 navbtnwidth layerbtn">Construction Risk</button>
+      <button id='dobscore' data="1" class="radio1 navbtnwidth layerbtn">Construction Risk</button>
       <div>
         <div class="legend-cloropleth">
           <ul>
@@ -559,7 +559,7 @@
             </ul>
           </div>
         </div>
-      <button id='evicscore' data="4" class="radio1 navbtnwidth layerbtn">Eviction Risk</button>
+      <button id='evicscore' data="3" class="radio1 navbtnwidth layerbtn">Eviction Risk</button>
       <div>
         <div class="legend-cloropleth">
           <ul>
@@ -581,9 +581,9 @@
     </div>
       <hr />
       <div class="legendtext">Geography layers</div>
-      <button id='cd' data="6" class="radio2 navbtnwidth geolayer">Council Districts</button>
-      <button id='cb' data="5" class="radio2 navbtnwidth geolayer">Community Boards</button>
-      <button id='zipcode' data="7" class="radio2 navbtnwidth geolayer">Zip Codes</button>
+      <button id='cd' data="5" class="radio2 navbtnwidth geolayer">Council Districts</button>
+      <button id='cb' data="4" class="radio2 navbtnwidth geolayer">Community Boards</button>
+      <button id='zipcode' data="6" class="radio2 navbtnwidth geolayer">Zip Codes</button>
       <hr />
       <div class="legendtext">Zoom to a geography</div>
       <select id="cc-dist-select" class='go-to-cc navbtnwidth'></select>

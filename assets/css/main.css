@@ -856,24 +856,24 @@ div.upper h3{
 }
 
 
-#risks {
+/* #risks {
+  top: 46px;
+} */
+
+#stab {
   top: 46px;
 }
 
-#stab {
+#sales {
   top: 122px;
 }
 
-#sales {
+#dob {
   top: 198px;
 }
 
-#dob {
-  top: 276px;
-}
-
 #evictions {
-  top: 352px;
+  top: 276px;
 }
 
 #map-layers {

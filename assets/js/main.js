@@ -93,9 +93,9 @@ app.map = (function(w, d, L, $) {
       named_map: {
         name: 'DAP_Map_v2',
         layers: [
-          {
-            layer_name: "riskscore",
-          },
+          // {
+          //   layer_name: "riskscore",
+          // },
           {
             layer_name: "rentregscore"
           },
@@ -138,11 +138,11 @@ app.map = (function(w, d, L, $) {
 
         /* when using the layerSource object, create infowindows like so: */
         infowindows = [];
-        infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#riskscore_infowindow').html()});
-        infowindows[1] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
-        infowindows[2] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
-        infowindows[3] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
-        infowindows[4] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(4),["cartodb_id"], {infowindowTemplate: $('#evicscore_infowindow').html()});
+        // infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#riskscore_infowindow').html()});
+        infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
+        infowindows[1] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
+        infowindows[2] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
+        infowindows[3] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#evicscore_infowindow').html()});
 
         // very sloppy example tooltip creation
         // todo: make a separate function for these and use a templating engine like handlebars
@@ -156,29 +156,29 @@ app.map = (function(w, d, L, $) {
         });
         $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
 
-        mapLayers[0].show(); // riskscore layer: showing in v2.1
-        mapLayers[1].hide(); // rentregscore
-        mapLayers[2].hide(); // dobscore
-        mapLayers[3].hide(); // dofscore
-        mapLayers[4].hide(); // evicscore
+        // mapLayers[0].show(); // riskscore layer: showing in v2.1
+        mapLayers[0].show(); // rentregscore
+        mapLayers[1].hide(); // dobscore
+        mapLayers[2].hide(); // dofscore
+        mapLayers[3].hide(); // evicscore
 
-        mapLayers[5].hide(); // community districts
+        mapLayers[4].hide(); // community districts
+        mapLayers[4].setInteraction(false);
+        mapLayers[5].hide(); // city council districts
         mapLayers[5].setInteraction(false);
         mapLayers[6].hide(); // city council districts
         mapLayers[6].setInteraction(false);
-        mapLayers[7].hide(); // city council districts
-        mapLayers[7].setInteraction(false);
 
         // using the layerSource you can alter a "placeholder"
         // value from the template like so:
         // layer.setParams({ cc_sql: 30 });
 
-        // listen for opening of popups to fomat numbers
-        mapLayers[1].on('featureClick', function(e, latlng, pos, data, layer) {
+        // listen for opening of popups to fomat numbers - THIS IS PROBABLY NOT NECESSARY ANYMORE 
+        mapLayers[0].on('featureClick', function(e, latlng, pos, data, layer) {
           $('#pctchange').text((parseFloat($('#pctchange').text())*1).toFixed(0) + "%");
         });
 
-        mapLayers[3].on('featureClick', function(e, latlng, pos, data, layer) {
+        mapLayers[2].on('featureClick', function(e, latlng, pos, data, layer) {
           if ($('#pctchange').text().indexOf('%') == -1) {
             $('#pctchange').text((parseFloat($('#pctchange').text())*1).toFixed(0) + "%");
           }
@@ -195,19 +195,32 @@ app.map = (function(w, d, L, $) {
     layerToggle = {
       // hide / show the default map layer (riskscore)
       
-      riskscore: function() {
+      // riskscore: function() {
+      //   if (mapLayers[0].isVisible()) {
+      //     mapLayers[0].hide();
+      //   } else {
+      //     hideAllLayers();
+      //     mapLayers[0].show();
+      //     // set max legend value to 300
+      //     $('#maxLegendNumber').text(300);
+      //   }
+        
+      //   return true;
+      // },
+      rentregscore: function() {
         if (mapLayers[0].isVisible()) {
           mapLayers[0].hide();
+          $('.cartodb-infowindow').css('visibility', 'hidden');
         } else {
           hideAllLayers();
           mapLayers[0].show();
-          // set max legend value to 300
-          $('#maxLegendNumber').text(300);
+          // set max legend value to 100
+          $('#maxLegendNumber').text(100);
         }
-        
+
         return true;
       },
-      rentregscore: function() {
+      dobscore: function() {
         if (mapLayers[1].isVisible()) {
           mapLayers[1].hide();
           $('.cartodb-infowindow').css('visibility', 'hidden');
@@ -220,7 +233,7 @@ app.map = (function(w, d, L, $) {
 
         return true;
       },
-      dobscore: function() {
+      dofscore: function() {
         if (mapLayers[2].isVisible()) {
           mapLayers[2].hide();
           $('.cartodb-infowindow').css('visibility', 'hidden');
@@ -230,28 +243,15 @@ app.map = (function(w, d, L, $) {
           // set max legend value to 100
           $('#maxLegendNumber').text(100);
         }
-
         return true;
       },
-      dofscore: function() {
+      evicscore: function() {
         if (mapLayers[3].isVisible()) {
           mapLayers[3].hide();
           $('.cartodb-infowindow').css('visibility', 'hidden');
         } else {
           hideAllLayers();
           mapLayers[3].show();
-          // set max legend value to 100
-          $('#maxLegendNumber').text(100);
-        }
-        return true;
-      },
-      evicscore: function() {
-        if (mapLayers[4].isVisible()) {
-          mapLayers[4].hide();
-          $('.cartodb-infowindow').css('visibility', 'hidden');
-        } else {
-          hideAllLayers();
-          mapLayers[4].show();
           // set max legend value to 100
           $('#maxLegendNumber').text(100);
         }
@@ -265,10 +265,10 @@ app.map = (function(w, d, L, $) {
         //   mapLayers[6].hide();
         //   $('.go-to-cb :nth-child(1)').prop('selected', true);          
         // }
-        if (mapLayers[6].isVisible()) {
-          mapLayers[6].hide();
+        if (mapLayers[5].isVisible()) {
+          mapLayers[5].hide();
         } else {
-          mapLayers[6].show();
+          mapLayers[5].show();
         }
         return true;
       },
@@ -279,10 +279,10 @@ app.map = (function(w, d, L, $) {
         //   mapLayers[6].hide();
         //   $('.go-to-cc :nth-child(1)').prop('selected', true);
         // }
-        if (mapLayers[5].isVisible()) {
-          mapLayers[5].hide();
+        if (mapLayers[4].isVisible()) {
+          mapLayers[4].hide();
         } else {
-          mapLayers[5].show();
+          mapLayers[4].show();
         }
         return true;
       },
@@ -293,23 +293,23 @@ app.map = (function(w, d, L, $) {
         //   mapLayers[5].hide();
         //   $('.go-to-zipcode :nth-child(1)').prop('selected', true);
         // }
-        if (mapLayers[7].isVisible()) {
-          mapLayers[7].hide();
+        if (mapLayers[6].isVisible()) {
+          mapLayers[6].hide();
         } else {
-          mapLayers[7].show();
+          mapLayers[6].show();
         }
         return true;
       }
     }
 
     function hideAllLayers() {
+      // mapLayers[0].hide();
       mapLayers[0].hide();
       mapLayers[1].hide();
       mapLayers[2].hide();
       mapLayers[3].hide();
-      mapLayers[4].hide();
       // $('.cartodb-infowindow').css('visibility', 'hidden');
-      console.log(mapLayers[4])
+      // console.log(mapLayers[3])
       for (let index = 0; index < infowindows.length; index++) {
         infowindows[index].model.set("visibility", !1);
       }
@@ -461,9 +461,9 @@ app.map = (function(w, d, L, $) {
     if (num !== 0) {
       sql.getBounds('SELECT * FROM nycc WHERE coundist = {{id}}', { id: num })
         .done(function(data){
-          mapLayers[5].hide();
-          mapLayers[6].show();
-          mapLayers[7].hide();
+          mapLayers[4].hide();
+          mapLayers[5].show();
+          mapLayers[6].hide();
           map.fitBounds(data);
         });   
 
@@ -476,9 +476,9 @@ app.map = (function(w, d, L, $) {
     if (num !==0) {
       sql.getBounds('SELECT * FROM nycd_new2 WHERE borocd = {{id}}', { id: num })
         .done(function(data){
-          mapLayers[5].show();
+          mapLayers[4].show();
+          mapLayers[5].hide();
           mapLayers[6].hide();
-          mapLayers[7].hide();
           map.fitBounds(data);
         });
     }
@@ -490,9 +490,9 @@ app.map = (function(w, d, L, $) {
     if (num !==0) {
       sql.getBounds("SELECT * FROM nyc_zip_codes WHERE zipcode = '{{id}}'", { id: num })
         .done(function(data){
-          mapLayers[6].hide();
           mapLayers[5].hide();
-          mapLayers[7].show();
+          mapLayers[4].hide();
+          mapLayers[6].show();
           map.fitBounds(data);
         });
     }
