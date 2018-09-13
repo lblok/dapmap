@@ -57,23 +57,7 @@ app.map = (function(w, d, L, $) {
       })
       .addTo(map);
       
-      // Geocoder that's not working from https://github.com/smeijer/leaflet-geosearch. Trying to get autofill to work. 
 
-      // import L from 'leaflet';
-      // import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
-
-      // const provider = new OpenStreetMapProvider();
-
-      // const searchControl = new GeoSearchControl({
-      //   provider: provider,
-      // });
-
-      // const map = new L.Map('map');
-      // map.addControl(searchControl);
-      // new GeoSearchControl({
-      //   provider: myProvider,           // required
-      //   style: 'bar',                   // optional: bar|button  - default button
-      // }).addTo(map);
       
     // set the cartodb sql object up
     sql = cartodb.SQL({ user: 'anhdnyc' });
@@ -93,9 +77,6 @@ app.map = (function(w, d, L, $) {
       named_map: {
         name: 'DAP_Map_v2',
         layers: [
-          // {
-          //   layer_name: "riskscore",
-          // },
           {
             layer_name: "rentregscore"
           },
@@ -138,25 +119,12 @@ app.map = (function(w, d, L, $) {
 
         /* when using the layerSource object, create infowindows like so: */
         infowindows = [];
-        // infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#riskscore_infowindow').html()});
         infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
         infowindows[1] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
         infowindows[2] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
         infowindows[3] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#evicscore_infowindow').html()});
 
-        // very sloppy example tooltip creation
-        // todo: make a separate function for these and use a templating engine like handlebars
-/*        var testTooltip = layer.leafletMap.viz.addOverlay({
-          type: 'tooltip',
-          layer: layer.getSubLayer(0),
-          template: '<div class="cartodb-tooltip-content-wrapper"><div class="cartodb-tooltip-content"><h4>Address</h4><p>{{address}}</p></div></div>',
-          width: 200,
-          position: 'bottom|right',
-          fields: [{ address: 'address' }]
-        });
-        $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
 
-        // mapLayers[0].show(); // riskscore layer: showing in v2.1
         mapLayers[0].show(); // rentregscore
         mapLayers[1].hide(); // dobscore
         mapLayers[2].hide(); // dofscore
@@ -193,20 +161,9 @@ app.map = (function(w, d, L, $) {
   function wireLayerBtns() {
     // wires the UI map layer buttons to CartoDB
     layerToggle = {
-      // hide / show the default map layer (riskscore)
+      // hide / show the default map layer (rentregscore)
       
-      // riskscore: function() {
-      //   if (mapLayers[0].isVisible()) {
-      //     mapLayers[0].hide();
-      //   } else {
-      //     hideAllLayers();
-      //     mapLayers[0].show();
-      //     // set max legend value to 300
-      //     $('#maxLegendNumber').text(300);
-      //   }
-        
-      //   return true;
-      // },
+
       rentregscore: function() {
         if (mapLayers[0].isVisible()) {
           mapLayers[0].hide();
@@ -259,7 +216,7 @@ app.map = (function(w, d, L, $) {
       },
       // Modify to allow multiple geographies to be visible at once
       cd: function() {
-        // hide / show council districts
+        // would use the below if i wanted geographies to toggle instead of check on and off
         // if (mapLayers[4].isVisible() || mapLayers[6].isVisible()) {
         //   mapLayers[4].hide();
         //   mapLayers[6].hide();
@@ -273,7 +230,6 @@ app.map = (function(w, d, L, $) {
         return true;
       },
       cb: function() {
-        // hide / show community boards
         // if (mapLayers[5].isVisible() || mapLayers[6].isVisible()) {
         //   mapLayers[5].hide();
         //   mapLayers[6].hide();
@@ -287,7 +243,6 @@ app.map = (function(w, d, L, $) {
         return true;
       },
       zipcode: function() {
-        // hide / show community boards
         // if (mapLayers[4].isVisible() || mapLayers[5].isVisible()) {
         //   mapLayers[4].hide();
         //   mapLayers[5].hide();
@@ -309,7 +264,6 @@ app.map = (function(w, d, L, $) {
       mapLayers[2].hide();
       mapLayers[3].hide();
       // $('.cartodb-infowindow').css('visibility', 'hidden');
-      // console.log(mapLayers[3])
       for (let index = 0; index < infowindows.length; index++) {
         infowindows[index].model.set("visibility", !1);
       }
