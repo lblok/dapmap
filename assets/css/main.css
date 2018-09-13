@@ -384,6 +384,9 @@ cartodb-popup-content-wrapper {
   border-radius: 4px;
   background: #fff;
   top: -10px;
+  /* overflow-y: auto; */
+  height: 380px;
+  /* width: 40% */
 }
 
 .close {
@@ -427,8 +430,14 @@ th.modalbuttons {
 
 table.modalbuttons {
   margin-bottom: 0;
+  margin-left: 20px;
   border: 0;
   border-color: none;
+}
+
+.width200 {
+  width: 200px;
+  margin-bottom: 5px;
 }
 
 #learn {
@@ -819,9 +828,6 @@ div.upper h3{
 }
 
 
-/* #risks {
-  top: 46px;
-} */
 
 #stab {
   top: 46px;
@@ -898,6 +904,11 @@ div.upper h3{
   .modalDialog > div {
     width: 400px;
   }
+
+  table.modalbuttons {
+    margin-left: 20%;
+  }
+
 }
 
 /* mobile changes */
