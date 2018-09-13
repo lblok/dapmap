@@ -914,12 +914,16 @@ div.upper h3{
 /* mobile changes */
 @media (max-width: 550px){
   .leaflet-control-geocoder-icon {
-    margin: 5px;
+    margin: 2px;
     
   }
 
   .leaflet-top {
     top: 5px;
+  }
+
+  #searchcont {
+    display: none;
   }
 
   .dropdown-content {
