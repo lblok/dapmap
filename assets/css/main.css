@@ -73,7 +73,7 @@ label {
   background-color: rgb(255,255,255);
   text-align: center;
   border-radius: 4px;
-  overflow: auto;
+  /* overflow: auto; */
   overflow-y: auto;
   height: calc(100% - 50px);
 }
@@ -385,7 +385,7 @@ cartodb-popup-content-wrapper {
   background: #fff;
   top: -10px;
   /* overflow-y: auto; */
-  height: 380px;
+  height: 400px;
   /* width: 40% */
 }
 
@@ -583,6 +583,9 @@ color: #FDAF7E !important;
   border-color: rgb(122, 122, 122);
 }
 
+.geogtext {
+  font-size: 11px;
+}
 
 .selected {
   color: #333;
@@ -722,7 +725,7 @@ div.upper h3{
 	text-align: left;
 	background-color: #1E2021;
 	padding: 10px 10px 10px 10px;
-	width: 280px;
+	width: 210px;
 	position: absolute;
 	border-radius: 3px;
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -731,6 +734,7 @@ div.upper h3{
 	font-size: 12px;
   line-height: 1.6;
   z-index: 1002;
+  overflow: visible;
 }
 
 .help-tip p:before{
@@ -931,8 +935,8 @@ div.upper h3{
   }
 
   .ui{
-    overflow: auto;
-    overflow-y: scroll;
+    /* overflow: auto; */
+    overflow-y: auto;
     height: 460px;
   }
 
@@ -965,7 +969,7 @@ div.upper h3{
 
   .help-tip p{
     padding: 10px 10px 10px 10px;
-    width: 200px;
+    width: 210px;
     position: absolute;
     right: -4px;
     font-size: 11px;
