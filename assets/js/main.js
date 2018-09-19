@@ -48,8 +48,6 @@ app.map = (function(w, d, L, $) {
         placeholder:'', 
         defaultMarkGeocode: true, 
         geocoder:new L.Control.Geocoder.Google(),
-        // suggestMinLength: 3,
-        // suggestTimeout: 250
         })
         .on('markgeocode', function(e) {
         var bbox = e.geocode.bbox;
