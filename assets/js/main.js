@@ -47,7 +47,7 @@ app.map = (function(w, d, L, $) {
         collapsed: true, 
         placeholder:'', 
         defaultMarkGeocode: true, 
-        geocoder:new L.Control.Geocoder.Google(),
+        geocoder:new L.Control.Geocoder.Bing("AnnevUOl-OXpLPrGjyTTzrwfiIBtB9CLKnO4rUwTKNlBXJS_2cr_nOA6pAoEUr7E"),
         })
         .on('markgeocode', function(e) {
         var bbox = e.geocode.bbox;
@@ -117,31 +117,11 @@ app.map = (function(w, d, L, $) {
 
         /* when using the layerSource object, create infowindows like so: */
         infowindows = [];
-<<<<<<< HEAD:assets/js/main.js
         infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
         infowindows[1] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
         infowindows[2] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
         infowindows[3] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#evicscore_infowindow').html()});
 
-=======
-        infowindows[0] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(0),["cartodb_id"], {infowindowTemplate: $('#riskscore_infowindow').html()});
-        infowindows[1] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(1),["cartodb_id"], {infowindowTemplate: $('#rentregscore_infowindow').html()});
-        infowindows[2] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(2),["cartodb_id"], {infowindowTemplate: $('#dobscore_infowindow').html()});
-        infowindows[3] = cdb.vis.Vis.addInfowindow(map,layer.getSubLayer(3),["cartodb_id"], {infowindowTemplate: $('#dofscore_infowindow').html()});
-
-
-        // very sloppy example tooltip creation
-        // todo: make a separate function for these and use a templating engine like handlebars
-/*        var testTooltip = layer.leafletMap.viz.addOverlay({
-          type: 'tooltip',
-          layer: layer.getSubLayer(0),
-          template: '<div class="cartodb-tooltip-content-wrapper"><div class="cartodb-tooltip-content"><h4>Address</h4><p>{{address}}</p></div></div>',
-          width: 200,
-          position: 'bottom|right',
-          fields: [{ address: 'address' }]
-        });
-        $('.cartodb-map.leaflet-container').append(testTooltip.render().el);*/
->>>>>>> 9b8e202645ddabee38a079a219eedf1be4bf670d:app/assets/js/main.js
 
         mapLayers[0].show(); // rentregscore
         mapLayers[1].hide(); // dobscore
@@ -281,10 +261,7 @@ app.map = (function(w, d, L, $) {
       mapLayers[1].hide();
       mapLayers[2].hide();
       mapLayers[3].hide();
-<<<<<<< HEAD:assets/js/main.js
-      // $('.cartodb-infowindow').css('visibility', 'hidden');
-=======
->>>>>>> 9b8e202645ddabee38a079a219eedf1be4bf670d:app/assets/js/main.js
+
       for (let index = 0; index < infowindows.length; index++) {
         infowindows[index].model.set("visibility", !1);
       }
