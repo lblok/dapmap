@@ -320,7 +320,7 @@ cartodb-popup-content-wrapper {
 }
 
 .leaflet-marker-icon {
-  width: 40px !important;
+  /* width: 40px !important; */
 }
 
 .leaflet-control-geocoder-form input {
