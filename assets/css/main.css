@@ -74,7 +74,7 @@ label {
   border-radius: 4px;
   overflow-y: auto;
   height: calc(100% - 50px);
-  max-height: 680px;
+  max-height: 710px;
 }
 
 .hamburger {
@@ -689,6 +689,11 @@ div.upper h3{
   padding: 0 0 .75rem 0;
 }
 
+.updatetext {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 300;
+}
 
 /* HELPTIP */
 

@@ -56,10 +56,10 @@ app.map = (function(w, d, L, $) {
       .addTo(map);
       
 
-      
+    }
     // set the cartodb sql object up
     sql = cartodb.SQL({ user: 'anhdnyc' });
-  }
+  
 
   function createCDBLayer() {
     // adds the CartoDB overlay from the viz.json URL
