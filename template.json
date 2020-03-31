@@ -3,7 +3,7 @@
   "auth": {
     "method": "open"
   },
-  "name": "dapmaptest",
+  "name": "DAP_Map_v2",
   "placeholders": {
     "layer0": {
       "type": "number",
