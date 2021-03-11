@@ -20,13 +20,14 @@ var map,
 
 app.map = (function(w, d, L, $) {
 
-
+  
   function initMap() {
     // initiates the Leaflet map
     basemapLayer = L.tileLayer('https://api.mapbox.com/styles/v1/lblok/cjk4889sb29b12splkdw0pzop/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGJsb2siLCJhIjoiY2o3djQ2ODd4MnVjMjJwbjBxZWZtZDB2ZiJ9.4gctlFUX_n0BzOAwbuL2aw', {
       maxZoom: 22,  
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://carto.com/attributions">Carto</a>'
-      });
+    });
+    
 
 
       
@@ -98,6 +99,7 @@ app.map = (function(w, d, L, $) {
           }
         ]
       }
+      
     };
 
 
@@ -109,7 +111,7 @@ app.map = (function(w, d, L, $) {
 
         mapLayers = [];
         var i = 0, sublayerCount = layer.getSubLayerCount();
-
+        console.log(mapLayers[5]);
         for (i; i < sublayerCount; i++) {
           var sublayer = layer.getSubLayer(i);
           mapLayers.push(sublayer);
