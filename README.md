@@ -1,106 +1,35 @@
-# ANHD DAP Map v2.0 (under development)
-Developed by the [Association For Neighborhood and Housing Development, Inc.
-(ANHD)](http://www.anhd.org), the Displacement Alert Project (DAP) Map (http://www.dapmapnyc.org) is an important organizing, advocacy, and policy development tool that provides crucial information about recent building transactions where tenants might be facing excessive displacement pressure. The lblok/dapmap repository is the 2018 version of DAP Map being updated by Lucy Block. It builds off of https://github.com/ANHD-NYC/SAMP, which was built by <a href="https://github.com/clhenrick">@clhenrick</a> and <a href="https://github.com/jdgodchaux">@jdgodchaux</a> of <a href="http://nijel.org">NiJeL</a> (see commit history <a href="https://github.com/ANHD-NYC/SAMP/commits/master">here</a>).
+# ANHD DAP Map v2.0
 
-## Dependencies
-- [Carto](http://cartodb.com) paid account
-- [CartoDB.JS](https://github.com/CartoDB/cartodb.js/) @3.15
-- [CartoDB Named Maps API](http://docs.cartodb.com/cartodb-platform/maps-api/named-maps/) @v1
-- [Leaflet.JS](http://leafletjs.com) @0.7.7
-- [jQuery](#) @latest (currently used for prototype app)
+Developed by the Association For Neighborhood and Housing Development, Inc. (ANHD), the Displacement Alert Project (DAP) Map (http://www.dapmapnyc.org) is an important organizing, advocacy, and policy development tool that provides crucial information about recent building transactions where tenants might be facing excessive displacement pressure. The lblok/dapmap repository is the 2018 version of DAP Map being updated by Lucy Block. It builds off of https://github.com/ANHD-NYC/SAMP, which was built by <a href="https://github.com/clhenrick">@clhenrick</a> and <a href="https://github.com/jdgodchaux">@jdgodchaux</a> of <a href="http://nijel.org">NiJeL</a> (see commit history [here](https://github.com/ANHD-NYC/SAMP/commits/master)). 2023 update/rewrite away from CARTO with help from [GreenInfo Network](https://www.greeninfo.org).
 
-## Installing
-...
 
-## Working With CartoDB's Named Maps API
-**Named Maps** are what you use to can create interactive maps from private tables
-in CartoDB. Most of the time maps made with CartoDB.JS use public tables. However,
-with a paid account you have the option to make custom mapping applications using
-your private tables. The following describes how this process works.
+## Development
 
-The following commands are intended to be run on the command line but could also
-be run using an app like Postman. Replace `{anhd-api-key}` with the actual API key
-found in the CartoDB account.
+### Pre-requisites
 
-### Creating a named map
-Requires using a config file, here it's called `template.json`, see the example
-in the repo.
+Install `nvm` first, then use that to install `Node` and `npm`, by running `nvm install 16.13.0`
 
+* [nvm >= 0.39.1](https://github.com/nvm-sh/nvm)
+* Node 16.13.0
+* npm >= 8.1.0
+
+### First Time Setup
 ```bash
-curl -X POST \
-   -H 'Content-Type: application/json' \
-   -d @template.json \
-   'https://anhdnyc.cartodb.com/api/v1/map/named?api_key={anhd-api-key}'
-
-# response to the above POST should look like:
-{"template_id":"samp_test”}
+nvm use 
+npm install
 ```
 
-### Instantiating the Named Map
-We actually don’t need to do this by making an API call for our use case as we
-instantiate it with the `cartodb.createLayer()` method which is passed a Named Map
-`layerSource` config object in the client.
-
-If you'd like to do this via an API call then you would need to pass a `params.json`
-file containing values ffor `placeholders` in the config file. If you don't want to
-override the default values, just have an empty object in `params.json` when making
-the API call.
-
-Sample API call:
-
+### To Run Locally
 ```bash
-curl -X POST \
-  -H 'Content-Type: application/json' \
-  -d @params.json \
-  'https://anhdnyc.cartodb.com/api/v1/map/named/DAP_Map_v2'
-
-# sample response:
-# "layergroupid":"anhdnyc@3ce3cc8d@d18b4ae3f34028a99ea3db066a60a612:1459188148983"
-# "last_updated":"2016-03-28T18:02:28.983Z"
+nvm use
+npm run start
 ```
 
-Use the value for `layergroupid` to fetch the map tiles. The tile URL would then look like:  
-`https://anhdnyc.cartodb.com/api/v1/map/anhdnyc@3ce3cc8d@d18b4ae3f34028a99ea3db066a60a612:1459188148983/{z}/{x}/{y}.png`
-
-### Updating a named map
-Say you decide to make changes to the Named Map such as SQL, CartoCSS, placeholders, etc.
-Use a `PUT` action to modify it with the updated config file. Note that the the value for
-`name` from the config file must be the same as on the query string to the API call.
-
+### To Compile and Deploy to GH pages
 ```bash
-curl -X PUT \
-  'https://anhdnyc.cartodb.com/api/v1/map/named/DAP_Map_v2?api_key={anhd-api-key}' \
-  -H 'Content-Type: application/json' \
-  -d @template.json
-
-# response to the above PUT should look like:  
-# {"template_id":"samp_test"}
+nvm use
+npm run build
+git add --all
+git commit -m "build"
+git push origin main
 ```
-
-### Deleting a named map
-```bash
-curl -X DELETE 'https://anhdnyc.cartodb.com/api/v1/map/named/some_named_map?api_key={anhd-api-key}'
-```
-### Reference
-See the following links for more info on Named Maps as well as some examples using
-Named Maps with CartoDB.JS:  
-- http://docs.cartodb.com/tutorials/named_maps/
-- http://docs.cartodb.com/cartodb-platform/maps-api/named-maps/#placeholder-format
-- http://bl.ocks.org/oriolbx/d8e6b71a2417b41c0e20
-- http://bl.ocks.org/oriolbx/688c63b865e7045e9f90
-
-## Compiling the CartoCSS
-To make it easier to update CartoCSS in the app, individual `.mss` files for each
-layer are stored in `app/assets/cartocss`. A Node.JS script, `convert-cartocss.js`,
-concatenates these separate files into a single javascript file which can be used by
-the app.
-
-To run the script, make sure you have Node.JS installed and then do:  
-`node convert-cartocss.js`
-
-If all goes well it will create the file `carto.js` in `app/js`.
-
-**NOTE:** Currently the script does not ignore `font-family` names, so you will
-need to change a font name like "DejaVuSansBook" to "DejaVu Sans Book" after running
-the script. Otherwise CartoDB won't recognize the font name and the CartoCSS will
-break without warning.

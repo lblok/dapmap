@@ -1,0 +1,25 @@
+// A SCSS module for variable definitions that can be used in SCSS and Javascript
+
+/*
+ * VARIABLES
+ */
+
+/* manage global CSS vars here */
+
+$color1: #E2E2E2;
+
+
+/*
+ * EXPORTS
+ */
+
+/* export any variables also used in JavaScript here.
+   Dividing by units, makes them unitless (but always strings) 
+   These can be imported as a styles object in JS with:
+   import styles from './variables.module.scss';
+
+   */
+
+:export {
+  color1: $color1;
+}

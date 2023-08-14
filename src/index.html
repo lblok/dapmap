@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Displacement Alert Map | ANHD</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="The Displacement Alert Map, more than a decade of key data on residential displacement in New York City">
+    <meta name="author" content="ANHD">
+    <meta name="keywords" content="tenant,harassment,displacement,risk,NYC,ANHD,DAP Map">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicons -->
+    <link rel="shortcut icon" href="https://static.wixstatic.com/media/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png" type="image/png"/>
+    <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/555352_47f33c436d7d4cb1be9f219a97596a02%7Emv2.png" type="image/png"/>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123106346-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-123106346-2');
+    </script>
+
+    <!-- cash jQuery alternative -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.5/cash.min.js" integrity="sha512-rUmgzTTLW3Ncifitwec3TMK8qQJK17vYU7r7RjMnXfg2SoEWvVWn7doqhtB8j0KTIHIr3iv4CfOXXEJbPFll6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- js-cookie -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+    <!-- Map Libre -->
+    <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet" />
+
+    <!-- ML geocoder -->
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-geocoder@1.2.0/dist/maplibre-gl-geocoder.min.js"></script>
+    <link href="https://unpkg.com/@maplibre/maplibre-gl-geocoder@1.2.0/dist/maplibre-gl-geocoder.css" rel="stylesheet" />
+
+
+    <!-- PM tiles plugin -->
+    <script src="https://unpkg.com/pmtiles@2.9.0/dist/index.js"></script>
+
+    <!-- fonts and glyphs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/79e3583a1d.js"></script>
+
+    <!-- our own awesomesauce -->
+    <script type="module" src="/index.js" defer></script>
+
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container-nav">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a class="navbar-link light" href="https://displacementalert.org">ANHD HOME</a>
+          </li>
+          <li class="navbar-item dropdown">
+            <div class="dropbtn">
+              <a class="navbar-link light active" href="https://map.displacementalert.org/app">DAP MAP</a>
+            </div>
+            <div class="dropdown-content">
+              <a class="light" href="https://displacementalert.org/map-tutorial">MAP TUTORIAL</a>
+              <a class="light" href="https://portal.displacementalert.org">DAP PORTAL</a>
+            </div>            
+          </li>
+          <li class="navbar-item">
+            <a class="navbar-link light" href="https://www.displacementalert.org/about">ABOUT</a>
+          </li>
+          <li class="navbar-item">
+            <a class="navbar-link light" href="https://www.displacementalert.org/contact-us">CONTACT</a>
+          </li>
+          <li>
+            <div id="google_translate_element"></div><script type="text/javascript">
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, gaTrack: true, gaId: 'UA-112369835-1'}, 'google_translate_element');
+              }
+              </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          </li>     
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main">
+      <!-- Map Layers panel -->
+      <div id="map-layers">
+        <div class="legendtext">Risk Layers</div>
+        <div class="legend-wrapper">
+          <div class="button-wrapper">
+            <button id="rentregscore" class="layerbtn selected" data-layer="stabloss">Deregulation Risk</button>
+            <div class="help-tip" id="stab">
+              <div class="tip-outer">
+                <div class="close-tip">&times;</div>
+                <p>
+                  This layer shows the recorded change in the percentage of rent stabilized units since 2019, when <a href="https://en.wikipedia.org/wiki/Housing_Stability_and_Tenant_Protection_Act_of_2019" target="_blank">HSTPA</a> passed. Decreasing numbers of registered stabilized units or missing registrations can indicate a lack of compliance with HSTPA. Darker red indicates a higher percentage of rent stabilized units lost. Properties appearing gray have not registered units since 2019. You can examine the year-by-year breakdown of stabilized units since 2007 by clicking the <a href="https://portal.displacementalert.org" target="_blank">DAP Portal</a> link in a property's pop-up window. Visit the <a href="https://displacementalert.org/map-tutorial#deregulation" target="_blank">tutorial</a> page to learn more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="legend-inner">
+            <div class="legend-cloropleth">
+              <ul>
+                <li class="min br">Missing Registration</li>
+                <li class="max floating">Many Units Lost</li>
+                <li class="graph">
+                  <div class="colors">
+                    <div class="quartile" style="background-color:#a7a7a7"></div>
+                    <div class="quartile" style="background-color:#fed976"></div>
+                    <div class="quartile" style="background-color:#feb24c"></div>
+                    <div class="quartile" style="background-color:#fd8d3c"></div>
+                    <div class="quartile" style="background-color:#fc4e2a"></div>
+                    <div class="quartile" style="background-color:#bd0026"></div>
+                    <div class="quartile" style="background-color:#800026"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="legend-wrapper">
+          <div class="button-wrapper">
+            <button id="dofscore" class="layerbtn" data-layer="ppuval">New Sale Risk</button>
+            <div class="help-tip" id="sales">
+              <div class="tip-outer">
+                <div class="close-tip">&times;</div>
+                <p>
+                  This layer shows the most recent sale since 1/1/03. Darker red indicates a higher sale price per unit. You can examine the property’s full sale history by clicking the <a href="https://displacementalert.org/map-tutorial#sales" target="_blank">tutorial</a> page to learn more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="legend-inner">
+            <div class="legend-cloropleth">
+              <ul>
+                <li class="min"></li>
+                <li class="max">High $ Price</li>
+                <li class="graph">
+                  <div class="colors">
+                    <div class="quartile" style="background-color:#ffffcc"></div>
+                    <div class="quartile" style="background-color:#fed976"></div>
+                    <div class="quartile" style="background-color:#feb24c"></div>
+                    <div class="quartile" style="background-color:#fd8d3c"></div>
+                    <div class="quartile" style="background-color:#fc4e2a"></div>
+                    <div class="quartile" style="background-color:#bd0026"></div>
+                    <div class="quartile" style="background-color:#800026"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="legend-wrapper">
+          <div class="button-wrapper">
+            <button id="dobscore" class="layerbtn" data-layer="violscore">Violations Risk</button>
+            <div class="help-tip" id="dob">
+              <div class="tip-outer">
+                <div class="close-tip">&times;</div>
+                <p>
+                  This layer shows the rate of open Class C Housing Maintenance Code violations per 100 units since 1/1/10. Darker red indicates more violations per unit. You can examine the full history of a property’s violations by clicking the <a href="https://portal.displacementalert.org" target="_blank">DAP Portal</a> link in a property's pop-up window. Visit the <a href="https://displacementalert.org/map-tutorial#construction" target="_blank">tutorial</a> page to learn more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="legend-inner">
+            <div class="legend-cloropleth">
+              <ul>
+                <li class="min"></li>
+                <li class="max">Many Violations</li>
+                <li class="graph">
+                  <div class="colors">
+                    <div class="quartile" style="background-color:#ffffcc"></div>
+                    <div class="quartile" style="background-color:#fed976"></div>
+                    <div class="quartile" style="background-color:#feb24c"></div>
+                    <div class="quartile" style="background-color:#fd8d3c"></div>
+                    <div class="quartile" style="background-color:#fc4e2a"></div>
+                    <div class="quartile" style="background-color:#bd0026"></div>
+                    <div class="quartile" style="background-color:#800026"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="legend-wrapper">
+          <div class="button-wrapper">
+            <button id="evicscore" class="layerbtn" data-layer="evicscore">Eviction Risk</button>
+            <div class="help-tip" id="evictions">
+              <div class="tip-outer">
+                <div class="close-tip">&times;</div>
+                <p>
+                  This layer shows the number of evictions executed by court-ordered marshals since 2017 divided by the number of units in a building. Darker red indicates more evictions per unit. You can examine the full history of evictions for a property as well as housing court cases by clicking the clicking the <a href="https://portal.displacementalert.org" target="_blank">DAP Portal</a> link in a property's pop-up window. Visit the <a href="https://displacementalert.org/map-tutorial#construction" target="_blank">tutorial</a> page to learn more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="legend-inner">
+            <div class="legend-cloropleth">
+              <ul>
+                <li class="min"></li>
+                <li class="max">Many Evictions</li>
+                <li class="graph">
+                  <div class="colors">
+                    <div class="quartile" style="background-color:#ffffcc"></div>
+                    <div class="quartile" style="background-color:#fed976"></div>
+                    <div class="quartile" style="background-color:#feb24c"></div>
+                    <div class="quartile" style="background-color:#fd8d3c"></div>
+                    <div class="quartile" style="background-color:#fc4e2a"></div>
+                    <div class="quartile" style="background-color:#bd0026"></div>
+                    <div class="quartile" style="background-color:#800026"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="legendtext">Geography Layers</div>
+        <div class="button-wrapper">
+          <button id="council" class="layerbtn geolayer" data-layer="council">Council Districts</button>
+        </div>
+
+        <div class="button-wrapper">
+          <button id="boards" class="layerbtn geolayer" data-layer="boards">Community Boards</button>
+        </div>
+
+        <div class="button-wrapper">
+          <button id="zip" class="layerbtn geolayer" data-layer="zip" style="margin-bottom: 3px;">Zip Codes</button>
+        </div>
+
+        <hr>
+
+        <div class="legendtext">Zoom to a geography</div>
+
+        <select id="cc-dist-select" class="geoselect" data-layer="council"><option value="0">Select a Council District</option><option value="1">Council District 1</option><option value="2">Council District 2</option><option value="3">Council District 3</option><option value="4">Council District 4</option><option value="5">Council District 5</option><option value="6">Council District 6</option><option value="7">Council District 7</option><option value="8">Council District 8</option><option value="9">Council District 9</option><option value="10">Council District 10</option><option value="11">Council District 11</option><option value="12">Council District 12</option><option value="13">Council District 13</option><option value="14">Council District 14</option><option value="15">Council District 15</option><option value="16">Council District 16</option><option value="17">Council District 17</option><option value="18">Council District 18</option><option value="19">Council District 19</option><option value="20">Council District 20</option><option value="21">Council District 21</option><option value="22">Council District 22</option><option value="23">Council District 23</option><option value="24">Council District 24</option><option value="25">Council District 25</option><option value="26">Council District 26</option><option value="27">Council District 27</option><option value="28">Council District 28</option><option value="29">Council District 29</option><option value="30">Council District 30</option><option value="31">Council District 31</option><option value="32">Council District 32</option><option value="33">Council District 33</option><option value="34">Council District 34</option><option value="35">Council District 35</option><option value="36">Council District 36</option><option value="37">Council District 37</option><option value="38">Council District 38</option><option value="39">Council District 39</option><option value="40">Council District 40</option><option value="41">Council District 41</option><option value="42">Council District 42</option><option value="43">Council District 43</option><option value="44">Council District 44</option><option value="45">Council District 45</option><option value="46">Council District 46</option><option value="47">Council District 47</option><option value="48">Council District 48</option><option value="49">Council District 49</option><option value="50">Council District 50</option><option value="51">Council District 51</option></select>
+
+        <select id="cb-dist-select" class="geoselect" data-layer="boards"><option value="0">Select a Community Board</option><option value="101">Manhattan 1</option><option value="102">Manhattan 2</option><option value="103">Manhattan 3</option><option value="104">Manhattan 4</option><option value="105">Manhattan 5</option><option value="106">Manhattan 6</option><option value="107">Manhattan 7</option><option value="108">Manhattan 8</option><option value="109">Manhattan 9</option><option value="110">Manhattan 10</option><option value="111">Manhattan 11</option><option value="112">Manhattan 12</option><option value="201">Bronx 1</option><option value="202">Bronx 2</option><option value="203">Bronx 3</option><option value="204">Bronx 4</option><option value="205">Bronx 5</option><option value="206">Bronx 6</option><option value="207">Bronx 7</option><option value="208">Bronx 8</option><option value="209">Bronx 9</option><option value="210">Bronx 10</option><option value="211">Bronx 11</option><option value="212">Bronx 12</option><option value="301">Brooklyn 1</option><option value="302">Brooklyn 2</option><option value="303">Brooklyn 3</option><option value="304">Brooklyn 4</option><option value="305">Brooklyn 5</option><option value="306">Brooklyn 6</option><option value="307">Brooklyn 7</option><option value="308">Brooklyn 8</option><option value="309">Brooklyn 9</option><option value="310">Brooklyn 10</option><option value="311">Brooklyn 11</option><option value="312">Brooklyn 12</option><option value="313">Brooklyn 13</option><option value="314">Brooklyn 14</option><option value="315">Brooklyn 15</option><option value="316">Brooklyn 16</option><option value="317">Brooklyn 17</option><option value="318">Brooklyn 18</option><option value="401">Queens 1</option><option value="402">Queens 2</option><option value="403">Queens 3</option><option value="404">Queens 4</option><option value="405">Queens 5</option><option value="406">Queens 6</option><option value="407">Queens 7</option><option value="408">Queens 8</option><option value="409">Queens 9</option><option value="410">Queens 10</option><option value="411">Queens 11</option><option value="412">Queens 12</option><option value="413">Queens 13</option><option value="414">Queens 14</option><option value="501">Staten Island 1</option><option value="502">Staten Island 2</option><option value="503">Staten Island 3</option></select>
+
+        <select id="zip-select" class="geoselect" data-layer="zip"><option value="0">Select a Zip Code</option><option value="00083">00083</option><option value="10001">10001</option><option value="10002">10002</option><option value="10003">10003</option><option value="10004">10004</option><option value="10005">10005</option><option value="10006">10006</option><option value="10007">10007</option><option value="10009">10009</option><option value="10010">10010</option><option value="10011">10011</option><option value="10012">10012</option><option value="10013">10013</option><option value="10014">10014</option><option value="10016">10016</option><option value="10017">10017</option><option value="10018">10018</option><option value="10019">10019</option><option value="10020">10020</option><option value="10021">10021</option><option value="10022">10022</option><option value="10023">10023</option><option value="10024">10024</option><option value="10025">10025</option><option value="10026">10026</option><option value="10027">10027</option><option value="10028">10028</option><option value="10029">10029</option><option value="10030">10030</option><option value="10031">10031</option><option value="10032">10032</option><option value="10033">10033</option><option value="10034">10034</option><option value="10035">10035</option><option value="10036">10036</option><option value="10037">10037</option><option value="10038">10038</option><option value="10039">10039</option><option value="10040">10040</option><option value="10041">10041</option><option value="10043">10043</option><option value="10044">10044</option><option value="10045">10045</option><option value="10047">10047</option><option value="10048">10048</option><option value="10055">10055</option><option value="10065">10065</option><option value="10069">10069</option><option value="10075">10075</option><option value="10080">10080</option><option value="10081">10081</option><option value="10096">10096</option><option value="10097">10097</option><option value="10103">10103</option><option value="10104">10104</option><option value="10105">10105</option><option value="10106">10106</option><option value="10107">10107</option><option value="10110">10110</option><option value="10111">10111</option><option value="10112">10112</option><option value="10115">10115</option><option value="10118">10118</option><option value="10119">10119</option><option value="10120">10120</option><option value="10121">10121</option><option value="10122">10122</option><option value="10123">10123</option><option value="10128">10128</option><option value="10151">10151</option><option value="10152">10152</option><option value="10153">10153</option><option value="10154">10154</option><option value="10155">10155</option><option value="10158">10158</option><option value="10162">10162</option><option value="10165">10165</option><option value="10166">10166</option><option value="10167">10167</option><option value="10168">10168</option><option value="10169">10169</option><option value="10170">10170</option><option value="10171">10171</option><option value="10172">10172</option><option value="10173">10173</option><option value="10174">10174</option><option value="10175">10175</option><option value="10176">10176</option><option value="10177">10177</option><option value="10178">10178</option><option value="10196">10196</option><option value="10203">10203</option><option value="10259">10259</option><option value="10260">10260</option><option value="10265">10265</option><option value="10270">10270</option><option value="10271">10271</option><option value="10275">10275</option><option value="10278">10278</option><option value="10279">10279</option><option value="10280">10280</option><option value="10281">10281</option><option value="10282">10282</option><option value="10285">10285</option><option value="10286">10286</option><option value="10301">10301</option><option value="10302">10302</option><option value="10303">10303</option><option value="10304">10304</option><option value="10305">10305</option><option value="10306">10306</option><option value="10307">10307</option><option value="10308">10308</option><option value="10309">10309</option><option value="10310">10310</option><option value="10312">10312</option><option value="10314">10314</option><option value="10451">10451</option><option value="10452">10452</option><option value="10453">10453</option><option value="10454">10454</option><option value="10455">10455</option><option value="10456">10456</option><option value="10457">10457</option><option value="10458">10458</option><option value="10459">10459</option><option value="10460">10460</option><option value="10461">10461</option><option value="10462">10462</option><option value="10463">10463</option><option value="10464">10464</option><option value="10465">10465</option><option value="10466">10466</option><option value="10467">10467</option><option value="10468">10468</option><option value="10469">10469</option><option value="10470">10470</option><option value="10471">10471</option><option value="10472">10472</option><option value="10473">10473</option><option value="10474">10474</option><option value="10475">10475</option><option value="11001">11001</option><option value="11004">11004</option><option value="11005">11005</option><option value="11040">11040</option><option value="11096">11096</option><option value="11101">11101</option><option value="11102">11102</option><option value="11103">11103</option><option value="11104">11104</option><option value="11105">11105</option><option value="11106">11106</option><option value="11109">11109</option><option value="11201">11201</option><option value="11203">11203</option><option value="11204">11204</option><option value="11205">11205</option><option value="11206">11206</option><option value="11207">11207</option><option value="11208">11208</option><option value="11209">11209</option><option value="11210">11210</option><option value="11211">11211</option><option value="11212">11212</option><option value="11213">11213</option><option value="11214">11214</option><option value="11215">11215</option><option value="11216">11216</option><option value="11217">11217</option><option value="11218">11218</option><option value="11219">11219</option><option value="11220">11220</option><option value="11221">11221</option><option value="11222">11222</option><option value="11223">11223</option><option value="11224">11224</option><option value="11225">11225</option><option value="11226">11226</option><option value="11228">11228</option><option value="11229">11229</option><option value="11230">11230</option><option value="11231">11231</option><option value="11232">11232</option><option value="11233">11233</option><option value="11234">11234</option><option value="11235">11235</option><option value="11236">11236</option><option value="11237">11237</option><option value="11238">11238</option><option value="11239">11239</option><option value="11249">11249</option><option value="11251">11251</option><option value="11354">11354</option><option value="11355">11355</option><option value="11356">11356</option><option value="11357">11357</option><option value="11358">11358</option><option value="11359">11359</option><option value="11360">11360</option><option value="11361">11361</option><option value="11362">11362</option><option value="11363">11363</option><option value="11364">11364</option><option value="11365">11365</option><option value="11366">11366</option><option value="11367">11367</option><option value="11368">11368</option><option value="11369">11369</option><option value="11370">11370</option><option value="11371">11371</option><option value="11372">11372</option><option value="11373">11373</option><option value="11374">11374</option><option value="11375">11375</option><option value="11377">11377</option><option value="11378">11378</option><option value="11379">11379</option><option value="11385">11385</option><option value="11411">11411</option><option value="11412">11412</option><option value="11413">11413</option><option value="11414">11414</option><option value="11415">11415</option><option value="11416">11416</option><option value="11417">11417</option><option value="11418">11418</option><option value="11419">11419</option><option value="11420">11420</option><option value="11421">11421</option><option value="11422">11422</option><option value="11423">11423</option><option value="11426">11426</option><option value="11427">11427</option><option value="11428">11428</option><option value="11429">11429</option><option value="11430">11430</option><option value="11432">11432</option><option value="11433">11433</option><option value="11434">11434</option><option value="11435">11435</option><option value="11436">11436</option><option value="11451">11451</option><option value="11691">11691</option><option value="11692">11692</option><option value="11693">11693</option><option value="11694">11694</option><option value="11697">11697</option></select>
+
+        <div class="updatetext">Map last updated: 7/20/23</div>
+
+      </div><!-- map-layers -->
+
+      <!-- Map -->
+      <div id="map">
+        <div id="logo" class="logo hideLogo">
+          <a href="http://anhd.org/" target="_blank"><img class="logoImg" src="./images/anhd_logo_white.png" alt="ANHD logo"></a>
+        </div>
+
+        <div id="geocode-help-wrapper">
+          <div class="help-tip" id="geocode">
+            <div class="tip-outer">
+              <div class="close-tip">&times;</div>
+              <p>
+                Tip: if you get no search results, try spelling out the street name and including the borough. E.g. instead of "50 Broad St" try "50 Broad Street Manhattan"
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="openModal" class="modalDialog">
+      <div class="modalPosition">
+        <a href="javascript:void(0);" title="Close" class="close">X</a>
+        <div class="modalTitle">Welcome to the Displacement Alert Project Map, a.k.a. DAP Map!</div>
+          <div>
+            <p class="modalText">
+              DAP Map is a rich resource of more than a decade of key data on displacement in New York City. The map shows loss of rent-stabilized units, property sales, HPD violations, and evictions.
+            </p>
+            
+            <p class="modalText">
+              Each risk factor is its own layer, with properties color-coded by risk level. Click buttons on the right to change layers and click a property to view details. Find an address using the search button on the top left, or zoom to a geography using the drop-down options on the right.
+            </p>
+            
+            <p class="modalText">
+              DAP Map shows a visual snapshot of displacement risk across New York City, and we recommend you visit DAP Portal for real-time displacement data.
+            </p>
+          </div>
+          <table class="modalbuttons">
+            <tr>
+              <th class="modalbuttons">
+                <a class="button width200" id="learn" href="https://displacementalert.org/map-tutorial" target="_blank">Learn More</a>
+              </th>
+              </tr>
+              <tr>
+              <th class="modalbuttons">
+                <a class="button width200" id="start" href="#close">Let's get started!</a>
+              </th>
+            </tr>
+          </table>
+          <label id="toggleintro">
+            <input type="checkbox" id="toggleIntroCookie" value="NoShow">
+             Don't show this message again.
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
