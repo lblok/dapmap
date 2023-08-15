@@ -1,0 +1,4 @@
+[submodule "gh-pages"]
+	path = gh-pages
+	url = https://github.com/lblok/dapmap.git
+	branch = gh-pages

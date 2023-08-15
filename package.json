@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "vite --open",
-    "build": "vite build",
+    "build": "vite build && cp CNAME gh-pages/CNAME || copy CNAME gh-pages/CNAME",
     "preview": "vite preview"
   },
   "devDependencies": {
