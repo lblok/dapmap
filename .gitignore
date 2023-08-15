@@ -1,0 +1,15 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Node stuff
+node_modules
+
+# virtual env stuff
+venv3
+Pipfile
+Pipfile.lock
+
+# large CSV files
+documentation/*.csv

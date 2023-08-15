@@ -1,0 +1,143 @@
+.modalDialog {
+  position: fixed;
+  text-align: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999; 
+  display: none; /* updates at run time */
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modalPosition {
+  top: -40px;
+  line-height: 1.4;
+}
+
+.modalText {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+}
+
+.modalTitle {
+  font-size: 16px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.modalDialog:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.modalDialog > div {
+  width: 280px;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 15px 0px 15px;
+  border-radius: 4px;
+  background: #fff;
+  top: -10px;
+}
+
+.close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { 
+  color: #FFFFFF;
+  background: #7E7E80; 
+  text-decoration: none;
+}
+
+#dapwelcome {
+  font-size: 16px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+th.modalbuttons {
+  margin-bottom: 0;
+  border: 0;
+  border-color: none;
+  padding: 0 20px 0 15px;
+}
+
+table.modalbuttons {
+  margin-bottom: 0;
+  margin-left: 20px;
+  border: 0;
+  border-color: none;
+}
+
+.width200 {
+  width: 200px;
+  margin-bottom: 5px;
+}
+
+#learn {
+  background-color: rgb(234, 241, 235);
+}
+
+#learn:hover {
+  color: black;
+  border-color: rgb(122, 122, 122);
+}
+
+#start {
+  background-color: rgb(234, 241, 235);
+}
+
+#start:hover {
+  color: black;
+  border-color: rgb(122, 122, 122);
+}
+
+label#toggleintro {
+  font-size: 12px;
+  margin-top: 3px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  top: 2.5px;
+}
+
+/* changes when screen is wider than 550px, some weirdness with modal */
+@media (min-width: 550px) {
+  .modalDialog > div {
+    width: 420px;
+  }
+
+  table.modalbuttons {
+    margin-left: 20%;
+  }
+}
+
