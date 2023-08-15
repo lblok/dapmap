@@ -36,8 +36,13 @@ npm run start
 nvm use
 npm run build
 # change into the submodule gh-pages, commit and push the changes to the gh-pages branch
+# this triggers the build 
 cd gh-pages
 git add .
 git commit -m 'build'
 git push origin gh-pages
+# then change back to the parent directory to commit the changes to the submodule
+git add gh-pages
+git commit -m 'build subproject'
+git push origin master
 ```
