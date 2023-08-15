@@ -136,8 +136,7 @@ function initApp() {
   // show Modal intro on page load, unless they've requested not to
   if (! Cookies.get('dap-no-intro') ) {
     $('div#openModal.modalDialog').show();
-    location.href = "#";
-    location.href = "#openModal";
+    
     // set cookie if don't show this message is checked
     $('#toggleIntroCookie').on('change', function() {
       if($(this).is(":checked")) {
