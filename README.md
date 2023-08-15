@@ -15,8 +15,14 @@ Install `nvm` first, then use that to install `Node` and `npm`, by running `nvm 
 
 ### First Time Setup
 ```bash
+# clone the repo 
+git clone https://github.com/lblok/dapmap.git
+
+# init the submodule
+git submodule update --init --recursive
+
 nvm use 
-npm install
+npm ci
 ```
 
 ### To Run Locally
@@ -29,7 +35,9 @@ npm run start
 ```bash
 nvm use
 npm run build
-git add --all
-git commit -m "build"
-git push origin main
+# change into the submodule gh-pages, commit and push the changes to the gh-pages branch
+cd gh-pages
+git add .
+git commit -m 'build'
+git push origin gh-pages
 ```
