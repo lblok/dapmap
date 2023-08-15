@@ -42,6 +42,7 @@ git add .
 git commit -m 'build'
 git push origin gh-pages
 # then change back to the parent directory to commit the changes to the submodule
+cd ..
 git add gh-pages
 git commit -m 'build subproject'
 git push origin master
