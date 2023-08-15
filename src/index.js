@@ -134,9 +134,7 @@ $(document).ready(function () {
 // entry point for the application. We could include parsing of query params here, or not
 function initApp() {
   // show Modal intro on page load, unless they've requested not to
-    console.log('eiFDasdfasdfwef')
   if (! Cookies.get('dap-no-intro') ) {
-    console.log('eiwef')
     $('div#openModal.modalDialog').show();
 
     // set cookie if don't show this message is checked
@@ -268,7 +266,10 @@ function initButtons() {
     $('.modalDialog').hide();
   });
 
-
+  // Modal "Let's get started" button
+  $('.modalbuttons #start').on('click', function() {
+    $('.modalDialog').hide();
+  })
 }
 
 // Map inits
