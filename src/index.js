@@ -121,8 +121,8 @@ $(document).ready(function () {
       initGeocoder();
       initApp();
 
-  console.log('%c DATA', 'color: green', DATA);
-  console.log('%c CONFIG', 'color: blue', CONFIG);
+  // console.log('%c DATA', 'color: green', DATA);
+  // console.log('%c CONFIG', 'color: blue', CONFIG);
 
   }); // Promise.then()
 });
