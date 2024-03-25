@@ -1,7 +1,7 @@
 module.exports = {
   root: 'src',
   build: {
-    outDir: '../gh-pages',
+    outDir: '../docs',
     emptyOutDir: true,
   },
   publicDir: 'static',
