@@ -12,6 +12,7 @@ Install `nvm` first, then use that to install `Node` and `npm`, by running `nvm 
 * [nvm >= 0.39.1](https://github.com/nvm-sh/nvm)
 * Node 16.13.0
 * npm >= 8.1.0
+* MapLibre 3.6.2 (> 4 does not work with PM Tiles)
 
 ### First Time Setup
 ```bash
