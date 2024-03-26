@@ -7,12 +7,12 @@
   "license": "MIT",
   "scripts": {
     "start": "vite --open",
-    "build": "vite build && cp CNAME gh-pages/CNAME || copy CNAME gh-pages/CNAME",
+    "build": "vite build && cp CNAME docs/CNAME || copy CNAME docs/CNAME",
     "preview": "vite preview"
   },
   "devDependencies": {
     "postcss-preset-env": "^7.2.0",
     "sass": "^1.32.8",
-    "vite": "^4.1.4"
+    "vite": "^4.5.3"
   }
 }

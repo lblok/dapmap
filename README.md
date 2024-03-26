@@ -19,9 +19,6 @@ Install `nvm` first, then use that to install `Node` and `npm`, by running `nvm 
 # clone the repo 
 git clone https://github.com/lblok/dapmap.git
 
-# init the submodule
-git submodule update --init --recursive
-
 # install the Node dependencies
 nvm use 
 npm ci
@@ -37,21 +34,14 @@ npm run start
 
 ### To Compile and Deploy to GH pages
 
-The site runs from the `gh-pages` branch of the repo. For convenience, we include that here as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). This means that the branch acts like a subdirectory of the main project, and you can commit build artifacts by changing into that directory and adding changes 
+The site runs from the GitHub pages via the `/docs` folder. 
 
 ```bash
 nvm use
 npm run build
-# change into the submodule gh-pages, commit and push the changes to the gh-pages branch
-# this triggers the build 
-cd gh-pages
-git add .
+
+git add --all
 git commit -m "build"
-git push origin gh-pages
-# then change back to the parent directory to commit the changes to the submodule
-cd ..
-git add gh-pages
-git commit -m "build subproject"
 git push origin master
 ```
 
